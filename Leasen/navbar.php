@@ -33,6 +33,7 @@ and open the template in the editor.
                 <li><a href="connexion.php">Connexion</a></li>
                 <li><a href="demande.php">Demandes</a></li>
                 <li><a href="propositions.php">Propositions</a></li>
+                
               </ul>
               
             </div>
