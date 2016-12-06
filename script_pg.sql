@@ -16,7 +16,7 @@ CREATE TABLE public.Utilisateur(
 	date_creation_compte DATE   ,
 	e_mail               VARCHAR (100) UNIQUE,
 	partager_telephone   BOOL   ,
-	telephone            INT  UNIQUE,
+	telephone            VARCHAR (13),
 	hash_mot_de_passe    VARCHAR (256)  ,
 	token_regeneration   VARCHAR (512)  UNIQUE,
 	date_token           TIMESTAMP   ,

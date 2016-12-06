@@ -11,8 +11,10 @@
  * Autoloader à appeller dans tout les fichier utilisant des classes
  *
  * A inserer dans le code :
- * require('class/Autoloader.php')
+ * <code>
+ * require('class/Autoloader.php');
  * Autoloader::register();
+ * </code>
  */
 class Autoloader
 {
