@@ -1,3 +1,5 @@
+--CREATE USER leasen NOSUPERUSER NOCREATEDB NOCREATEROLE LOGIN PASSWORD 'root'
+-- CREATE DATABASE db_leasen OWNER leasen
 ------------------------------------------------------------
 --        Script Postgre 
 ------------------------------------------------------------
@@ -12,12 +14,12 @@ CREATE TABLE public.Utilisateur(
 	nom                  VARCHAR (25)  ,
 	prenom               VARCHAR (25)  ,
 	date_creation_compte DATE   ,
-	e_mail               VARCHAR (100) NOT NULL UNIQUE,
+	e_mail               VARCHAR (100) UNIQUE,
 	partager_telephone   BOOL   ,
-	telephone            INT  NOT NULL UNIQUE,
+	telephone            INT  UNIQUE,
 	hash_mot_de_passe    VARCHAR (256)  ,
 	token_regeneration   VARCHAR (512)  UNIQUE,
-	date_token           DATE   ,
+	date_token           TIMESTAMP   ,
 	statut               INT   ,
 	est_ban              BOOL   ,
 	raison_ban           VARCHAR (2000)   ,
@@ -48,8 +50,8 @@ CREATE TABLE public.objet(
 ------------------------------------------------------------
 CREATE TABLE public.location(
 	id_location    INT  NOT NULL ,
-	date_debut     DATE   ,
-	date_fin       DATE   ,
+	date_debut     TIMESTAMP   ,
+	date_fin       TIMESTAMP   ,
 	est_accepte    BOOL   ,
 	id_utilisateur INT   ,
 	id_objet       INT   ,
@@ -89,7 +91,7 @@ CREATE TABLE public.type(
 CREATE TABLE public.question(
 	id_question      INT  NOT NULL ,
 	contenu_question VARCHAR (2000)   ,
-	date_question    DATE   ,
+	date_question    TIMESTAMP   ,
 	id_utilisateur   INT   ,
 	id_objet         INT   ,
 	id_question_mere INT   ,
@@ -107,7 +109,7 @@ CREATE TABLE public.signal(
 	est_signalement_appreciation BOOL   ,
 	a_ete_traite                 BOOL   ,
 	id_utilisateur               INT   ,
-	date_traitement              DATE   ,
+	date_traitement              TIMESTAMP   ,
 	commentaire_traitement       VARCHAR (2000)   ,
 	a_banni_utilisateur          BOOL   ,
 	a_supprime_appreciation      BOOL   ,
