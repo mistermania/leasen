@@ -33,7 +33,15 @@ and open the template in the editor.
         ?>
         <?php
             $test = new User();
+<<<<<<< Updated upstream
             $info=array('nom'=>'feltrin' , 'prenom' => 'guillaume' ,'email' => 'guillaume.feltrin@isen.yncrea.fr', 'mot_de_passe' => 'root','telephone'=> '087050306');
+=======
+<<<<<<< Updated upstream
+            $info=array('nom'=>'Bouteille' , 'prenom' => 'marion' ,'email' => 'marion.bouteille@yncrea.isen.fr', 'mot_de_passe' => 'root');
+=======
+            $info=array('nom'=>'feltrin' , 'prenom' => 'guillaume' ,'email' => 'guillaume.feltrin@isen.yncrea.fr', 'mot_de_passe' => 'root','telephone'=> '+33787050306');
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
             $test->createUser($info);
         ?>
 

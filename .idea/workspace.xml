@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41aa8790-f6f6-4f1e-8988-4043bac17096" name="Default" comment="">
+<<<<<<< Updated upstream
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+=======
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/leasen.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Leasen/.idea/vcs.xml" />
+>>>>>>> Stashed changes
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Leasen/.idea/workspace.xml" afterPath="$PROJECT_DIR$/Leasen/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Leasen/class/User.php" afterPath="$PROJECT_DIR$/Leasen/class/User.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Leasen/index.php" afterPath="$PROJECT_DIR$/Leasen/index.php" />
@@ -27,6 +36,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+<<<<<<< Updated upstream
       <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Leasen/class/User.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -35,16 +45,34 @@
               <folding>
                 <marker date="1481050122765" expanded="true" signature="1675:1817" ph="INSERT INTO utilisateur... " />
                 <marker date="1481050122765" expanded="true" signature="2710:2735" ph="SELECT * FRO... utilisateur" />
+=======
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Leasen/class/User.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="373">
+              <caret line="66" column="73" selection-start-line="66" selection-start-column="73" selection-end-line="66" selection-end-column="73" />
+              <folding>
+                <marker date="1481050614290" expanded="true" signature="1675:1817" ph="INSERT INTO utilisateur... " />
+                <marker date="1481050614290" expanded="true" signature="2720:2745" ph="SELECT * FRO... utilisateur" />
+>>>>>>> Stashed changes
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< Updated upstream
       <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Leasen/index.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
               <caret line="35" column="156" selection-start-line="35" selection-start-column="156" selection-end-line="35" selection-end-column="156" />
+=======
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Leasen/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="359">
+              <caret line="37" column="10" selection-start-line="37" selection-start-column="10" selection-end-line="37" selection-end-column="10" />
+>>>>>>> Stashed changes
               <folding />
             </state>
           </provider>
@@ -58,8 +86,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+<<<<<<< Updated upstream
         <option value="$PROJECT_DIR$/Leasen/class/User.php" />
         <option value="$PROJECT_DIR$/Leasen/index.php" />
+=======
+        <option value="$PROJECT_DIR$/Leasen/index.php" />
+        <option value="$PROJECT_DIR$/Leasen/class/User.php" />
+>>>>>>> Stashed changes
       </list>
     </option>
   </component>
@@ -168,12 +201,20 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1481047633058</updated>
+<<<<<<< Updated upstream
       <workItem from="1481047639809" duration="2758000" />
+=======
+      <workItem from="1481047639809" duration="2995000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< Updated upstream
     <option name="totallyTimeSpent" value="2758000" />
+=======
+    <option name="totallyTimeSpent" value="2995000" />
+>>>>>>> Stashed changes
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="735" extended-state="0" />
@@ -214,6 +255,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/Leasen/class/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
@@ -230,6 +272,24 @@
         <state relative-caret-position="323">
           <caret line="35" column="156" selection-start-line="35" selection-start-column="156" selection-end-line="35" selection-end-column="156" />
           <folding />
+=======
+    <entry file="file://$PROJECT_DIR$/Leasen/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="37" column="10" selection-start-line="37" selection-start-column="10" selection-end-line="37" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Leasen/class/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="66" column="73" selection-start-line="66" selection-start-column="73" selection-end-line="66" selection-end-column="73" />
+          <folding>
+            <marker date="1481050614290" expanded="true" signature="1675:1817" ph="INSERT INTO utilisateur... " />
+            <marker date="1481050614290" expanded="true" signature="2720:2745" ph="SELECT * FRO... utilisateur" />
+          </folding>
+>>>>>>> Stashed changes
         </state>
       </provider>
     </entry>

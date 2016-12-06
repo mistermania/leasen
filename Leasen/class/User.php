@@ -64,7 +64,7 @@ class User extends Model
         $sql.=',\''.date('Y-m-d').'\'';
         $sql.=',\''.$info['email'].'\'';
         $sql.=','.(isset($info['partager_telephone'])?$info['partager_telephone']:'NULL');
-        $sql.=','.(isset($info['telephone'])?$info['telephone']:'NULL');
+        $sql.=','.(isset($info['telephone'])?'\''.$info['telephone'].'\'':'NULL');
         $sql.=',\''.$hash.'\'';
         $sql.=','.(isset($info['statut'])?$info['statut']:'0');
         $sql.=');';
