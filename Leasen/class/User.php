@@ -10,7 +10,12 @@ class User extends Model
 {
     /**
      * @param $info array contenant : nom, prenom, email, partager_telephone, telephone,statut, mot de passe
-     * @return
+     * @return int 1 : nom, prenom et email absent
+     * @return int 2 :le numero de telephone n'est pas un numero de telpehone valide
+     * @return int 3 : adresse mail invalide
+     * @return int 4 : mot de passe trop faible (moins de 8 caractère, absence d'une chiffre, d'une majuscule et d'une minuscule
+     * @return int 5 : adresse déja presente dans la base de donnée
+     * @return int 0 : insertion reussie
      */
     public function createUser($info)
     {
@@ -24,40 +29,44 @@ class User extends Model
         if(isset($info['telephone'])) {
 
             if (!preg_match($regexp_telephone,$info['telephone'])) {
-                //si le numero de telephone n'est pas un nombre
-                echo 'fail numero telephone';
+                //si le numero de telephone est invalide
                 return 2;
 
             }
         }
-        if(preg_match($regexp_mail,$info['email']))
+        //si l'adresse email ne correspond pas au paterne attendu
+        if(!preg_match($regexp_mail,$info['email']))
         {
-            echo 'ca match <br>';
-        }
-        else{
-            echo 'Fail';
             return 3;
         }
-        /*if (preg_match("/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/", $info["mot_de_passe"])) {
-            echo "Your passwords is strong.";
-        } else {
-            echo "Your password is weak.";
+
+        //si le mot de passe contient moins de 8 caractère, dont une minuscule, une majuscule et un chiffre
+        if (!preg_match("/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/", $info["mot_de_passe"])) {
             return 4;
-        }*/
+        }
         $cond=array('e_mail'=> $info['email']);
         $mail=$this->find($cond);
+        //si l'email est absent de la base de donnée
         if(empty($mail)) {
             return $this->insertUser($info);
 
         }else{
+            // si il est déja present
             return 5;
         }
     }
 
+    /**
+     * @param array $info
+     * @return int 0: tout c'est bien passés
+     *
+     * ajout un utilisateur a la base de donnée
+     */
     private function insertUser($info)
     {
+        //chiffrement du mot de passe
         $hash=password_hash($info['mot_de_passe'],PASSWORD_DEFAULT);
-        $sql='INSERT INTO utilisateur (id_utilisateur,nom,prenom,date_creation_compte,e_mail,partager_telephone,telephone,hash_mot_de_passe,statut) VALUES (';
+        $sql='INSERT INTO utilisateur (id_utilisateur,nom,prenom,date_creation_compte,e_mail,partager_telephone,telephone,hash_mot_de_passe,statut) VALUES ( ';
         $sql.='(SELECT max(id_utilisateur)+1 FROM utilisateur)';
         $sql.=',\''.strtolower($info['nom']).'\'';
         $sql.=',\''.strtolower($info['prenom']).'\'';
@@ -66,7 +75,8 @@ class User extends Model
         $sql.=','.(isset($info['partager_telephone'])?$info['partager_telephone']:'NULL');
         $sql.=','.(isset($info['telephone'])?'\''.$info['telephone'].'\'':'NULL');
         $sql.=',\''.$hash.'\'';
-        $sql.=','.(isset($info['statut'])?$info['statut']:'0');
+        //le statut d'admin ne peut etres obtenu qu'après la creation du compte
+        $sql.=',0';
         $sql.=');';
         echo $sql;
         $req=$this->pdo->prepare($sql);
@@ -82,8 +92,15 @@ class User extends Model
             }
 
         }
+        return 0;
     }
 
+    /**
+     * @param mixed $cond
+     * si $cond est un tableau, ajout a la requete de condtion where clé==valeur pour chaque couple clé valeur
+     * sinon ajout de la conditon après le where
+     * @return mixed: tableau contenant les information des utilisateurs repondant aux condition
+     */
     public function find($cond){
         $sql='SELECT * FROM utilisateur';
         $a_cond=array();

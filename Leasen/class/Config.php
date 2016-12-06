@@ -8,7 +8,13 @@
  */
 class Config
 {
+    /**
+     * @var int 1 pour afficher les informations de debug,0 sinon
+     */
     static $debug =1;
+    /**
+     * @var array contient les informatons concernant la BDD
+     */
     public static $config = array( "HOST" => 'db_postgres',
                                 "USER" => "leasen",
                                 "PASSWORD" => "root",
