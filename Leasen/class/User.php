@@ -19,29 +19,24 @@ class User extends Model
      */
     public function createUser($info)
     {
-        $regexp_mail="/^[^0-9][A-z0-9_]+([.][A-z0-9_]+)*[@]isen.yncrea.fr$/";
-        $regexp_telephone="/^([+]([1-9]){1,3}|0)[1-79]([-. ]?[0-9]){8}$/";
-        if(!isset($info['nom']) or !isset($info['prenom']) or !isset($info['email']) )
+
+        if(!isset($info['nom']) or !isset($info['prenom']) or !isset($info['email']) or !isset($info['mot_de_passe'])) )
         {
             //si les informations minimales ne sont pas remplies.
             return 1;
         }
-        if(isset($info['telephone'])) {
-
-            if (!preg_match($regexp_telephone,$info['telephone'])) {
-                //si le numero de telephone est invalide
-                return 2;
-
-            }
+        if(isset($info['telephone'])?!$this->est_valide_telephone($info['telephone']):false) {
+            echo 'numero de merde';
+            return 2;
         }
         //si l'adresse email ne correspond pas au paterne attendu
-        if(!preg_match($regexp_mail,$info['email']))
+        if(!$this->est_valide_mail($info['email']))
         {
             return 3;
         }
 
         //si le mot de passe contient moins de 8 caractère, dont une minuscule, une majuscule et un chiffre
-        if (!preg_match("/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/", $info["mot_de_passe"])) {
+        if (!$this->est_valide_mot_de_passe($info["mot_de_passe"])) {
             return 4;
         }
         $cond=array('e_mail'=> $info['email']);
@@ -133,4 +128,8 @@ class User extends Model
         return $req->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function updateInfo($info)
+    {
+
+    }
 }
