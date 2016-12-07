@@ -33,7 +33,7 @@ and open the template in the editor.
         ?>
         <?php
             $test = new User();
-            $info=array('nom'=>'feltrin' , 'prenom' => 'guillaume' ,'email' => 'guillaume.feltrin@isen.yncrea.fr', 'mot_de_passe' => 'root','telephone'=> '+337870fe50306');
+            $info=array('nom'=>'feltrin' , 'prenom' => 'guillaume' ,'email' => 'guillaume.feltrin@isen.yncrea.fr', 'mot_de_passe' => 'root','telephone'=> '+33787050306');
             $test->createUser($info);
         ?>
 
