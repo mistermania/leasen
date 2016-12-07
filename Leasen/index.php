@@ -32,7 +32,7 @@ and open the template in the editor.
              navbarcall(1,1);
         ?>
         <?php
-            $test = new User();
+            $test = new Utilisateur();
             $info=array('nom'=>'tchou' , 'prenom' => 'guillaume' ,'e_mail' => 'guillaum.feltrin@isen.yncrea.fr', 'mot_de_passe' => 'rootA8fefef','telephone'=> '+33484050306', 'partager_telephone'=> 0);
             $id=6;
             print_r($test->updateInfo($info,$id));

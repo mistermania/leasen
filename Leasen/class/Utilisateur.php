@@ -6,7 +6,7 @@
  * Date: 06/12/16
  * Time: 09:30
  */
-class User extends Model
+class Utilisateur extends Model
 {
     /**
      * @param $info array contenant : nom, prenom, email, partager_telephone, telephone,statut, mot de passe
@@ -108,13 +108,8 @@ class User extends Model
         return $req->fetchAll(PDO::FETCH_OBJ);
     }
 
-    /**
-     * @param mixed $cond
-     * si $cond est un tableau, ajout a la requete de condtion where clé=valeur pour chaque couple clé valeur
-     * sinon ajout de la conditon après le where
-     * @return mixed: tableau contenant les information des utilisateurs repondant aux condition
-     */
-    public function find($cond){
+
+   /* public function find($cond){
         $sql='SELECT * FROM utilisateur';
         $a_cond=array();
         if(isset($cond)) {
@@ -145,7 +140,7 @@ class User extends Model
         }
         return $req->fetchAll(PDO::FETCH_OBJ);
     }
-
+*/
 
     /**
      * @param $info

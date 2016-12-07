@@ -102,4 +102,45 @@ class Model
         }
         return false;
     }
+
+    /**
+     * @param mixed $cond
+     * si $cond est un tableau, ajout a la requete de condtion where clé=valeur pour chaque couple clé valeur
+     * sinon ajout de la conditon après le where
+     * recherche dans la table/vue portant le nom de l'objet
+     * @return mixed: tableau contenant les information des utilisateurs repondant aux condition
+     */
+
+    public function find($cond){
+        $sql='SELECT * FROM '.get_class($this);
+        $a_cond=array();
+        if(isset($cond)) {
+            $sql.=' WHERE ';
+            if (is_array($cond)) {
+                foreach ($cond as $k => $v) {
+                    //if (!is_numeric($v)) {
+                    $v = '\'' . $v . '\'';
+                    //}
+                    $a_cond[]="$k = $v";
+                }
+                $sql.=implode(' AND ',$a_cond);
+
+            } else {
+                $sql .= $cond;
+            }
+        }
+        echo $sql;
+        $req=$this->pdo->prepare($sql);
+        try{
+            $req->execute();
+        }catch (PDOException $e)
+        {
+            if (Config::$debug >= 1) {
+                echo $e->getMessage();
+            } else {
+                echo 'bdd indispo';
+            }
+        }
+        return $req->fetchAll(PDO::FETCH_OBJ);
+    }
 }
