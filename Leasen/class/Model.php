@@ -56,7 +56,7 @@ class Model
      * @param string $mail adresse mail a verifier
      * @return bool true si l'adresse est valide, false si non
      */
-    public function est_valide_mail($mail)
+    public function estValideMail($mail)
     {
         $regexp_mail="/^[^0-9][A-z0-9_]+([.][A-z0-9_]+)*[@]isen.yncrea.fr$/";
         if(isset($mail))
@@ -73,7 +73,7 @@ class Model
      * @param string $telephone numero de telelephone a verifier
      * @return bool true si il est valide, false si non
      */
-    public function est_valide_telephone($telephone)
+    public function estValideTelephone($telephone)
     {
         $regexp_telephone="/^([+]([1-9]){1,3}|0)[1-79]([-. ]?[0-9]){8}$/";
         if(isset($telephone))
@@ -90,7 +90,7 @@ class Model
      * @param $mot_de_passe mot_de_passe a verifier
      * @return bool true si il contient au moins  caractère, majuscule, une minuscule et un chiffre
      */
-    public function est_valide_mot_de_passe($mot_de_passe)
+    public function estValideMotDePasse($mot_de_passe)
     {
         $regexp_mot_de_passe ="/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/";
         if(isset($mot_de_passe))

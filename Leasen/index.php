@@ -33,8 +33,9 @@ and open the template in the editor.
         ?>
         <?php
             $test = new User();
-            $info=array('nom'=>'feltrin' , 'prenom' => 'guillaume' ,'email' => 'guillaume.feltrin@isen.yncrea.fr', 'mot_de_passe' => 'root','telephone'=> '+33787050306');
-            $test->createUser($info);
+            $info=array('nom'=>'tchou' , 'prenom' => 'guillaume' ,'e_mail' => 'guillaum.feltrin@isen.yncrea.fr', 'mot_de_passe' => 'rootA8fefef','telephone'=> '+33484050306', 'partager_telephone'=> 0);
+            $id=6;
+            print_r($test->updateInfo($info,$id));
         ?>
 
     </body>
