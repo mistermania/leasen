@@ -129,7 +129,7 @@ class Model
                 $sql .= $cond;
             }
         }
-        echo $sql;
+        echo $sql.'<br>';
         $req=$this->pdo->prepare($sql);
         try{
             $req->execute();

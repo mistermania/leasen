@@ -70,7 +70,7 @@ class Utilisateur extends Model
     }
 
     /**
-     * @param array $info
+     * @param array $info array contenant : nom, prenom, email, partager_telephone, telephone,statut, mot de passe
      * @return int 0: tout c'est bien passés
      *
      * ajoute un utilisateur a la base de donnée
@@ -91,7 +91,6 @@ class Utilisateur extends Model
         //le statut d'admin ne peut etres obtenu qu'après la creation du compte
         $sql.=',0';
         $sql.=');';
-        echo $sql;
         $req=$this->pdo->prepare($sql);
         try{
             $req->execute();
@@ -109,41 +108,10 @@ class Utilisateur extends Model
     }
 
 
-   /* public function find($cond){
-        $sql='SELECT * FROM utilisateur';
-        $a_cond=array();
-        if(isset($cond)) {
-            $sql.=' WHERE ';
-            if (is_array($cond)) {
-                foreach ($cond as $k => $v) {
-                    //if (!is_numeric($v)) {
-                    $v = '\'' . $v . '\'';
-                    //}
-                    $a_cond[]="$k = $v";
-                }
-                $sql.=implode(' AND ',$a_cond);
 
-            } else {
-                $sql .= $cond;
-            }
-        }
-        $req=$this->pdo->prepare($sql);
-        try{
-            $req->execute();
-        }catch (PDOException $e)
-        {
-            if (Config::$debug >= 1) {
-                echo $e->getMessage();
-            } else {
-                echo 'bdd indispo';
-            }
-        }
-        return $req->fetchAll(PDO::FETCH_OBJ);
-    }
-*/
 
     /**
-     * @param $info
+     * @param $info tableau contenant les information a modifier
      * @param $id : id de l'utilisateur
      * @return int 1 : info contient des champs absent de la bdd
      * @return int 2 :le numero de telephone n'est pas un numero de telpehone valide
@@ -223,8 +191,8 @@ class Utilisateur extends Model
     }
 
     /**
-     * @param $info
-     * @param $id
+     * @param $info tableau contenant les informations a modifier
+     * @param $id id de l'utilisateur a modifier
      * @return mixed
      */
     private function updateInfoBdd($info, $id)
@@ -254,5 +222,6 @@ class Utilisateur extends Model
             }
             return $req->fetchAll(PDO::FETCH_OBJ);
         }
+        return 1;
     }
 }
