@@ -38,12 +38,16 @@ and open the template in the editor.
             print_r($test->updateInfo($info,$id));*/
 
 
-
-        $date=new DateTime();
-        $h= $date->getTimestamp();
+        /*
         $loc= new Location();
-        $infoLoc=array('id_utilisateur'=>5,'id_objet'=>2,'date_debut'=>'2016-12-10 22:54:36', 'date_fin'=> '2016-12-19 22:54:36');
+        $infoLoc=array('id_utilisateur'=>5,'id_objet'=>3,'date_debut'=>'2016-12-10 22:54:36', 'date_fin'=> '2016-12-19 22:54:36');
         print_r($loc->createLocation($infoLoc));
+        */
+
+        $tchou=new Utilisateur();
+        $updateUser=array('nom'=>'tchoutchou' , 'prenom' => 'guillaume' ,'e_mail' => 'guillaumte.feltrin@isen.yncrea.fr', 'mot_de_passe' => 'rootA8fefef','telephone'=> '+33484070306', 'partager_telephone'=> 0);
+        $tchou->createUser($updateUser);
+
         ?>
 
     </body>

@@ -141,6 +141,94 @@ class Model
                 echo 'bdd indispo';
             }
         }
-        return $req->fetchAll(PDO::FETCH_OBJ);
+        //retourne un tableau contenant les information.
+        return $req->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * @param $info tableau contenant les informations a modifier
+     * @param $id id a modifier
+     * @return int 0 si l'insertion a été effectue
+     * @return int 1 si trop de clé dans le tableau
+     */
+    protected function updateBdd($info, $id)
+    {
+        $sql='UPDATE '.get_class($this).' SET ';
+            foreach ($info as $k => $v)
+            {
+                //si une clé ne fait pas partie de la liste
+                if(!in_array($k,$this::champ))
+                {
+                    //on sort
+                    return 7;
+                }
+            }
+            foreach ($info as $k => $v) {
+                $sql .= $k . ' = \'' . $v . '\',';
+            }
+            //on enleve la dernière virgule
+            $sql=substr($sql, 0, -1);
+            $sql.=' WHERE id_'.get_class($this).' = '.$id;
+            echo $sql;
+            $req=$this->pdo->prepare($sql);
+            try{
+                $req->execute();
+            }catch (PDOException $e)
+            {
+                if (Config::$debug >= 1) {
+                    echo $e->getMessage();
+                } else {
+                    echo 'bdd indispo';
+                }
+            }
+            $req->fetchAll(PDO::FETCH_ASSOC);
+            return 0;
+    }
+
+    /**
+     * @param $info
+     * @return int 0 si l'insertion a été effectue
+     * @return int 7 si trop de clé dans le tableau
+     */
+    protected function insertBdd($info){
+        //liste des champs pouvant etres present
+        print_r($this::champ);
+        foreach ($info as $k => $v)
+        {
+            //si une clé ne fait pas partie de la liste
+            if(!in_array($k,$this::champ))
+            {
+                //on sort
+                return 7;
+            }
+        }
+        $debut='INSERT INTO '.get_class($this).' (id_'.get_class($this);
+        $fin = ' VALUES ((SELECT max(id_'.get_class($this).')+1 FROM '.get_class($this).')';
+        foreach ($info as $k=>$v)
+        {
+            //la clé est inserer comme colonne de la table
+            $debut.=','.$k;
+            //la valeur est ajoute dans les values
+            $fin.=', \''.$v.'\'';
+        }
+        //ajout de ponctuation
+        $debut.=')';
+        $fin.=') ;';
+        //la requete totale est la concatenation des deux requete qui ont été preparé
+        $req=$this->pdo->prepare($debut.$fin);
+        try{
+            $req->execute();
+        }catch (PDOException $e)
+        {
+            if (Config::$debug >= 1) {
+                echo $e->getMessage();
+
+            } else {
+                echo 'bdd indispo';
+            }
+
+        }
+        $req->fetchAll(PDO::FETCH_ASSOC);
+        return 0;
     }
 }

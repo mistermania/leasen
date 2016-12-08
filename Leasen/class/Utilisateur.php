@@ -8,6 +8,8 @@
  */
 class Utilisateur extends Model
 {
+    //consante contenant le nom de tout les champs possible de la table
+    const champ=array('nom','prenom','e_mail','partager_telephone','telephone','hash_mot_de_passe','est_ban','raison_ban','statut','token_regeneration','date_token','date_creation_compte');
     /**
      * @param $info array contenant : nom, prenom, email, partager_telephone, telephone,statut, mot de passe
      * @return int 1 : nom, prenom et email absent
@@ -18,7 +20,7 @@ class Utilisateur extends Model
      * @return int 6 : numero deja present dans la base de donnée
      * @return int 0 : insertion reussie
      */
-    public function createUser($info)
+    public function insert($info)
     {
 
         if(!isset($info['nom']) or !isset($info['prenom']) or !isset($info['e_mail']) or !isset($info['mot_de_passe']))
@@ -36,6 +38,9 @@ class Utilisateur extends Model
                 return 6;
             }
 
+        }else{
+            //on prepare le champ pour le rentrer dans la BDD
+            $info['telephone']='NULL';
         }
         //si l'adresse email ne correspond pas au paterne attendu
         if(!$this->estValideMail($info['e_mail']))
@@ -66,47 +71,22 @@ class Utilisateur extends Model
         }else{
             $info['partager_telephone']='FALSE';
         }
-        return $this->insertUserBdd($info);
+        //on modifie les elements du tableau pour les rentrer proprement dans la BDD
+        //on hash le mot de passe
+        $info['hash_mot_de_passe']=password_hash($info['mot_de_passe'],PASSWORD_DEFAULT);
+        //on supprime le mot de passe du tableau
+        unset($info['mot_de_passe']);
+        //on passe en lowercase le nom
+        $info['nom']=strtolower($info['nom']);
+        //et le prenom
+        $info['prenom']=strtolower($info['prenom']);
+        //on ajoute la date de creation
+        $info['date_creation_compte']=date('Y-m-d');
+        //un nouvel utilisateur est TOUJOURS un utilisateur lambda
+        $info['statut']=0;
+
+        return $this->insertBdd($info);
     }
-
-    /**
-     * @param array $info array contenant : nom, prenom, email, partager_telephone, telephone,statut, mot de passe
-     * @return int 0: tout c'est bien passés
-     *
-     * ajoute un utilisateur a la base de donnée
-     */
-    private function insertUserBdd($info)
-    {
-        //chiffrement du mot de passe
-        $hash=password_hash($info['mot_de_passe'],PASSWORD_DEFAULT);
-        $sql='INSERT INTO utilisateur (id_utilisateur,nom,prenom,date_creation_compte,e_mail,partager_telephone,telephone,hash_mot_de_passe,statut) VALUES ( ';
-        $sql.='(SELECT max(id_utilisateur)+1 FROM utilisateur)';
-        $sql.=',\''.strtolower($info['nom']).'\'';
-        $sql.=',\''.strtolower($info['prenom']).'\'';
-        $sql.=',\''.date('Y-m-d').'\'';
-        $sql.=',\''.$info['e_mail'].'\'';
-        $sql.=','.$info['partager_telephone'];
-        $sql.=','.(isset($info['telephone'])?'\''.$info['telephone'].'\'':'NULL');
-        $sql.=',\''.$hash.'\'';
-        //le statut d'admin ne peut etres obtenu qu'après la creation du compte
-        $sql.=',0';
-        $sql.=');';
-        $req=$this->pdo->prepare($sql);
-        try{
-            $req->execute();
-        }catch (PDOException $e)
-        {
-            if (Config::$debug >= 1) {
-                echo $e->getMessage();
-
-            } else {
-                echo 'bdd indispo';
-            }
-
-        }
-        return $req->fetchAll(PDO::FETCH_OBJ);
-    }
-
 
 
 
@@ -121,12 +101,11 @@ class Utilisateur extends Model
      * @return int 6 : numero deja present dans la base de donnée
      * @return int 0 : insertion reussie
      */
-    public function updateInfo($info, $id)
+    public function update($info, $id)
     {
-        $champ=array('nom','prenom','e_mail','partager_telephone','telephone','mot_de_passe','est_ban','raison_ban');
         foreach ($info as $k => $v)
         {
-            if(!in_array($k,$champ))
+            if(!in_array($k,Utilisateur::champ))
             {
                 return 1;
             }
@@ -187,41 +166,9 @@ class Utilisateur extends Model
             }
         }
 
-        return $this->updateInfoBdd($info,$id);
+        return $this->updateBdd($info,$id);
     }
 
-    /**
-     * @param $info tableau contenant les informations a modifier
-     * @param $id id de l'utilisateur a modifier
-     * @return mixed
-     */
-    private function updateInfoBdd($info, $id)
-    {
-        $sql='UPDATE utilisateur SET ';
-        if(is_array($info) and is_int($id)) {
-            foreach ($info as $k => $v) {
-                /*if (is_string($v)) {
-                    $v = "'$v'";
-                }*/
-                $sql .= $k . ' = \'' . $v . '\',';
-            }
-            //on enleve la dernière virgule
-            $sql=substr($sql, 0, -1);
-            $sql.=' WHERE id_utilisateur = '.$id;
-            echo $sql;
-            $req=$this->pdo->prepare($sql);
-            try{
-                $req->execute();
-            }catch (PDOException $e)
-            {
-                if (Config::$debug >= 1) {
-                    echo $e->getMessage();
-                } else {
-                    echo 'bdd indispo';
-                }
-            }
-            return $req->fetchAll(PDO::FETCH_OBJ);
-        }
-        return 1;
-    }
+
+
 }
