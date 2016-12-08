@@ -62,7 +62,8 @@ class Location extends Model
         //verifie qu'aucune location ne chevauche sur les dates demandée
         if(!empty($this->find('id_objet = '.$info['id_objet'].' AND (
         (date_debut<=\''.$info['date_debut'].'\' AND date_fin >=\''.$info['date_debut'].'\') OR
-         (date_debut<=\''.$info['date_fin'].'\' AND date_fin >=\''.$info['date_fin'].'\') )')))
+         (date_debut<=\''.$info['date_fin'].'\' AND date_fin >=\''.$info['date_fin'].'\') OR
+         (date_debut>=\''.$info['date_debut'].'\' AND date_fin <=\''.$info['date_fin'].'\'))')))
         {
             return 6;
         }

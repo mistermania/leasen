@@ -42,7 +42,7 @@ and open the template in the editor.
         $date=new DateTime();
         $h= $date->getTimestamp();
         $loc= new Location();
-        $infoLoc=array('id_utilisateur'=>5,'id_objet'=>2,'date_debut'=>'2016-12-10 22:54:36', 'date_fin'=> '2016-12-17 22:54:36');
+        $infoLoc=array('id_utilisateur'=>5,'id_objet'=>2,'date_debut'=>'2016-12-10 22:54:36', 'date_fin'=> '2016-12-19 22:54:36');
         print_r($loc->createLocation($infoLoc));
         ?>
 
