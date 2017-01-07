@@ -40,7 +40,7 @@ $RECYCLE.BIN/
 .VolumeIcon.icns
 .idea/*
 .git
-/Leasen/.idea
+/Leasen/.idea/*
 
 # Directories potentially created on remote AFP share
 .AppleDB
