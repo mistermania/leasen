@@ -23,6 +23,8 @@ and open the template in the editor.
             
             $test= $newuser->find("e_mail = '$e_mail'");
            echo '<pre>';
+           if(!empty($test))
+           {
             $hash=$test[0]['hash_mot_de_passe'];
             if(!empty($test)) 
             {
@@ -34,7 +36,7 @@ and open the template in the editor.
                     echo 'fail';
                 }
             }
-            
+           }
             echo '</pre>';
         ?>
     </body>
