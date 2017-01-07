@@ -88,7 +88,7 @@ class Model
 
     /**
      * @param $mot_de_passe mot_de_passe a verifier
-     * @return bool true si il contient au moins  caractère, majuscule, une minuscule et un chiffre
+     * @return bool true si il contient au moins 8 caractère, majuscule, une minuscule et un chiffre
      */
     public function estValideMotDePasse($mot_de_passe)
     {
