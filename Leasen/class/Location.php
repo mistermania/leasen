@@ -79,6 +79,8 @@ class Location extends Model
      * id_utilisateur : id de l'utilisateur demandant la location
      * id_objet : id de l'objet que l'utilisateur veux louer
      *
+     * int $id : id de la location
+     *
      * @return int
      * 1 : le tableau est vide
      * 7 : presence de champ en trop dans le tableau

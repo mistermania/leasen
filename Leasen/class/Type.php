@@ -8,6 +8,6 @@
  */
 class Type extends Model
 {
-    $champ=array('description_type','id')
+    const champ=array('description_type','id_type');
 
 }

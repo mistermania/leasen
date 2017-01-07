@@ -148,7 +148,7 @@ class Model
     /**
      * @param $info tableau contenant les informations a modifier
      * @param int $id id a modifier
-     * @return int 0 si l'insertion a été effectue
+     * @return int 0 si la modification a été effectue
      * @return int 1 si trop de clé dans le tableau
      */
     protected function updateBdd($info, $id)
