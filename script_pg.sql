@@ -136,3 +136,8 @@ ALTER TABLE public.signal ADD CONSTRAINT FK_signal_id_objet FOREIGN KEY (id_obje
 ALTER TABLE public.signal ADD CONSTRAINT FK_signal_id_appreciation FOREIGN KEY (id_appreciation) REFERENCES public.appreciation(id_appreciation);
 CREATE VIEW moderateur AS SELECT * FROM utilisateur WHERE (statut > 0);
 CREATE INDEX index_statut ON utilisateur (statut);
+
+INSERT INTO utilisateur (id_utilisateur) VALUES (1);
+INSERT INTO location (id_location) VALUES (1);
+INSERT INTO objet (id_objet) VALUES (1);
+INSERT INTO type (id_type) VALUES (1);

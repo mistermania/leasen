@@ -9,7 +9,7 @@
 class Utilisateur extends Model
 {
     //consante contenant le nom de tout les champs possible de la table
-    const champ=array('nom','prenom','e_mail','partager_telephone','telephone','hash_mot_de_passe','est_ban','raison_ban','statut','token_regeneration','date_token','date_creation_compte');
+    const champ=array('nom','prenom','e_mail','partager_telephone','telephone','hash_mot_de_passe','est_ban','raison_ban','token_regeneration','date_token','date_creation_compte','statut');
     /**
      * @param $info array contenant : nom, prenom, email, partager_telephone, telephone,statut, mot de passe
      * @return int 1 : nom, prenom et email absent
