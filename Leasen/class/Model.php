@@ -147,7 +147,7 @@ class Model
 
     /**
      * @param $info tableau contenant les informations a modifier
-     * @param $id id a modifier
+     * @param int $id id a modifier
      * @return int 0 si l'insertion a été effectue
      * @return int 1 si trop de clé dans le tableau
      */
@@ -191,8 +191,6 @@ class Model
      * @return int 7 si trop de clé dans le tableau
      */
     protected function insertBdd($info){
-        //liste des champs pouvant etres present
-        print_r($this::champ);
         foreach ($info as $k => $v)
         {
             //si une clé ne fait pas partie de la liste
