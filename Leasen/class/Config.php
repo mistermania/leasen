@@ -15,7 +15,11 @@ class Config
     /**
      * @var array contient les informatons concernant la BDD
      */
+<<<<<<< HEAD
     public static $config = array( "HOST" => 'localhost',
+=======
+    public static $config = array( "HOST" => 'db_postgres',
+>>>>>>> refs/remotes/origin/master
                                 "USER" => "leasen",
                                 "PASSWORD" => "root",
                                 "DB_NAME" => "db_leasen");
