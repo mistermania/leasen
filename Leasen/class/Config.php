@@ -12,14 +12,14 @@ class Config
      * @var int 1 pour afficher les informations de debug,0 sinon
      */
     static $debug =1;
+    
     /**
      * @var array contient les informatons concernant la BDD
+     *
+     *
+     * @var type 
      */
-<<<<<<< HEAD
     public static $config = array( "HOST" => 'localhost',
-=======
-    public static $config = array( "HOST" => 'db_postgres',
->>>>>>> refs/remotes/origin/master
                                 "USER" => "leasen",
                                 "PASSWORD" => "root",
                                 "DB_NAME" => "db_leasen");
