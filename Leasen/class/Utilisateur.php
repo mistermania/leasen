@@ -49,8 +49,11 @@ class Utilisateur extends Model
         }
 
         //si le mot de passe contient moins de 8 caractère, dont une minuscule, une majuscule et un chiffre
-        if (!$this->estValideMotDePasse($info["mot_de_passe"])) {
+        if ($debug=0)
+        {
+                if (!$this->estValideMotDePasse($info["mot_de_passe"])) {
             return 4;
+        }
         }
         $cond=array('e_mail'=> $info['e_mail']);
         $mail=$this->find($cond);

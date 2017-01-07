@@ -29,10 +29,9 @@ and open the template in the editor.
         
         <?php
              include "fnavbar.php";
-             navbarcall(1,1);
+             navbarcall(0,0);
         ?>
         <?php
-
         ?>
 
     </body>
