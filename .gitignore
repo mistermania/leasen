@@ -40,7 +40,7 @@ $RECYCLE.BIN/
 .VolumeIcon.icns
 .idea/*
 .git
-/Leasen/.idea
+/Leasen/.idea/*
 
 # Directories potentially created on remote AFP share
 .AppleDB
@@ -48,5 +48,5 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
-/Leasen/nbproject/private/
+/Leasen/nbproject/private/*
 /Leasen/class/Config.php
