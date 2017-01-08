@@ -10,7 +10,9 @@ $test= new Recherche();
 $res=$test->effectueRecherche($info);
 //print_r($res);
 ?>
-<table border="1">
+
+<table border="1" class="responsive-table striped">
+    <thead>
     <tr>
         <th>Nom</th>
         <th>Description</th>
@@ -18,6 +20,7 @@ $res=$test->effectueRecherche($info);
         <th>Prix</th>
 
     </tr>
+    </thead>
     <?php
     foreach ($res as $k =>$v)
     {
@@ -42,8 +45,7 @@ $res=$test->effectueRecherche($info);
     <?php
     }
     ?>
-
-
+</table>
 
 
 

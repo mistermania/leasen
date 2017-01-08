@@ -30,5 +30,3 @@ function read_data(sData, id_result) {
     oSelect.innerHTML = sData;
 
 }
-
-
