@@ -31,13 +31,13 @@
     <label for="description">Description du bien</label><br />
     <textarea name="description" id="description" placeholder="Ex: Appareil pour 8 personnes"></textarea><br />
     <input type="button" value="Ajouter un prix" onclick="afficher_cacher('id_div_prix'); "><br />
-    <div id="id_div_prix" style="display:none;">
+    <div id="id_div_prix" style="display:none">
         <label for="prix">Prix de la location à la journée </label><br />
         <input type="number" id="prix" name="prix" min="0" value="0"/>€<br/>
     </div>
 
     <input type="button" value="Ajouter une caution" onclick="afficher_cacher('id_div_caution');"><br />
-    <div id="id_div_caution" style="display:none;">
+    <div id="id_div_caution" style="display:none">
         <input type="number" id="prix_caution" name="prix_caution" min="0" value="0"/>€<br />
     </div>
 

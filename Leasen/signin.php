@@ -18,8 +18,7 @@ and open the template in the editor.
         <?php
             $newuser = new Utilisateur();
             $e_mail =   filter_input(INPUT_POST, 'user_email');
-            $mot_de_passe = filter_input(INPUT_POST, 'pass');
-            
+            $mot_de_passe = filter_input(INPUT_POST, 'pass');;
             
             $test= $newuser->find("e_mail = '$e_mail'");
            echo '<pre>';
@@ -33,13 +32,16 @@ and open the template in the editor.
                     echo 'Bonjour '.$test[0]['nom'].'';
                     $_SESSION['USER'] = $e_mail;
                     $_SESSION['IDUSER'] = $test[0]['id_utilisateur'];
-                    header('Location: http://localhost/leasen/index.php');
+                    header('Location:index.php');
                     exit();
                 }else
                 {
                     echo 'Mauvaise combinaison, merci de réessayer.';
                 }
             }
+           }else
+           {
+               echo 'Mauvaise combinaison, merci de réessayer.';
            }
             echo '</pre>';
         ?>

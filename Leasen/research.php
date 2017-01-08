@@ -16,6 +16,7 @@ $res=$test->effectueRecherche($info);
         <th>Description</th>
         <th>Caution</th>
         <th>Prix</th>
+
     </tr>
     <?php
     foreach ($res as $k =>$v)
@@ -26,8 +27,18 @@ $res=$test->effectueRecherche($info);
         <td> <?php echo $v["description_objet"]; ?> </td>
         <td> <?php echo $v["prix_caution"]; ?> </td>
         <td> <?php echo $v["prix"]; ?> </td>
+        <td>
+            <form method="post" action="./detailobjet.php">
+                <input type="submit" value="Louer" >
+                <?php echo $v["id_objet"]; ?>
+                <div id="hide" style="display:none">
+                    <input type="number" id="id_objet" name="id_objet" value="<?php echo $v["id_objet"]; ?>"/>
+                </div>
+            </form>
+        </td>
 
     </tr>
+
     <?php
     }
     ?>

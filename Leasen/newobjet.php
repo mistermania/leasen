@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(!isset($_SESSION['USER']) || !isset($_SESSION['IDUSER']))
+{
+    header('Location:index.php');
+}
 
 require('class/Autoloader.php');
 Autoloader::register();
@@ -21,12 +26,15 @@ if(isset($_POST['prix_caution'])){
     $objetInfos['a_une_caution'] = true;
 }
 
-$objetInfos['id_utilisateur']=2 ;
+$objetInfos['id_utilisateur']=$_SESSION['IDUSER'] ;
 print_r($objetInfos);
-echo $test= $newobjet->insert($objetInfos);
+$test= $newobjet->insert($objetInfos);
+
+echo"Votre demmande nous a bien été remise, apres validation elle sera publiée.";
+header('Location:objet.php');
 /**
  *
-*
+*s
 *if($test == 1) {
 *echo "";
 */
