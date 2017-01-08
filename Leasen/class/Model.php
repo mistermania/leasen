@@ -129,7 +129,7 @@ class Model
                 $sql .= $cond;
             }
         }
-        echo $sql.'<br>';
+        // echo $sql.'<br>';
         $req=$this->pdo->prepare($sql);
         try{
             $req->execute();
@@ -213,6 +213,10 @@ class Model
         $debut.=')';
         $fin.=') ;';
         //la requete totale est la concatenation des deux requete qui ont été preparé
+        if(Config::$debug>0)
+        {
+            echo $debut.$fin.'<br>';
+        }
         $req=$this->pdo->prepare($debut.$fin);
         try{
             $req->execute();

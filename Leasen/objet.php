@@ -24,19 +24,12 @@ $res=$ty->find($req);
         ?>
 
     </select>
-    <input type="date" id="date" name="date" />
-    <input type="text" id="recherche" onkeyup="request('categorie','date','recherche','result');"/>
+    <input type="date" id="date" name="date" placeholder="Date: Année-Mois-Jour" />
+    <input type="number" id="duree" min="0" placeholder="Durée de la location  "/>
+    <input type="text" id="recherche" placeholder="Taper votre recherche" onkeyup="request('categorie','date','duree','recherche','result');"/>
 </form>
-<p id="result"> resultat</p>
-
-<?php
-/* $sql = 'SELECT * FROM objet WHERE nom = "velo" AND date = "2017-01-01" AND categorie = "vehicule"';
- $retour = $bdd->query($sql);
- while ($donnees = $retour->fetch()) {
-     echo "nom = ".$donnees["nom"]." categorie = ".$donnees["categorie"]." date = ".$donnees["date"]."";
- }*/
+<p id="result"> </p>
 
 
-?>
 </body>
 </html>

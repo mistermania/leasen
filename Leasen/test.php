@@ -7,7 +7,7 @@
  */
 require('class/Autoloader.php');
 Autoloader::register();
-
+echo $_POST;
 //location
 /*$loc= new Location();
 $infoLoc=array('id_utilisateur'=>2,'id_objet'=>3,'date_debut'=>'2016-12-10 22:54:36', 'date_fin'=> '2016-12-19 22:54:36');
