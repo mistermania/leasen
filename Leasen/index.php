@@ -30,7 +30,7 @@ and open the template in the editor.
         <?php
             session_start();
             include "fnavbar.php";
-            if (isset($_SESSION['USER'])){
+            if (isset($_SESSION['USER']) AND isset($_SESSION['IDUSER'])){
                 navbarcall(1,1);
             }
             else{

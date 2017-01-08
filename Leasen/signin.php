@@ -32,6 +32,7 @@ and open the template in the editor.
                 {
                     echo 'Bonjour '.$test[0]['nom'].'';
                     $_SESSION['USER'] = $e_mail;
+                    $_SESSION['IDUSER'] = $test[0]['id_utilisateur'];
                     header('Location: http://localhost/leasen/index.php');
                     exit();
                 }else
