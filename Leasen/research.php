@@ -9,7 +9,8 @@ $recherche = $_POST['recherche'];
 $categorie = $_POST['categorie'];
 $date = $_POST['date'];
 $sql = "SELECT * FROM objet WHERE nom LIKE '%" . $recherche.'%\'  AND categorie = \''.$categorie.'\' AND date = \''.$date.'\'';
-$req = $bdd->query($sql); 
+$obj = new Objet();
+$req = $bdd->query($sql);
 
 ?>
 
