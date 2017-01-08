@@ -11,7 +11,7 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-
+            session_start();
             require('class/Autoloader.php');
             Autoloader::register();
         ?>
@@ -30,10 +30,13 @@ and open the template in the editor.
             {
                 if(password_verify($mot_de_passe, $hash))
                 {
-                    echo ' c\'est bon jamy';
+                    echo 'Bonjour '.$test[0]['nom'].'';
+                    $_SESSION['USER'] = $e_mail;
+                    header('Location: http://localhost/leasen/index.php');
+                    exit();
                 }else
                 {
-                    echo 'fail';
+                    echo 'Mauvaise combinaison, merci de réessayer.';
                 }
             }
            }
