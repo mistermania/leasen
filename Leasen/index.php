@@ -28,8 +28,14 @@ and open the template in the editor.
         <script type="text/javascript" src="js/materialize.min.js"></script>
         
         <?php
-             include "fnavbar.php";
-             navbarcall(0,0);
+            session_start();
+            include "fnavbar.php";
+            if (isset($_SESSION['USER'])){
+                navbarcall(1,1);
+            }
+            else{
+                navbarcall(0,1);
+            }
         ?>
         <?php
         ?>
