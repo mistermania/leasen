@@ -8,7 +8,7 @@
  */
 class Location extends Model
 {
-    const champ=array('id_utilisateur','id_objet','date_debut','date_fin','est_accepte');
+    const champ=array('id_utilisateur','id_objet','date_debut','date_fin','statut_location');
     /**
      * @param $info tableau contenant les paramètre :
      * date_debut : date du debut de la location demande
@@ -68,6 +68,7 @@ class Location extends Model
         {
             return 6;
         }
+        $info['statut_location']=1;
         return $this->insertBdd($info);
     }
 
@@ -78,6 +79,7 @@ class Location extends Model
      * date_fin : date de fin de la location demande
      * id_utilisateur : id de l'utilisateur demandant la location
      * id_objet : id de l'objet que l'utilisateur veux louer
+     * statut_location
      *
      * int $id : id de la location
      *
@@ -95,43 +97,29 @@ class Location extends Model
                 return 1;
             }
         }
-        if(isset($info['id_utilisateur']))
-        {
-            //verifie si l'id de l'utilisateur est present dans la base de donnée
-            $user=new Utilisateur();
-            if(empty($user->find('id_utilisateur = '.$info['id_utilisateur'])))
-            {
-                return 2;
-            }
-        }
+        //recuperation des informations précedente
         $precedent=$this->find('id_location='.$id);
-        if(!isset($info['est_accepte']))
-        {
-            if(!isset($precedent['est_accepte']))
-            {
-                $info['est_accepte']='FALSE';
-            }else{
-                $info['est_accepte']=$precedent['est_accepte'];
-
-            }
-        }
         foreach (Location::champ as $k)
         {
             if(!isset($info[$k])){
+                //si aucune information n'a été transmise, on récupère la précédente
                 $info[$k]=$precedent[$k];
             }
         }
         $user=new Utilisateur();
-        if(empty($user->find('id_utilisateur = '.$info['id_utilisateur'])))
-        {
-            return 2;
-        }
         //verifie si l'id de l'objet est present dans la base  de donnée
         $obj = new Objet();
         if(empty($obj->find('id_objet = '.$info['id_objet'])))
         {
             return 3;
         }
+        //verifie si l'id de l'utilisateur est present dans la base de donnée
+        $user=new Utilisateur();
+        if(empty($user->find('id_utilisateur = '.$info['id_utilisateur'])))
+        {
+            return 2;
+        }
+
         //mise des dates sous une formes standard afin de les comparer
         $now=new dateTime(date('Y-m-d H:i:s'));
         $debut=new DateTime($info['date_debut']);
@@ -153,6 +141,11 @@ class Location extends Model
          (date_debut>=\''.$info['date_debut'].'\' AND date_fin <=\''.$info['date_fin'].'\')) AND id_location !='.$id)))
         {
             return 6;
+        }
+
+        if($info['statut_location']>4 || $info['statut_location']<0 || !is_int($info['statut_location']))
+        {
+            return 8;
         }
         $this->updateBdd($info,$id);
     }

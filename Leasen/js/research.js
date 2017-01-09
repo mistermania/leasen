@@ -7,7 +7,7 @@ function request(id_categorie, id_date,id_duree, id_recherche, id_result) {
     
     if (recherche.length > 2) { // si la chaine est superieur a 2
         var xhr = new getXMLHttpRequest();
-        //console.log('haha');
+        console.log('haha');
         xhr.onreadystatechange = function () {
             //console.log(xhr.readyState);
             if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
@@ -17,7 +17,7 @@ function request(id_categorie, id_date,id_duree, id_recherche, id_result) {
                 //document.getElementById("loader").style.display = "inline";
             }
         }
-        xhr.open("POST", "research.php", true);
+        xhr.open("POST", "../fonctions/research.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         //console.log(recherche);
         xhr.send("categorie=" + categorie + "&recherche=" + recherche + "&date=" + date+ "&duree=" + duree);

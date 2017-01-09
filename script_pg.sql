@@ -52,7 +52,7 @@ CREATE TABLE public.location(
 	id_location    INT  NOT NULL ,
 	date_debut     TIMESTAMP   ,
 	date_fin       TIMESTAMP   ,
-	est_accepte    BOOL   ,
+	statut_location INT   ,
 	id_utilisateur INT   ,
 	id_objet       INT   ,
 	CONSTRAINT prk_constraint_location PRIMARY KEY (id_location)
@@ -136,7 +136,8 @@ ALTER TABLE public.signal ADD CONSTRAINT FK_signal_id_objet FOREIGN KEY (id_obje
 ALTER TABLE public.signal ADD CONSTRAINT FK_signal_id_appreciation FOREIGN KEY (id_appreciation) REFERENCES public.appreciation(id_appreciation);
 CREATE VIEW moderateur AS SELECT * FROM utilisateur WHERE (statut > 0);
 CREATE INDEX index_statut ON utilisateur (statut);
-CREATE VIEW recherche AS SELECT description_type,objet.id_objet,objet.nom_objet,objet.description_objet,objet.prix,objet.prix_caution,location.id_utilisateur,objet.id_type,location.date_debut,location.date_fin FROM Objet LEFT JOIN Location On location.id_objet=objet.id_objet LEFT JOIN type ON type.id_type=objet.id_type;
+	CREATE VIEW recherche AS  SELECT 
+description_type,objet.id_objet,objet.nom_objet,objet.description_objet,objet.prix,objet.prix_caution,objet.o_est_affiche  FROM Objet  RIGHT JOIN type ON type.id_type=objet.id_type;
 
 
 INSERT INTO utilisateur (id_utilisateur) VALUES (1);

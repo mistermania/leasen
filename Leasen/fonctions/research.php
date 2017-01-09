@@ -1,6 +1,6 @@
 <?php
-require('class/Autoloader.php');
-Autoloader::register();
+require('../class/Autoloader.php');
+Autoloader::register(1);
 $info=array();
 $info['chaine'] = $_POST['recherche'];
 $info['id_type'] = $_POST['categorie'];
@@ -8,7 +8,6 @@ $info['date_debut'] = $_POST['date'];
 $info['duree']=$_POST['duree'];
 $test= new Recherche();
 $res=$test->effectueRecherche($info);
-//print_r($res);
 ?>
 
 <table border="1" class="responsive-table striped">

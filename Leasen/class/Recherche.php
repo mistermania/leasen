@@ -20,8 +20,8 @@ class Recherche extends Model
      */
     public function effectueRecherche($info)
     {
-        //ajout du 1=1 pour simplifier l'ajout des AND, car aucune des conditions auouté ci dessous ne seras la première
-        $requete=' 1=1 ';
+        //la requete ne concerne que les objet qui sont affichée
+        $requete='NOT(o_est_affiche=FALSE)';
         if(isset($info['id_type']))
         {
             if($info['id_type'] != 0) {
@@ -41,9 +41,11 @@ class Recherche extends Model
                 // duréee transformé en un objet date interval ( durée en jour
                 $duree = new DateInterval('P' . $info['duree'] . 'D');
                 $info['date_fin'] = $date->add($duree)->format('Y-m-d H:i:s');
-                $requete .= ' AND (NOT ((date_debut<=\'' . $info['date_debut'] . '\' AND date_fin >=\'' . $info['date_debut'] . '\') OR
+                $requete .= ' AND NOT( id_objet IN(SELECT DISTINCT id_objet FROM location WHERE 
+    	    statut_location=2 
+    	    AND ((date_debut<=\'' . $info['date_debut'] . '\' AND date_fin >=\'' . $info['date_debut'] . '\') OR
          (date_debut<=\'' . $info['date_fin'] . '\' AND date_fin >=\'' . $info['date_fin'] . '\') OR
-         (date_debut>=\'' . $info['date_debut'] . '\' AND date_fin <=\'' . $info['date_fin'] . '\')) OR (date_debut IS NULL OR date_fin IS NULL))';
+         (date_debut>=\'' . $info['date_debut'] . '\' AND date_fin <=\'' . $info['date_fin'] . '\'))))';
             }
         }
         return $this->find($requete);

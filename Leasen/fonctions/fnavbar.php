@@ -2,14 +2,24 @@
 <?php
 $sep=array();
 function navbarcall($connexion,$pageactive){
+
+    /*tableau utilise pour prefixer les noms de fichier afin de pointer sur les bon dossiers*/
     if($pageactive==1)
     {
+        /*prefixe utilisé si nous somme dans l'index*/
+        //pour acceder au dossier page
     	$sep[0]='pages/';
+        //pour acceder au dossier fonction
     	$sep[1]='fonctions/';
+        //pour acceder a la racine
     	$sep[2]='';
     }else{
+        //prefixe utilisé dans le dossier page
+        //pour acceder au dossier page
     $sep[0]='';
+        //pour acceder au dossier fonction
     $sep[1]='../fonction/';
+        //pour acceder a la racine
     $sep[2]='../';
     }
     ?>
@@ -24,20 +34,20 @@ function navbarcall($connexion,$pageactive){
         $page=array('Accueil'=>array('../index.php',1),'Les objets'=>array('listeObjets.php',2),'Les demandes'=>array('lesdemandes.php',3),'Proposer un objet'=>array('posterobjet.php',4),'Faire une demande'=>array('fairedemande.php',5),'Guide'=>array('guide.php',6));
       foreach($page as $k =>$v)
       {
+
       if($pageactive==$v[1])
       {
+          //affichage pour la page active
        echo '<li class="active  "><a href="'.$sep[0].$v[0].'" class="cyan-text text-darken-4">'.$k.'</a></li> ';
       }else{
+          //affichage pour les autres pages
       echo ' <li><a href="'.$sep[0].$v[0].'" class="amber-text text-darken-2">'.$k.'</a></li>';
       }
       }
 
       if($pageactive==7){
                     
-             echo '
-            <li><a href="moncompte.php" class="cyan-text text-darken-4"> Mon compte</a></li>
-            ';
-           
+             echo '<li><a href="'.$sep[0].'moncompte.php" class="cyan-text text-darken-4"> Mon compte</a></li>';
         }
         else{
             ?>
