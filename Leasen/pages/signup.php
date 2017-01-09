@@ -1,7 +1,7 @@
 <?php
 
     require('../class/Autoloader.php');
-    Autoloader::register();
+    Autoloader::register(1);
 ?>
 
 

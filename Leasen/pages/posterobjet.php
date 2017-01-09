@@ -23,14 +23,14 @@
 include "fnavbar.php";
 navbarcall(1, 4);
 require('../class/Autoloader.php');
-Autoloader::register();
+Autoloader::register(1);
 $req = 'id_type > 1';
 $ty = new Type();
 $res = $ty->find($req);
 ?>
 <div class="row ">
 
-    <form method="post" class="col s12" action="./newobjet.php">
+    <form method="post" class="col s12" action="../newobjet.php">
         <label for="nom">Titre de l'annonce</label><br/>
         <input type="text" id="nom" name="nom" class="col s12" placeholder="Ex: Appareil à Raclette"/>
 

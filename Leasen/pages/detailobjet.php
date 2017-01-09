@@ -1,11 +1,11 @@
 <?php
 session_start();
 if (!isset($_SESSION['USER']) || !isset($_SESSION['IDUSER'])) {
-    header('Location:index.php');
+    header('Location:../index.php');
 }
 
 require('../class/Autoloader.php');
-Autoloader::register();
+Autoloader::register(1);
 
 //print_r($_POST);
 
@@ -41,7 +41,7 @@ print_r($infosLoc);
 
 </head>
 <body>
-<form method="post" action="./confirmerLocation.php">
+<form method="post" action="../fonctions/confirmerLocation.php">
      <div id="hide" style="display:none">
         <input type="number" id="id_objet" name="id_objet" value="<?php echo $infosLoc["id_objet"]; ?>"/>
         <input type="date" id="date_fin" name="date_fin" value="<?php echo $infosLoc['date_fin']; ?>"/>

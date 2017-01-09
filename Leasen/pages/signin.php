@@ -13,7 +13,7 @@ and open the template in the editor.
         <?php
             session_start();
             require('../class/Autoloader.php');
-            Autoloader::register();
+            Autoloader::register(1);
         ?>
         <?php
             $newuser = new Utilisateur();
@@ -32,7 +32,7 @@ and open the template in the editor.
                     echo 'Bonjour '.$test[0]['nom'].'';
                     $_SESSION['USER'] = $e_mail;
                     $_SESSION['IDUSER'] = $test[0]['id_utilisateur'];
-                    header('Location:index.php');
+                    header('Location:../index.php');
                     exit();
                 }else
                 {

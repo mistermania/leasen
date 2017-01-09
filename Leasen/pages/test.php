@@ -6,7 +6,7 @@
  * Time: 21:54
  */
 require('../class/Autoloader.php');
-Autoloader::register();
+Autoloader::register(1);
 ?>
 <div class="navbar-fixed">
         <nav>

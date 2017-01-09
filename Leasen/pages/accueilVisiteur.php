@@ -28,7 +28,7 @@ and open the template in the editor.
         
         
         <?php
-             include "accueil.php";
+             include "../fonctions/accueil.php";
              navbaraccueil(0);
         ?>
     </body>

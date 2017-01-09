@@ -8,10 +8,5 @@ session_start();
  */
  if(isset($_SESSION['USER'])){
     unset($_SESSION['USER']);
-    header('Location: http://localhost/leasen/index.php');
-    exit();
  }
- else{
-    header('Location: http://localhost/leasen/index.php');
-    exit();
- }
+header('Location:../index.php');
