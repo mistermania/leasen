@@ -7,29 +7,26 @@ session_start();
     <meta charset="utf-8" />
     <script type="text/javascript" src="js/research.js"></script>
     <script type="text/javascript" src="js/xhr.js"></script>
+
     <!--Import Google Icon Font-->
-   <!-- <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
-   <!--<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <!-- <link href="css/navbar.css" rel="stylesheet" type="text/css"/> -->
+    <link href="css/paccueil.css" rel="stylesheet" type="text/css"/>
     <!--Let browser know website is optimized for mobile-->
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"/>-->
-    <!--Import jQuery before materialize.js-->
-
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
 
-<!--<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
--->
+
 <?php
 include "fnavbar.php";
-if (isset($_SESSION['USER']) AND isset($_SESSION['IDUSER'])){
-  //  navbarcall(1,3);
-}
-else{
-  //  navbarcall(0,1);
-}
+navbarcall(1,2);
+
 require('class/Autoloader.php');
 Autoloader::register();
 $req = 'id_type > 0';
@@ -39,7 +36,7 @@ $res=$ty->find($req);
 <div class="row ">
 <form class="col s12">
     <div class="col s3">
-    <select id="categorie" name="categorie" >
+    <select id="categorie" class="browser-default center-align" name="categorie" >
         <option value="0" >Toutes les categories</option>
         <?php
         foreach ($res as $k =>$v)

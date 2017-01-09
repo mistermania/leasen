@@ -31,7 +31,7 @@ print_r($objetInfos);
 $test= $newobjet->insert($objetInfos);
 
 echo"Votre demmande nous a bien été remise, apres validation elle sera publiée.";
-header('Location:objet.php');
+header('Location:propositions.php');
 /**
  *
 *s

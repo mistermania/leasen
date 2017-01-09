@@ -33,9 +33,11 @@ $res=$test->effectueRecherche($info);
         <td>
             <form method="post" action="./detailobjet.php">
                 <input type="submit" value="Louer" >
-                <?php echo $v["id_objet"]; ?>
+
                 <div id="hide" style="display:none">
                     <input type="number" id="id_objet" name="id_objet" value="<?php echo $v["id_objet"]; ?>"/>
+                    <input type="number" id="duree" name="duree" value="<?php echo $info['duree']; ?>"/>
+                    <input type="date" id="date" name="date" value="<?php echo $info['date_debut']; ?>"/>
                 </div>
             </form>
         </td>

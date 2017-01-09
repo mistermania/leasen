@@ -29,23 +29,23 @@ function navbarcall($connexion,$pageactive){
         }
         if($pageactive==2){
             echo 
-             ' <li class=" active"><a href="objet.php" class="cyan-text text-darken-4">Les objets</a></li>';
+             ' <li class=" active"><a href="propositions.php" class="cyan-text text-darken-4">Les objets</a></li>';
             
         }
         else{
-            echo ' <li><a href="objet.php" class="amber-text text-darken-2">Les objets</a></li>';
+            echo ' <li><a href="propositions.php" class="amber-text text-darken-2">Les objets</a></li>';
         }
         if($pageactive==3){
-            echo '<li class="active"><a href="listedemandes.php" class="cyan-text text-darken-4>Les demandes</a></li>' ;
+            echo '<li class="active"><a href="lesdemmandes.php" class="cyan-text text-darken-4>Les demandes</a></li>' ;
         }
         else{
-            echo ' <li><a href="listedemandes.php" class="amber-text text-darken-2">Les demandes</a></li>';
+            echo ' <li><a href="lesdemmandes" class="amber-text text-darken-2">Les demandes</a></li>';
         }
         if($pageactive==4){
-            echo '<li class="active"><a href="propositionobjet.php class="cyan-text text-darken-4"">Proposer un objet</a></li>' ;
+            echo '<li class="active"><a href="posterobjet.php class="cyan-text text-darken-4"">Proposer un objet</a></li>' ;
         }
         else{
-            echo '<li><a href="propositionobjet.php" class="amber-text text-darken-2"> Proposer un objet</a></li>';
+            echo '<li><a href="posterobjet.php" class="amber-text text-darken-2"> Proposer un objet</a></li>';
         }
         if($pageactive==5){
             echo '<li class="active"><a href="fairedemande.php" class="cyan-text text-darken-4">Faire une demande</a></li>' ;
