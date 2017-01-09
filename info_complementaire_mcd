@@ -1,0 +1,28 @@
+Table utilisateur 
+statut : 
+-1 : utilisateur banni
+0 : utilisateur lambda
+1 : moderateur 
+2 : administrateur ( peut modifier moderateur)
+
+Table Location : 
+statut_location
+1 : demande effectue
+2 : demande accepte
+3 : location effectue
+4 : location refuse
+
+Table appreciation
+
+1 : appreciation effectue par le preteur
+2 : appreciation effectue par l'emprunteur
+
+Table signalement 
+
+type_signalement
+
+1 : objet
+2 : appreciation
+3 : question
+
+

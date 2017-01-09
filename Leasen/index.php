@@ -1,9 +1,14 @@
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<?php
+    require('class/Autoloader.php');
+    Autoloader::register();
+?>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -23,8 +28,17 @@ and open the template in the editor.
         <script type="text/javascript" src="js/materialize.min.js"></script>
         
         <?php
-             include "fnavbar.php";
-             navbarcall(1,1);
+            session_start();
+            include "fnavbar.php";
+            if (isset($_SESSION['USER']) AND isset($_SESSION['IDUSER'])){
+                navbarcall(1,1);
+            }
+            else{
+                navbarcall(0,1);
+            }
         ?>
+        <?php
+        ?>
+
     </body>
 </html>
