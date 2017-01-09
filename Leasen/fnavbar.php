@@ -4,9 +4,6 @@
 
 
 function navbarcall($connexion,$pageactive){
-     
-   
-    
     echo '
         <div class="navbar-fixed">
         <nav>
@@ -15,9 +12,6 @@ function navbarcall($connexion,$pageactive){
             
             <a href="#" class="brand-logo cyan-text text-darken-4"> Leasen</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">';
-    
-   
-  
     if($connexion ==1){
        
         if($pageactive==1){
@@ -70,26 +64,28 @@ function navbarcall($connexion,$pageactive){
            
         }
         else{
-             echo'<li><a class="amber-text text-darken-2 dropdown-button" href="#" data-activates="dropdown1">Mon compte<i class="material-icons right">arrow_drop_down</i></a></li>';
+            ?>
+             <li><a class="amber-text text-darken-2 dropdown-button" href="#" data-activates="dropdown1">Mon compte<i class="material-icons right">arrow_drop_down</i></a></li>
               
-           //menu déroulant dans l'onglet moncompte
-           echo'
-               
+           <!--menu déroulant dans l'onglet moncompte -->
+
             
               <ul id="dropdown1" class="dropdown-content">
                 <li><a href="#!">Modifier mes informations</a></li>
                 <li class="divider"></li>
                 <li><a href="#!">Déconnexion</a></li>
-              </ul>  ';
-          
+              </ul>
+          <?php
         } //fermeture else
     
         
     }// fermeture du test de la connexion
     else{
-        echo '<li><a href="index.php">Accueil</a></li>
-              <li><a href="inscription.php">Inscription</a></li>
-              <li><a href="connexion.php">Connexion</a></li> ';
+        echo '<li><a href="index.php" class="amber-text text-darken-2">Accueil</a></li>
+              <li><a href="inscription.php" class="amber-text text-darken-2">Inscription</a></li>
+              <li><a href="connexion.php" class="amber-text text-darken-2">Connexion</a></li> ';
+        echo 'bite';
+        echo 'bite';
     }//fermeture else
      
     //fin barre de navigation

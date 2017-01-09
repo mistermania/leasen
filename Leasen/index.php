@@ -8,6 +8,7 @@ and open the template in the editor.
 <?php
     require('class/Autoloader.php');
     Autoloader::register();
+    session_start();
 ?>
 <html>
     <head>
@@ -35,8 +36,9 @@ and open the template in the editor.
         <?php
              include "fnavbar.php";
              include"faffichageprincipale.php";
-             navbarcall(1,1);
-             affichageprincipale(1);
+        isset($_SESSION['USER'])?navbarcall(1,1):navbarcall(0   ,1);
+        affichageprincipale(1);
+
         ?>
     </body>
 </html>

@@ -22,8 +22,12 @@ $res=$test->effectueRecherche($info);
     </tr>
     </thead>
     <?php
+    $objetAffiche=array();
     foreach ($res as $k =>$v)
     {
+    if(!in_array($v['id_objet'],$objetAffiche))
+    {
+        $objetAffiche[]=$v['id_objet'];
     ?>
     <tr>
         <td> <?php echo  $v["nom_objet"]; ?> </td>
@@ -45,6 +49,7 @@ $res=$test->effectueRecherche($info);
     </tr>
 
     <?php
+    }
     }
     ?>
 </table>
