@@ -1,6 +1,6 @@
 <?php
 
-    require('class/Autoloader.php');
+    require('../class/Autoloader.php');
     Autoloader::register();
 ?>
 

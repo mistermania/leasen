@@ -4,7 +4,7 @@ if (!isset($_SESSION['USER']) || !isset($_SESSION['IDUSER'])) {
     header('Location:index.php');
 }
 
-require('class/Autoloader.php');
+require('../class/Autoloader.php');
 Autoloader::register();
 
 //print_r($_POST);

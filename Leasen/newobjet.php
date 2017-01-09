@@ -17,7 +17,6 @@ $objetInfos['description_objet']=  filter_input(INPUT_POST, 'description');
 $objetInfos['id_type'] = filter_input(INPUT_POST, 'categorie');
 
 if(isset($_POST['prix'])){
-    echo 'bob';
     $objetInfos['prix']=$_POST['prix'];
     $objetInfos['est_payant'] = true;
 }
@@ -32,9 +31,3 @@ $test= $newobjet->insert($objetInfos);
 
 echo"Votre demmande nous a bien été remise, apres validation elle sera publiée.";
 header('Location:propositions.php');
-/**
- *
-*s
-*if($test == 1) {
-*echo "";
-*/

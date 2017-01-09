@@ -27,7 +27,7 @@ session_start();
 include "fnavbar.php";
 navbarcall(1,2);
 
-require('class/Autoloader.php');
+require('../class/Autoloader.php');
 Autoloader::register();
 $req = 'id_type > 0';
 $ty = new Type();

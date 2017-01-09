@@ -22,7 +22,7 @@
 <?php
 include "fnavbar.php";
 navbarcall(1, 4);
-require('class/Autoloader.php');
+require('../class/Autoloader.php');
 Autoloader::register();
 $req = 'id_type > 1';
 $ty = new Type();

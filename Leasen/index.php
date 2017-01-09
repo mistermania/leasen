@@ -34,8 +34,8 @@ and open the template in the editor.
         
         
         <?php
-             include "fnavbar.php";
-             include"faffichageprincipale.php";
+             include "fonctions/fnavbar.php";
+             include"fonctions/faffichageprincipale.php";
         isset($_SESSION['USER'])?navbarcall(1,1):navbarcall(0   ,1);
         affichageprincipale(1);
 

@@ -12,7 +12,7 @@ and open the template in the editor.
     <body>
         <?php
             session_start();
-            require('class/Autoloader.php');
+            require('../class/Autoloader.php');
             Autoloader::register();
         ?>
         <?php
