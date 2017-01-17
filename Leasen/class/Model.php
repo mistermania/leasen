@@ -18,6 +18,7 @@ class Model
      * variable contenant la connection de l'objet
      */
     protected $pdo;
+		const nomTable = array('Utilisateur','Location','Demande_objet','Type','Objet');
 
     /**
      * Model constructor.
@@ -233,4 +234,33 @@ class Model
         $req->fetchAll(PDO::FETCH_ASSOC);
         return 0;
     }
+/**
+ * fontion servant a savoir si un id existe dans un table donnée
+ *
+ *
+ * @param int id id dont il faut verifier l'existence dans la table
+ * @param string table nom de la table
+ * @return return int 1 : id absent
+ *										0 : id present
+ *										2 : nom de table erronée
+ */
+		 static function idAbsent($id,$table)
+		{
+			echo "plop";
+			var_dump($table);
+			if(in_array($table,Model::nomTable))
+			{
+				$obj=new $table();
+				if(empty($obj->find('id_'.$table.'= '.$id)))
+				{
+							return 1;
+				}
+				else {
+					return 0;
+				}
+			}else {
+				return 2;
+			}
+
+		}
 }

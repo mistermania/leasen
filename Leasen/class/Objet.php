@@ -30,15 +30,11 @@ class Objet extends  Model
         {
             return 1;
         }
-        $user =new Utilisateur();
-        $cond =array('id_utilisateur'=>$info['id_utilisateur']);
-        if(empty($user->find($cond))){
+        if(Model::idAbsent($info['id_utilisateur'],'Utilisateur')){
             return 2;
         }
         if(isset($info['id_type'])) {
-            $type = new Type();
-            $cond2 = array('id_type' => $info['id_type']);
-            if (empty($type->find($cond2))) {
+            if (Model::idAbsent($info['id_type'],'Type')) {
                 return 3;
             }
         }
@@ -134,17 +130,12 @@ class Objet extends  Model
      * 3 : si le nouvelle id_type n'est pas present dans le table type
      */
     public function update($info, $id){
-
-        $objet=new Objet();
-        $cond=array('id_objet'=>$id);
-        if(empty($objet->find($cond)))
+        if(Model::idAbsent($id,'Objet'))
         {
             return 2;
         }
         if(isset($info['id_type'])) {
-            $type = new Type();
-            $cond2 = array('id_type' => $info['id_type']);
-            if (empty($type->find($cond2))) {
+            if (Model::idAbsent($info['id_type'],'Type')) {
                 return 3;
             }
         }

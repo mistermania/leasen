@@ -35,14 +35,13 @@ class Location extends Model
             return 1;
         }
         //verifie si l'id de l'utilisateur est present dans la base de donnée
-        $user=new Utilisateur();
-        if(empty($user->find('id_utilisateur = '.$info['id_utilisateur'])))
+        if(Model::idAbsent($info['id_utilisateur'],'Utilisateur'))
         {
             return 2;
         }
         //verifie si l'id de l'objet est present dans la base  de donnée
         $obj = new Objet();
-        if(empty($obj->find('id_objet = '.$info['id_objet'])))
+        if(Model::idAbsent($info['id_objet'],'Objet'))
         {
               return 3;
         }
@@ -106,16 +105,15 @@ class Location extends Model
                 $info[$k]=$precedent[$k];
             }
         }
-        $user=new Utilisateur();
         //verifie si l'id de l'objet est present dans la base  de donnée
         $obj = new Objet();
-        if(empty($obj->find('id_objet = '.$info['id_objet'])))
+        if(Model::idAbsent($info['id_objet'],'Objet'))
         {
             return 3;
         }
         //verifie si l'id de l'utilisateur est present dans la base de donnée
         $user=new Utilisateur();
-        if(empty($user->find('id_utilisateur = '.$info['id_utilisateur'])))
+        if(Model::idAbsent($info['id_utilisateur'],'Utilisateur'))
         {
             return 2;
         }
