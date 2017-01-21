@@ -31,7 +31,14 @@ $res=$test->effectueRecherche($info);
         <td> <?php echo $v["prix"]; ?> </td>
         <td>
             <form method="post" action="./detailobjet.php">
-                <input type="submit" value="Louer" >
+                <?php
+								if(!empty($info['duree']) AND !empty($info['duree']))
+								{
+								echo '<input type="submit" value="Louer" >';
+							}else {
+								echo '<input type="submit" value="fiche de l\'objet" >';
+							}
+								?>
 
                 <div id="hide" style="display:none">
                     <input type="number" id="id_objet" name="id_objet" value="<?php echo $v["id_objet"]; ?>"/>

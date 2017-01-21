@@ -21,7 +21,6 @@ and open the template in the editor.
             $mot_de_passe = filter_input(INPUT_POST, 'pass');;
 
             $test= $newuser->find(array('e_mail' => $e_mail);
-           echo '<pre>';
            if(!empty($test))
            {
             $hash=$test[0]['hash_mot_de_passe'];
@@ -43,7 +42,6 @@ and open the template in the editor.
            {
                echo 'Mauvaise combinaison, merci de réessayer.';
            }
-            echo '</pre>';
         ?>
     </body>
 </html>

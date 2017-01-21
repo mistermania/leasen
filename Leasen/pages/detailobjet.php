@@ -6,11 +6,18 @@ if (!isset($_SESSION['USER']) || !isset($_SESSION['IDUSER'])) {
 
 require('../class/Autoloader.php');
 Autoloader::register(1);
+?>
+<html>
+<head>
 
+</head>
+<body>
+<?php
 //print_r($_POST);
 
 $newobjet = new Objet();
 $objetInfos['id_objet'] = filter_input(INPUT_POST, 'id_objet');
+echo $objetInfos['id_objet'];
 $res = $newobjet->find($objetInfos);
 
 foreach ($res as $k => $v) {
@@ -20,25 +27,19 @@ foreach ($res as $k => $v) {
     echo "Prix:" . $v["prix"] . "<br/>";
 
 }
+	$infosLoc['id_objet'] = filter_input(INPUT_POST, 'id_objet');
+	$infosLoc['id_utilisateur'] = $_SESSION['IDUSER'];
+	$infosLoc['date_debut'] = filter_input(INPUT_POST, 'date');
+	$duree=filter_input(INPUT_POST, 'duree');
+	if (!empty($infosLoc['date_debut']) AND !empty($duree)) {
 
-
-$newLoc = new Location();
-$infosLoc['id_objet'] = filter_input(INPUT_POST, 'id_objet');
-$infosLoc['id_utilisateur'] = $_SESSION['IDUSER'];
-$infosLoc['date_debut'] = filter_input(INPUT_POST, 'date');
-//creation d'un ojet datetime pour permettre l'ajout de la duree
-$date = new DateTime($infosLoc['date_debut']);
-// duréee transformé en un objet date interval ( durée en jour)
-$duree = new DateInterval('P' . filter_input(INPUT_POST, 'duree') . 'D');
-$infosLoc['date_fin'] = $date->add($duree)->format('Y-m-d');
-print_r($infosLoc);
-
+	//creation d'un ojet datetime pour permettre l'ajout de la duree
+	$date = new DateTime($infosLoc['date_debut']);
+	// duréee transformé en un objet date interval ( durée en jour)
+	$duree = new DateInterval('P' . $duree . 'D');
+	$infosLoc['date_fin'] = $date->add($duree)->format('Y-m-d');
+	print_r($infosLoc);
 ?>
-<html>
-<head>
-
-</head>
-<body>
 <form method="post" action="../fonctions/confirmerLocation.php">
      <div id="hide" style="display:none">
         <input type="number" id="id_objet" name="id_objet" value="<?php echo $infosLoc["id_objet"]; ?>"/>
@@ -48,7 +49,7 @@ print_r($infosLoc);
     </div>
     <input type="submit" value="Envoyer demmande de location" >
 </form>
-
+<?php } ?>
 </body>
 <?php
 ?>
