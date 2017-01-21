@@ -6,7 +6,7 @@ if(!isset($_SESSION['USER']) || !isset($_SESSION['IDUSER']))
 }
 
 require('class/Autoloader.php');
-Autoloader::register();
+Autoloader::register(0);
 
 print_r($_POST);
 echo '<br>';
@@ -30,4 +30,4 @@ print_r($objetInfos);
 $test= $newobjet->insert($objetInfos);
 
 echo"Votre demmande nous a bien été remise, apres validation elle sera publiée.";
-header('Location:index.php');
+//header('Location:index.php');

@@ -18,7 +18,7 @@ function navbarcall($connexion,$pageactive){
         //pour acceder au dossier page
     $sep[0]='';
         //pour acceder au dossier fonction
-    $sep[1]='../fonction/';
+    $sep[1]='../fonctions/';
         //pour acceder a la racine
     $sep[2]='../';
     }
@@ -46,16 +46,16 @@ function navbarcall($connexion,$pageactive){
       }
 
       if($pageactive==7){
-                    
+
              echo '<li><a href="'.$sep[0].'moncompte.php" class="cyan-text text-darken-4"> Mon compte</a></li>';
         }
         else{
             ?>
              <li><a class="amber-text text-darken-2 dropdown-button" href="#" data-activates="dropdown1">Mon compte <i class="material-icons right">arrow_drop_down</i></a></li>
-              
+
            <!--menu déroulant dans l'onglet moncompte -->
 
-            
+
               <ul id="dropdown1" class="dropdown-content">
                 <li><a href="#!">Modifier mes informations</a></li>
                 <li class="divider"></li>
@@ -63,20 +63,19 @@ function navbarcall($connexion,$pageactive){
               </ul>
           <?php
         } //fermeture else
-    
-        
+
+
     }// fermeture du test de la connexion
     else{
         echo '<li><a href="'.$sep[2].'index.php" class="amber-text text-darken-2">Accueil</a></li>
               <li><a href="'.$sep[0].'inscription.php" class="amber-text text-darken-2">Inscription</a></li>
               <li><a href="'.$sep[0].'connexion.php" class="amber-text text-darken-2">Connexion</a></li> ';
     }//fermeture else
-   
+
     //fin barre de navigation
     echo '  </ul>
             </div>
         </nav>
-        </div> '; 
-} // fin de la fonction    
+        </div> ';
+} // fin de la fonction
 ?>
-

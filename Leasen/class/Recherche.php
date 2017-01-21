@@ -26,13 +26,13 @@ class Recherche extends Model
         {
             if($info['id_type'] != 0) {
                 //l'egalite avec le type
-                $requete .= ' AND id_type=' . $info['id_type'] . ' ';
+                $requete .= ' AND id_type=' .$this->pdo->quote($info['id_type']) . ' ';
             }
             }
         if(isset($info['chaine']))
         {
             //verifie que la chaine souhaité est contenu dans le nom de l'objet
-            $requete.= 'AND nom_objet ILIKE \'%'.$info['chaine'].'%\'';
+            $requete.= 'AND nom_objet ILIKE'.$this->pdo->quote('%'.$info['chaine'].'%');
         }
         //verifie la disponibilité de l'objet au dates renseignées
         if(isset($info['date_debut']) AND isset($info['duree'])) {
@@ -41,13 +41,14 @@ class Recherche extends Model
                 // duréee transformé en un objet date interval ( durée en jour
                 $duree = new DateInterval('P' . $info['duree'] . 'D');
                 $info['date_fin'] = $date->add($duree)->format('Y-m-d H:i:s');
-                $requete .= ' AND NOT( id_objet IN(SELECT DISTINCT id_objet FROM location WHERE 
-    	    statut_location=2 
+                $requete .= ' AND NOT( id_objet IN(SELECT DISTINCT id_objet FROM location WHERE
+    	    statut_location=2
     	    AND ((date_debut<=\'' . $info['date_debut'] . '\' AND date_fin >=\'' . $info['date_debut'] . '\') OR
          (date_debut<=\'' . $info['date_fin'] . '\' AND date_fin >=\'' . $info['date_fin'] . '\') OR
          (date_debut>=\'' . $info['date_debut'] . '\' AND date_fin <=\'' . $info['date_fin'] . '\'))))';
             }
         }
+				echo $requete;
         return $this->find($requete);
     }
 }

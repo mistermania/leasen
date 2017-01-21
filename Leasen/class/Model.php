@@ -120,7 +120,7 @@ class Model
             if (is_array($cond)) {
                 foreach ($cond as $k => $v) {
                     //if (!is_numeric($v)) {
-                    $v = '\'' . $v . '\'';
+                    $v =$this->pdo->quote($v) ;
                     //}
                     $a_cond[]="$k = $v";
                 }
@@ -165,7 +165,7 @@ class Model
                 }
             }
             foreach ($info as $k => $v) {
-                $sql .= $k . ' = \'' . $v . '\',';
+                $sql .=$k . ' = '.$this->pdo->quote($v).',';
             }
             //on enleve la dernière virgule
             $sql=substr($sql, 0, -1);
@@ -208,7 +208,7 @@ class Model
             //la clé est inserer comme colonne de la table
             $debut.=','.$k;
             //la valeur est ajoute dans les values
-            $fin.=', \''.$v.'\'';
+            $fin.=','.$this->pdo->quote($v);
         }
         //ajout de ponctuation
         $debut.=')';
