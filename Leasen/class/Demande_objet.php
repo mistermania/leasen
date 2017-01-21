@@ -5,7 +5,7 @@
  * Date: 07/12/16
  * Time: 14:37
  */
-class demande_objet extends Model
+class Demande_objet extends Model
 {
 	const champ=array('date_demande_objet','description_objet','titre_demande',id_utilisateur,id_type);
 
@@ -23,7 +23,7 @@ class demande_objet extends Model
 			return 1;
 		}
 
-		$i['date_demande_objet']=date('Y-m-d H:i:s');
+		$i['date_demande_objet']=date('Y-m-d');
 		if(Model::idAbsent($i['id_utilisateur'],'Utilisateur'))
 		{
 			return 2;

@@ -18,7 +18,7 @@ class Model
      * variable contenant la connection de l'objet
      */
     protected $pdo;
-		const nomTable = array('Utilisateur','Location','Demande_objet','Type','Objet');
+		const nomTable = array('Utilisateur','Location','Demande_objet','Type','Objet','Demande_objet');
 
     /**
      * Model constructor.
