@@ -94,8 +94,8 @@ class Utilisateur extends Model
 
 
     /**
-     * @param $info tableau contenant les information a modifier
-     * @param $id : id de l'utilisateur
+     * @param array $info tableau contenant les information a modifier
+     * @param int $id : id de l'utilisateur
      * @return int 1 : info contient des champs absent de la bdd
      * @return int 2 :le numero de telephone n'est pas un numero de telpehone valide
      * @return int 3 : adresse mail invalide

@@ -24,7 +24,7 @@ include "../fonctions/fnavbar.php";
 navbarcall(1, 4);
 require('../class/Autoloader.php');
 Autoloader::register(1);
-$req = 'id_type > 1';
+$req = 'id_type >0';
 $ty = new Type();
 $res = $ty->find($req);
 ?>
@@ -33,16 +33,15 @@ $res = $ty->find($req);
     <form method="post" class="col s12" action="../newobjet.php">
         <label for="nom">Titre de l'annonce</label><br/>
         <input type="text" id="nom" name="nom" class="col s12" placeholder="Ex: Appareil à Raclette"/>
-
+        <label for="categorie">Categorie</label>
             <select id="categorie" class="col s12 browser-default " name="categorie">
-                <option value="0">Catégories</option>
                 <?php
                 foreach ($res as $k => $v) {
-                    echo "\t\t\t\t<option value=\"" . $v["id_type"] . "\">" . $v["description_type"] . "</option>\n";
+                    echo "<option value=\"" . $v["id_type"] . "\">" . $v["description_type"] . "</option>";
                 }
                 ?>
             </select>
-
+        <br>
         <label for="description">Description du bien</label>
         <textarea name="description" class="col s12 " id="description" placeholder="Ex: Appareil pour 8 personnes"></textarea>
         <input type="button" class="col s12" value="Ajouter un prix" onclick="afficher_cacher('id_div_prix'); ">
@@ -54,6 +53,7 @@ $res = $ty->find($req);
         <input type="button" class=" col s12" value="Ajouter une caution"
                onclick="afficher_cacher('id_div_caution');">
         <div id="id_div_caution" style="display:none">
+            <label for="prix_caution">prix Cautions</label>
             <input type="number" class="col s12" id="prix_caution" name="prix_caution" min="0" value="0"/>
         </div>
 

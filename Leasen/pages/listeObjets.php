@@ -35,12 +35,13 @@ $res=$ty->find($req);
 <div class="row ">
 <form class="col s12">
     <div class="col s3">
+    <label for="categorie"></label>
     <select id="categorie" class="browser-default center-align" name="categorie"  oninput="request('categorie','date','duree','recherche','result');">
         <option value="0" >Toutes les categories</option>
         <?php
         foreach ($res as $k =>$v)
         {
-            echo "\t\t\t\t<option value=\"" . $v["id_type"] . "\">" . $v["description_type"] . "</option>\n";
+            echo "<option value=\"" . $v["id_type"] . "\">" . $v["description_type"] . "</option>";
         }
         ?>
 

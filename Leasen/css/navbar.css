@@ -1,16 +1,16 @@
-  // pour la position de la barre de navigation
+  /*pour la position de la barre de navigation*/
   
-  // Class for when element is above threshold
+  /* Class for when element is above threshold*/
   .pin-top {
     position: relative;
   }
 
-  // Class for when element is below threshold
+  /*Class for when element is below threshold*/
   .pin-bottom {
     position: relative;
   }
 
-  // Class for when element is pinned
+  /*Class for when element is pinned*/
   .pinned {
     position: fixed !important;
   }
