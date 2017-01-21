@@ -1,5 +1,7 @@
 <?php
 session_start();
+require('../class/Autoloader.php');
+Autoloader::register(1);
 ?>
 
 <html>
@@ -26,9 +28,6 @@ session_start();
 <?php
 include "../fonctions/fnavbar.php";
 navbarcall(1,2);
-
-require('../class/Autoloader.php');
-Autoloader::register(1);
 $req = 'id_type > 0';
 $ty = new Type();
 $res=$ty->find($req);
@@ -59,7 +58,5 @@ $res=$ty->find($req);
 </form>
 </div>
 <p id="result"> </p>
-
-
 </body>
 </html>

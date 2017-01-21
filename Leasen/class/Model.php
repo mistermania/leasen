@@ -18,6 +18,7 @@ class Model
      * variable contenant la connection de l'objet
      */
     protected $pdo;
+		const nomTable = array('Utilisateur','Location','Demande_objet','Type','Objet');
 
     /**
      * Model constructor.
@@ -119,7 +120,7 @@ class Model
             if (is_array($cond)) {
                 foreach ($cond as $k => $v) {
                     //if (!is_numeric($v)) {
-                    $v = '\'' . $v . '\'';
+                    $v =$this->pdo->quote($v) ;
                     //}
                     $a_cond[]="$k = $v";
                 }
@@ -164,7 +165,7 @@ class Model
                 }
             }
             foreach ($info as $k => $v) {
-                $sql .= $k . ' = \'' . $v . '\',';
+                $sql .=$k . ' = '.$this->pdo->quote($v).',';
             }
             //on enleve la dernière virgule
             $sql=substr($sql, 0, -1);
@@ -207,7 +208,7 @@ class Model
             //la clé est inserer comme colonne de la table
             $debut.=','.$k;
             //la valeur est ajoute dans les values
-            $fin.=', \''.$v.'\'';
+            $fin.=','.$this->pdo->quote($v);
         }
         //ajout de ponctuation
         $debut.=')';
@@ -233,4 +234,31 @@ class Model
         $req->fetchAll(PDO::FETCH_ASSOC);
         return 0;
     }
+/**
+ * fontion servant a savoir si un id existe dans un table donnée
+ *
+ *
+ * @param int id id dont il faut verifier l'existence dans la table
+ * @param string table nom de la table
+ * @return return int 1 : id absent
+ *										0 : id present
+ *										2 : nom de table erronée
+ */
+		 static function idAbsent($id,$table)
+		{
+			if(in_array($table,Model::nomTable))
+			{
+				$obj=new $table();
+				if(empty($obj->find('id_'.$table.'= '.$id)))
+				{
+							return 1;
+				}
+				else {
+					return 0;
+				}
+			}else {
+				return 2;
+			}
+
+		}
 }

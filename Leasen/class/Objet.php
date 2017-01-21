@@ -15,14 +15,10 @@ class Objet extends  Model
      * @return int
      * 1 : nom_objet, description_objet ou id_utilisateur non defini
      * 2 : aucun utilisateur ne correspond a id_utilisateur
-     * 2 : pas de type correspondant a id_type
-     * 4 : a_une_caution est vrai mais in n'y a pas de prix pour la caution
-     * 5 : est_payant est vrai mais il n'y a pas de prix
+     * 3 : pas de type correspondant a id_type
      * 6 : le prix n'est pas un nombre
      * 7 : clé incorrecte dans $info
      * 8 : prix_caution n'est pas un nombre
-     * 9 : prix negatif
-     * 10 : prix_caution negatif
      */
     public function insert($info)
     {
@@ -30,55 +26,13 @@ class Objet extends  Model
         {
             return 1;
         }
-        $user =new Utilisateur();
-        $cond =array('id_utilisateur'=>$info['id_utilisateur']);
-        if(empty($user->find($cond))){
+        if(Model::idAbsent($info['id_utilisateur'],'Utilisateur')){
             return 2;
         }
         if(isset($info['id_type'])) {
-            $type = new Type();
-            $cond2 = array('id_type' => $info['id_type']);
-            if (empty($type->find($cond2))) {
+            if (Model::idAbsent($info['id_type'],'Type')) {
                 return 3;
             }
-        }
-        if(isset($info['a_une_caution']))
-        {
-            if($info['a_une_caution'])
-            {
-                $info['a_une_caution']='TRUE';
-                if(!isset($info['prix_caution']))
-                {
-                    return 4;
-                }
-            }
-            else
-            {
-                $info['a_une_caution']='FALSE';
-            }
-        }
-        else
-        {
-            $info['a_une_caution']='FALSE';
-        }
-        if(isset($info['est_payant']))
-        {
-            if($info['est_payant'])
-            {
-                $info['est_payant']='TRUE';
-                if(!isset($info["prix"]))
-                {
-                    return 5;
-                }
-            }
-            else
-            {
-                $info['est_payant']='FALSE';
-            }
-        }
-        else
-        {
-            $info['est_payant']='FALSE';
         }
         if(isset($info['o_est_affiche']))
         {
@@ -101,11 +55,19 @@ class Objet extends  Model
             {
                 return 6;
             }
-            if($info['prix']<0)
+            if($info['prix']<=0)
             {
-                return 9;
+                $info['est_payant']='FALSE';
+								$info['prix']=0;
+            }else {
+            	$info['est_payant']='TRUE';
+							$info['prix']=0;
             }
+
         }
+				else {
+					$info['est_payant']='FALSE';
+				}
         if(isset($info['prix_caution']))
         {
             // si le prix de la caution n'est pas un nombre
@@ -113,10 +75,18 @@ class Objet extends  Model
             {
                 return 8;
             }
-            if($info['prix_caution']<0)
+            if($info['prix_caution']<=0)
             {
-                return 10;
+							$info['a_une_caution']='FALSE';
+							$info['prix_caution']=0;
             }
+						else {
+							$info['a_une_caution']='TRUE';
+						}
+
+        }else {
+        	$info['a_une_caution']='FALSE';
+					$info['prix_caution']=0;
         }
         $this->insertBdd($info);
         return 0;
@@ -134,17 +104,12 @@ class Objet extends  Model
      * 3 : si le nouvelle id_type n'est pas present dans le table type
      */
     public function update($info, $id){
-
-        $objet=new Objet();
-        $cond=array('id_objet'=>$id);
-        if(empty($objet->find($cond)))
+        if(Model::idAbsent($id,'Objet'))
         {
             return 2;
         }
         if(isset($info['id_type'])) {
-            $type = new Type();
-            $cond2 = array('id_type' => $info['id_type']);
-            if (empty($type->find($cond2))) {
+            if (Model::idAbsent($info['id_type'],'Type')) {
                 return 3;
             }
         }
