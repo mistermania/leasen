@@ -19,13 +19,13 @@ and open the template in the editor.
             $newuser = new Utilisateur();
             $e_mail =   filter_input(INPUT_POST, 'user_email');
             $mot_de_passe = filter_input(INPUT_POST, 'pass');;
-            
-            $test= $newuser->find("e_mail = '$e_mail'");
+
+            $test= $newuser->find(array('e_mail' => $e_mail);
            echo '<pre>';
            if(!empty($test))
            {
             $hash=$test[0]['hash_mot_de_passe'];
-            if(!empty($test)) 
+            if(!empty($test))
             {
                 if(password_verify($mot_de_passe, $hash))
                 {
