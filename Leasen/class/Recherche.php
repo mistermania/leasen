@@ -40,7 +40,7 @@ class Recherche extends Model
                 $date = new DateTime($info['date_debut']);
                 // duréee transformé en un objet date interval ( durée en jour
                 $duree = new DateInterval('P' . $info['duree'] . 'D');
-                $info['date_fin'] = $date->add($duree)->format('Y-m-d H:i:s');
+                $info['date_fin'] = $date->add($duree)->format('Y-m-d');
                 $requete .= ' AND NOT( id_objet IN(SELECT DISTINCT id_objet FROM location WHERE
     	    statut_location=2
     	    AND ((date_debut<=\'' . $info['date_debut'] . '\' AND date_fin >=\'' . $info['date_debut'] . '\') OR

@@ -2,10 +2,10 @@
 require('../class/Autoloader.php');
 Autoloader::register(1);
 $info=array();
-$info['chaine'] = $_POST['recherche'];
-$info['id_type'] = $_POST['categorie'];
-$info['date_debut'] = $_POST['date'];
-$info['duree']=$_POST['duree'];
+$info['chaine'] = filter_input(INPUT_POST,'recherche');
+$info['id_type'] =filter_input(INPUT_POST,'categorie');
+$info['date_debut'] = filter_input(INPUT_POST,'date');
+$info['duree']=filter_input(INPUT_POST,'duree');
 $test= new Recherche();
 $res=$test->effectueRecherche($info);
 ?>
@@ -21,13 +21,9 @@ $res=$test->effectueRecherche($info);
     </tr>
     </thead>
     <?php
-    $objetAffiche=array();
     foreach ($res as $k =>$v)
     {
-    if(!in_array($v['id_objet'],$objetAffiche))
-    {
-        $objetAffiche[]=$v['id_objet'];
-    ?>
+			?>
     <tr>
         <td> <?php echo  $v["nom_objet"]; ?> </td>
         <td> <?php echo $v["description_objet"]; ?> </td>
@@ -49,12 +45,5 @@ $res=$test->effectueRecherche($info);
 
     <?php
     }
-    }
     ?>
 </table>
-
-
-
-
-
-

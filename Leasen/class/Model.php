@@ -246,8 +246,6 @@ class Model
  */
 		 static function idAbsent($id,$table)
 		{
-			echo "plop";
-			var_dump($table);
 			if(in_array($table,Model::nomTable))
 			{
 				$obj=new $table();

@@ -26,13 +26,11 @@ $newLoc = new Location();
 $infosLoc['id_objet'] = filter_input(INPUT_POST, 'id_objet');
 $infosLoc['id_utilisateur'] = $_SESSION['IDUSER'];
 $infosLoc['date_debut'] = filter_input(INPUT_POST, 'date');
-$infosLoc['duree'] = filter_input(INPUT_POST, 'duree');
-print_r($infosLoc);
 //creation d'un ojet datetime pour permettre l'ajout de la duree
 $date = new DateTime($infosLoc['date_debut']);
 // duréee transformé en un objet date interval ( durée en jour)
-$duree = new DateInterval('P' . $infosLoc['duree'] . 'D');
-$infosLoc['date_fin'] = $date->add($duree)->format('Y-m-d H:i:s');
+$duree = new DateInterval('P' . filter_input(INPUT_POST, 'duree') . 'D');
+$infosLoc['date_fin'] = $date->add($duree)->format('Y-m-d');
 print_r($infosLoc);
 
 ?>
@@ -54,4 +52,3 @@ print_r($infosLoc);
 </body>
 <?php
 ?>
-

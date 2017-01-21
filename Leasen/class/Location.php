@@ -46,7 +46,7 @@ class Location extends Model
               return 3;
         }
         //mise des dates sous une formes standard afin de les comparer
-        $now=new dateTime(date('Y-m-d H:i:s'));
+        $now=new dateTime(date('Y-m-d'));
         $debut=new DateTime($info['date_debut']);
         $fin=new DateTime($info['date_fin']);
         //verifie que le debut soit dans le futur
@@ -119,7 +119,7 @@ class Location extends Model
         }
 
         //mise des dates sous une formes standard afin de les comparer
-        $now=new dateTime(date('Y-m-d H:i:s'));
+        $now=new dateTime(date('Y-m-d'));
         $debut=new DateTime($info['date_debut']);
         $fin=new DateTime($info['date_fin']);
         //verifie que le debut soit dans le futur
