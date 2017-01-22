@@ -30,7 +30,7 @@ $res=$test->effectueRecherche($info);
         <td> <?php echo $v["prix_caution"]; ?> </td>
         <td> <?php echo $v["prix"]; ?> </td>
         <td>
-            <form method="post" action="./detailobjet.php">
+            <form method="post" action="../pages/detailobjet.php">
                 <?php
 								if(!empty($info['duree']) AND !empty($info['duree']))
 								{
@@ -41,8 +41,11 @@ $res=$test->effectueRecherche($info);
 								?>
 
                 <div id="hide" style="display:none">
+                    <label for="id_objet"></label>
                     <input type="number" id="id_objet" name="id_objet" value="<?php echo $v["id_objet"]; ?>"/>
+                    <label for="duree"></label>
                     <input type="number" id="duree" name="duree" value="<?php echo $info['duree']; ?>"/>
+                    <label for="date"></label>
                     <input type="date" id="date" name="date" value="<?php echo $info['date_debut']; ?>"/>
                 </div>
             </form>

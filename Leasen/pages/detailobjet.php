@@ -42,8 +42,11 @@ foreach ($res as $k => $v) {
 ?>
 <form method="post" action="../fonctions/confirmerLocation.php">
      <div id="hide" style="display:none">
+         <label for="id_objet"></label>
         <input type="number" id="id_objet" name="id_objet" value="<?php echo $infosLoc["id_objet"]; ?>"/>
+         <label for="date_fin"></label>
         <input type="date" id="date_fin" name="date_fin" value="<?php echo $infosLoc['date_fin']; ?>"/>
+         <label for="date_debut"></label>
         <input type="date" id="date_debut" name="date_debut" value="<?php echo $infosLoc['date_debut']; ?>"/>
 
     </div>

@@ -11,7 +11,7 @@ class Objet extends  Model
     const champ=array('nom_objet','description_objet','a_une_caution','prix_caution','est_payant','prix','o_est_affiche','id_utilisateur','id_type');
 
     /**
-     * @param $info tableau contenant les valeurs à inserer
+     * @param array $info : tableau contenant les valeurs à inserer
      * @return int
      * 1 : nom_objet, description_objet ou id_utilisateur non defini
      * 2 : aucun utilisateur ne correspond a id_utilisateur
@@ -113,7 +113,7 @@ class Objet extends  Model
                 return 3;
             }
         }
-        $this->updateBdd($info,$id);
+        return $this->updateBdd($info,$id);
     }
 
 }

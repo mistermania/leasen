@@ -18,9 +18,8 @@ and open the template in the editor.
         <?php
             $newuser = new Utilisateur();
             $e_mail =   filter_input(INPUT_POST, 'user_email');
-            $mot_de_passe = filter_input(INPUT_POST, 'pass');;
-
-            $test= $newuser->find(array('e_mail' => $e_mail);
+            $mot_de_passe = filter_input(INPUT_POST, 'pass');
+            $test= $newuser->find(array('e_mail' => $e_mail));
            if(!empty($test))
            {
             $hash=$test[0]['hash_mot_de_passe'];

@@ -11,15 +11,15 @@ function navbaraccueil($connexion){
             <nav>
                 <div class="nav-wrapper white">
                 <a href="#" class="brand-logo cyan-text text-darken-4"> Leasen</a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <ul id="nav-mobile" class="right hide-on-med-and-down"></ul>
                 </div>
             </nav>
 
             <div class="imagefond">
             <br>
 
-            <div >
-                <span class="black-text "><h4 class="center-align">Inscrivez-vous ou connectez-vous pour voir les produits</h5> </span>
+            <div class="black-text">
+                <h5  class="center-align">Inscrivez-vous ou connectez-vous pour voir les produits </h5>
             </div>
 
              <br>
@@ -91,14 +91,14 @@ function navbaraccueil($connexion){
 
           </form>
           </div>
-    <--!fin des formulaires, dernier div pour le background-->
+    <!-- fin des formulaires, dernier div pour le background-->
 
     <!--//footer-->
             <footer class="page-footer cyan darken-4">
                 <div class="footer-copyright ">
                     <div class="container white-text">
                     © 2014 Copyright Text
-                    <a class="right white-text" href="#!">More Links</a>
+                    <a class="right white-text" href="#">More Links</a>
                     </div>
                 </div>
           </footer>

@@ -6,7 +6,7 @@
  * Date: 05/12/16
  * Time: 20:47
  */
-class Model
+abstract class  Model
 {
     /**
      * @var
@@ -14,12 +14,13 @@ class Model
      */
     public static $connection;
     /**
-     * @var
+     * @var PDO
      * variable contenant la connection de l'objet
      */
     protected $pdo;
-		const nomTable = array('Utilisateur','Location','Demande_objet','Type','Objet');
+    const nomTable = array('Utilisateur','Location','Demande_objet','Type','Objet','Demande_objet');
 
+    const champ=array('id');
     /**
      * Model constructor.
      */
@@ -88,7 +89,7 @@ class Model
     }
 
     /**
-     * @param $mot_de_passe mot_de_passe a verifier
+     * @param string $mot_de_passe mot_de_passe a verifier
      * @return bool true si il contient au moins 8 caractère, majuscule, une minuscule et un chiffre
      */
     public function estValideMotDePasse($mot_de_passe)
@@ -114,6 +115,7 @@ class Model
 
     public function find($cond){
         $sql='SELECT * FROM '.get_class($this);
+
         $a_cond=array();
         if(isset($cond)) {
             $sql.=' WHERE ';
@@ -147,7 +149,7 @@ class Model
     }
 
     /**
-     * @param $info tableau contenant les informations a modifier
+     * @param array $info tableau contenant les informations a modifier
      * @param int $id id a modifier
      * @return int 0 si la modification a été effectue
      * @return int 1 si trop de clé dans le tableau
@@ -201,7 +203,7 @@ class Model
                 return 7;
             }
         }
-        $debut='INSERT INTO '.get_class($this).' (id_'.get_class($this);
+        $debut='INSERT INTO '.get_class($this).'(id_'.get_class($this);
         $fin = ' VALUES ((SELECT max(id_'.get_class($this).')+1 FROM '.get_class($this).')';
         foreach ($info as $k=>$v)
         {
@@ -238,9 +240,9 @@ class Model
  * fontion servant a savoir si un id existe dans un table donnée
  *
  *
- * @param int id id dont il faut verifier l'existence dans la table
- * @param string table nom de la table
- * @return return int 1 : id absent
+ * @param int $id : id  dont il faut verifier l'existence dans la table
+ * @param string $table nom de la table
+ * @return int 1 : id absent
  *										0 : id present
  *										2 : nom de table erronée
  */
@@ -248,6 +250,9 @@ class Model
 		{
 			if(in_array($table,Model::nomTable))
 			{
+                /**
+                 * @var Model $obj
+                 */
 				$obj=new $table();
 				if(empty($obj->find('id_'.$table.'= '.$id)))
 				{
