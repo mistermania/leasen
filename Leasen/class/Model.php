@@ -18,8 +18,14 @@ abstract class  Model
      * variable contenant la connection de l'objet
      */
     protected $pdo;
+    /**
+     *@var array contenant le noms de toutes les tables
+     */
     const nomTable = array('Utilisateur','Location','Demande_objet','Type','Objet','Demande_objet');
 
+    /**
+     * @var array contenant le nom des champs dans chaque table
+     */
     const champ=array('id');
     /**
      * Model constructor.

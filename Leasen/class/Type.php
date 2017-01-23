@@ -8,6 +8,9 @@
  */
 class Type extends Model
 {
+    /**
+     * @var array contenant le nom des colonnes de la table
+     */
     const champ=array('description_type');
 
 		/**

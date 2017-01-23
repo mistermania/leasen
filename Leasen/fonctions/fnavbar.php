@@ -1,7 +1,11 @@
 
 <?php
 $sep=array();
-function navbarcall($connexion,$pageactive){
+/**
+ * @param int $connexion état de la connection 1 : connecté ; 0 : deconnecté
+ * @param int $pageactive numero de la page active (voir l'array ligne 38
+ */
+function navbarcall($connexion, $pageactive){
 
     /*tableau utilise pour prefixer les noms de fichier afin de pointer sur les bon dossiers*/
     if($pageactive==1)

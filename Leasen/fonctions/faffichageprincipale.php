@@ -1,6 +1,9 @@
 <?php
 
 
+/**
+ * @param int $connexion état de la connection 1 :connecté 0:deconnecté
+ */
 function affichageprincipale($connexion){
         if($connexion ==1){
 

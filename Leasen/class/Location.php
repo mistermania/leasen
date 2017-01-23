@@ -8,6 +8,9 @@
  */
 class Location extends Model
 {
+    /**
+     * @var array contenant le nom des colonnes de la table
+     */²
     const champ=array('id_utilisateur','id_objet','date_debut','date_fin','statut_location');
     /**
      * @param array $info tableau contenant les paramètre :
