@@ -50,3 +50,4 @@ Temporary Items
 .apdisk
 /Leasen/nbproject/*
 /Leasen/class/Config.php
+/Leasen/docker-compose.yml

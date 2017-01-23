@@ -8,9 +8,12 @@
  */
 class Location extends Model
 {
+    /**
+     * @var array contenant le nom des colonnes de la table
+     */²
     const champ=array('id_utilisateur','id_objet','date_debut','date_fin','statut_location');
     /**
-     * @param $info tableau contenant les paramètre :
+     * @param array $info tableau contenant les paramètre :
      * date_debut : date du debut de la location demande
      * date_fin : date de fin de la location demande
      * id_utilisateur : id de l'utilisateur demandant la location
@@ -40,13 +43,12 @@ class Location extends Model
             return 2;
         }
         //verifie si l'id de l'objet est present dans la base  de donnée
-        $obj = new Objet();
         if(Model::idAbsent($info['id_objet'],'Objet'))
         {
               return 3;
         }
         //mise des dates sous une formes standard afin de les comparer
-        $now=new dateTime(date('Y-m-d H:i:s'));
+        $now=new dateTime(date('Y-m-d'));
         $debut=new DateTime($info['date_debut']);
         $fin=new DateTime($info['date_fin']);
         //verifie que le debut soit dans le futur
@@ -80,7 +82,7 @@ class Location extends Model
      * id_objet : id de l'objet que l'utilisateur veux louer
      * statut_location
      *
-     * int $id : id de la location
+     * @param int $id : id de la location
      *
      * @return int
      * 1 : le tableau est vide
@@ -106,20 +108,18 @@ class Location extends Model
             }
         }
         //verifie si l'id de l'objet est present dans la base  de donnée
-        $obj = new Objet();
         if(Model::idAbsent($info['id_objet'],'Objet'))
         {
             return 3;
         }
         //verifie si l'id de l'utilisateur est present dans la base de donnée
-        $user=new Utilisateur();
         if(Model::idAbsent($info['id_utilisateur'],'Utilisateur'))
         {
             return 2;
         }
 
         //mise des dates sous une formes standard afin de les comparer
-        $now=new dateTime(date('Y-m-d H:i:s'));
+        $now=new dateTime(date('Y-m-d'));
         $debut=new DateTime($info['date_debut']);
         $fin=new DateTime($info['date_fin']);
         //verifie que le debut soit dans le futur
@@ -140,11 +140,10 @@ class Location extends Model
         {
             return 6;
         }
-
         if($info['statut_location']>4 || $info['statut_location']<0 || !is_int($info['statut_location']))
         {
             return 8;
         }
-        $this->updateBdd($info,$id);
+        return $this->updateBdd($info,$id);
     }
 }
