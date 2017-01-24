@@ -115,11 +115,12 @@ abstract class  Model
      * @param mixed $cond
      * si $cond est un tableau, ajout a la requete de condtion where clé=valeur pour chaque couple clé valeur
      * sinon ajout de la conditon après le where
-     * recherche dans la table/vue portant le nom de l'objet
+     * recherche dans la table/vue portant le nom de l'objets
+     * @param String $order strin contenant les critère concernant l'ordre des resultats ex : id ASC,date DESC
      * @return mixed: tableau contenant les information des utilisateurs repondant aux condition
      */
 
-    public function find($cond){
+    public function find($cond,$order=""){
         $sql='SELECT * FROM '.get_class($this);
 
         $a_cond=array();
@@ -139,6 +140,10 @@ abstract class  Model
             }
         }
         // echo $sql.'<br>';
+        if($order!="")
+        {
+            $sql.="ORDER BY ".$order;
+        }
         $req=$this->pdo->prepare($sql);
         try{
             $req->execute();
