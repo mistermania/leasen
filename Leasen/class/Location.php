@@ -28,6 +28,7 @@ class Location extends Model
      * 5 : la date de fin est avant la date de debut
      * 6 : l'objet est deja en location sur cette periode
      * 7 : presence de champ dans le tableau absent de la bdd
+     * 8 : aucune location ne correspond a l'id
      * si tout c'est bien passé, retourne un tableau vide
      */
     public function insert($info)
@@ -93,6 +94,10 @@ class Location extends Model
 
     public function update($info,$id)
     {
+        if(Model::idAbsent($id,'Location'))
+        {
+            return 8;
+        }
         foreach ($info as $k => $v)
         {
             if(!in_array($k,Location::champ))
@@ -155,7 +160,7 @@ class Location extends Model
      * @return int 0 si l'objet est disponible
      * @return int 1 si la date de fin est superieur a celle du début
      * @return int 2 si l'objet n'est pas disponible
-     * @return int 4 si $idObjet ou $idLoc ne sont pas des objet
+     * @return int 4 si $idObjet ou $idLoc ne sont pas des entier
      */
     public function estDisponible($dateDebut, $dateFin, $idObjet, $idLoc=0)
     {

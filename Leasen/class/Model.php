@@ -21,7 +21,7 @@ abstract class  Model
     /**
      *@var array contenant le noms de toutes les tables
      */
-    const nomTable = array('Utilisateur','Location','Demande_objet','Type','Objet','Demande_objet');
+    const nomTable = array('Utilisateur','Location','Demande_objet','Type','Objet','Demande_objet','Question');
 
     /**
      * @var array contenant le nom des champs dans chaque table
@@ -254,8 +254,8 @@ abstract class  Model
  * @param int $id : id  dont il faut verifier l'existence dans la table
  * @param string $table nom de la table
  * @return int 1 : id absent
- *										0 : id present
- *										2 : nom de table erronée
+ *			0 : id present
+ *			2 : nom de table erronée
  */
 		 static function idAbsent($id,$table)
 		{

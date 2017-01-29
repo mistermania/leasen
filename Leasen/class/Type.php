@@ -18,7 +18,7 @@ class Type extends Model
 		*@return int 1 : description_type non defini
 		*@return int 7 : clé incorrecte dans le tableau
 		*/
-		public function FunctionName($i)
+		public function insert($i)
 		{
 			if(!isset($i['description_type']))
 			{
