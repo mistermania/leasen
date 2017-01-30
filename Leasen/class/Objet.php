@@ -65,7 +65,6 @@ class Objet extends  Model
 								$info['prix']=0;
             }else {
             	$info['est_payant']='TRUE';
-							$info['prix']=0;
             }
 
         }
