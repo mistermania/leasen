@@ -10,7 +10,7 @@ class Location extends Model
 {
     /**
      * @var array contenant le nom des colonnes de la table
-     */²
+     */
     const champ=array('id_utilisateur','id_objet','date_debut','date_fin','statut_location');
     /**
      * @param array $info tableau contenant les paramètre :
@@ -28,6 +28,7 @@ class Location extends Model
      * 5 : la date de fin est avant la date de debut
      * 6 : l'objet est deja en location sur cette periode
      * 7 : presence de champ dans le tableau absent de la bdd
+     * 8 : aucune location ne correspond a l'id
      * si tout c'est bien passé, retourne un tableau vide
      */
     public function insert($info)
@@ -50,22 +51,19 @@ class Location extends Model
         //mise des dates sous une formes standard afin de les comparer
         $now=new dateTime(date('Y-m-d'));
         $debut=new DateTime($info['date_debut']);
-        $fin=new DateTime($info['date_fin']);
         //verifie que le debut soit dans le futur
         if($now > $debut)
            {
                return 4;
            }
         //verifie que la fin soit après le debut de la location
-        if($debut>$fin)
+        $a=$this->estDisponible($info['date_debut'],$info['date_fin'],$info['id_objet']);
+        if($a==1)
         {
             return 5;
         }
         //verifie qu'aucune location ne chevauche sur les dates demandée
-        if(!empty($this->find('id_objet = '.$info['id_objet'].' AND (
-        (date_debut<=\''.$info['date_debut'].'\' AND date_fin >=\''.$info['date_debut'].'\') OR
-         (date_debut<=\''.$info['date_fin'].'\' AND date_fin >=\''.$info['date_fin'].'\') OR
-         (date_debut>=\''.$info['date_debut'].'\' AND date_fin <=\''.$info['date_fin'].'\'))')))
+        if($a==2)
         {
             return 6;
         }
@@ -85,12 +83,21 @@ class Location extends Model
      * @param int $id : id de la location
      *
      * @return int
-     * 1 : le tableau est vide
-     * 7 : presence de champ en trop dans le tableau
+     *  * 1 : il manque des informations dans le tableau
+     * 2 : aucun utilisateur ne correspond a l'id_utilisateur
+     * 3 : aucune objet ne correspond a l'id de l'objet
+     * 4 : la date de debut est dans le passé (si elle à été modifié)
+     * 5 : la date de fin est avant la date de debut
+     * 6 : l'objet est deja en location sur cette periode
+     * 7 : presence de champ dans le tableau absent de la bdd
      */
 
     public function update($info,$id)
     {
+        if(Model::idAbsent($id,'Location'))
+        {
+            return 8;
+        }
         foreach ($info as $k => $v)
         {
             if(!in_array($k,Location::champ))
@@ -119,24 +126,22 @@ class Location extends Model
         }
 
         //mise des dates sous une formes standard afin de les comparer
-        $now=new dateTime(date('Y-m-d'));
-        $debut=new DateTime($info['date_debut']);
-        $fin=new DateTime($info['date_fin']);
-        //verifie que le debut soit dans le futur
-        if($now > $debut)
-        {
-            return 4;
+        if($info['date_debut']!=$precedent['date_debut']) {
+            $now = new dateTime(date('Y-m-d'));
+            $debut = new DateTime($info['date_debut']);
+            //verifie que le debut soit dans le futur
+            if ($now > $debut) {
+                return 4;
+            }
         }
         //verifie que la fin soit après le debut de la location
-        if($debut>$fin)
+        $a=$this->estDisponible($info['date_debut'],$info['date_fin'],$info['id_objet'],$id);
+        if($a==1)
         {
             return 5;
         }
         //verifie qu'aucune location ne chevauche sur les dates demandée
-        if(!empty($this->find('id_objet = '.$info['id_objet'].' AND (
-        (date_debut<=\''.$info['date_debut'].'\' AND date_fin >=\''.$info['date_debut'].'\') OR
-         (date_debut<=\''.$info['date_fin'].'\' AND date_fin >=\''.$info['date_fin'].'\') OR
-         (date_debut>=\''.$info['date_debut'].'\' AND date_fin <=\''.$info['date_fin'].'\')) AND id_location !='.$id)))
+        if($a==2)
         {
             return 6;
         }
@@ -146,4 +151,41 @@ class Location extends Model
         }
         return $this->updateBdd($info,$id);
     }
+
+    /**
+     * @param $dateDebut string du debut de la location
+     * @param $dateFin string contenant la date de fin de la location
+     * @param $idObjet int id de l'objet
+     * @param $idLoc int id de location à ne pas prendre en compte
+     * @return int 0 si l'objet est disponible
+     * @return int 1 si la date de fin est superieur a celle du début
+     * @return int 2 si l'objet n'est pas disponible
+     * @return int 4 si $idObjet ou $idLoc ne sont pas des entier
+     */
+    public function estDisponible($dateDebut, $dateFin, $idObjet, $idLoc=0)
+    {
+        $debut=new DateTime($dateDebut);
+        $fin=new DateTime($dateFin);
+        if($fin<$debut)
+        {
+            return 1;
+        }
+        if(is_nan($idObjet)|| is_nan($idLoc))
+        {
+            return 4;
+        }
+        $dateDebut=$this->pdo->quote($dateDebut);
+        $dateFin=$this->pdo->quote($dateFin);
+        if(empty($this->find('id_objet = '.$idObjet.' AND (
+        (date_debut<='.$dateDebut.' AND date_fin >='.$dateDebut.') OR
+         (date_debut<='.$dateFin.' AND date_fin >='.$dateFin.') OR
+         (date_debut>='.$dateDebut.' AND date_fin <='.$dateFin.')) AND id_location !='.$idLoc.' AND statut_location != 2')))
+        {
+            return 0;
+        }else{
+            return 2;
+        }
+    }
 }
+
+

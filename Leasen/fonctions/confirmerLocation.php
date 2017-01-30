@@ -7,7 +7,6 @@ if (!isset($_SESSION['USER']) || !isset($_SESSION['IDUSER'])) {
 
 require('../class/Autoloader.php');
 Autoloader::register(1);
-
 $newLoc = new Location();
 $infosLoc['id_objet'] = filter_input(INPUT_POST, 'id_objet');
 $infosLoc['id_utilisateur'] = $_SESSION['IDUSER'];
