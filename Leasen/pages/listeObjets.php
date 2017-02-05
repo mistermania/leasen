@@ -1,5 +1,7 @@
 <?php
 session_start();
+require('../class/Autoloader.php');
+Autoloader::register(1);
 ?>
 
 <html>
@@ -26,9 +28,6 @@ session_start();
 <?php
 include "../fonctions/fnavbar.php";
 navbarcall(1,2);
-
-require('../class/Autoloader.php');
-Autoloader::register(1);
 $req = 'id_type > 0';
 $ty = new Type();
 $res=$ty->find($req);
@@ -36,22 +35,24 @@ $res=$ty->find($req);
 <div class="row ">
 <form class="col s12">
     <div class="col s3">
-    <select id="categorie" class="browser-default center-align" name="categorie" >
+    <label for="categorie"></label>
+    <select id="categorie" class="browser-default center-align" name="categorie"  oninput="request('categorie','date','duree','recherche','result');">
         <option value="0" >Toutes les categories</option>
         <?php
         foreach ($res as $k =>$v)
         {
-            echo "\t\t\t\t<option value=\"" . $v["id_type"] . "\">" . $v["description_type"] . "</option>\n";
+            echo "<option value=\"" . $v["id_type"] . "\">" . $v["description_type"] . "</option>";
         }
         ?>
 
     </select>
     </div>
     <div class="col s3">
-        <input type="date" id="date" name="date" placeholder="Date: Année-Mois-Jour" />
+        <input type="date" id="date" name="date" placeholder="Date:
+			 Année-Mois-Jour" oninput="request('categorie','date','duree','recherche','result');"/>
     </div>
     <div class="col s3">
-    <input type="number" id="duree" min="0" placeholder="Durée de la location  "/>
+    <input type="number" id="duree" min="0" placeholder="Durée de la location" oninput="request('categorie','date','duree','recherche','result');"/>
     </div>
         <div class="col s3">
     <input type="text" id="recherche" placeholder="Taper votre recherche" onkeyup="request('categorie','date','duree','recherche','result');"/>
@@ -59,7 +60,5 @@ $res=$ty->find($req);
 </form>
 </div>
 <p id="result"> </p>
-
-
 </body>
 </html>

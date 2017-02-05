@@ -16,7 +16,7 @@ function request(id_categorie, id_date,id_duree, id_recherche, id_result) {
             } else if (xhr.readyState < 4) {
                 //document.getElementById("loader").style.display = "inline";
             }
-        }
+        };
         xhr.open("POST", "../fonctions/research.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         //console.log(recherche);

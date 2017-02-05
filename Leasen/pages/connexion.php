@@ -37,8 +37,8 @@ and open the template in the editor.
                     Connectez vous
                     <p>Entrez vos informations de login pour vous connecter : </p>
                         <form method="post" action="signin.php">
-                            <label>Email: </label><input type="email" name="user_email" required/><br/>
-                            <label>Mot de passe:</label><input type="password" name="pass" required/><br/>
+                            <label for="user_email">Email: </label><input type="email" name="user_email" required id="user_email"/><br/>
+                            <label for="pass">Mot de passe:</label><input type="password" name="pass" required id="pass"/><br/>
                             <input type="submit" value="Connexion"/>
                         </form>
                 <?php

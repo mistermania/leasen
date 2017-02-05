@@ -56,6 +56,8 @@
     if($test==6){
       echo "numero de telephone déjà utilisé";
     }
-    if($test==0){
-        echo "<br/> inscription réussie";
+    if($test==0) {
+        if (Config::$debug != 1) {
+            header('Location:../index.php');
+        }
     }
