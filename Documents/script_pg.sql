@@ -163,3 +163,5 @@ INSERT INTO utilisateur (id_utilisateur) VALUES (1);
 INSERT INTO location (id_location) VALUES (1);
 INSERT INTO objet (id_objet) VALUES (1);
 INSERT INTO type (id_type) VALUES (1);
+INSERT INTO Question (id_question) VALUES (1);
+INSERT INTO demande_objet (id_demande_objet) values (1);

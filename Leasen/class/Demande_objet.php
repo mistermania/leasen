@@ -7,7 +7,10 @@
  */
 class Demande_objet extends Model
 {
-	const champ=array('date_demande_objet','description_objet','titre_demande','id_utilisateur','id_type');
+    /**
+     * @var array contenant le nom des colonnes de la table
+     */
+    const champ=array('date_demande_objet','description_objet','titre_demande','id_utilisateur','id_type');
 
 /**
 *@param array $i : tableau contenant les champs a inserer

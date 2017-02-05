@@ -18,8 +18,14 @@ abstract class  Model
      * variable contenant la connection de l'objet
      */
     protected $pdo;
-    const nomTable = array('Utilisateur','Location','Demande_objet','Type','Objet','Demande_objet');
+    /**
+     *@var array contenant le noms de toutes les tables
+     */
+    const nomTable = array('Utilisateur','Location','Demande_objet','Type','Objet','Demande_objet','Question');
 
+    /**
+     * @var array contenant le nom des champs dans chaque table
+     */
     const champ=array('id');
     /**
      * Model constructor.
@@ -109,11 +115,12 @@ abstract class  Model
      * @param mixed $cond
      * si $cond est un tableau, ajout a la requete de condtion where clé=valeur pour chaque couple clé valeur
      * sinon ajout de la conditon après le where
-     * recherche dans la table/vue portant le nom de l'objet
+     * recherche dans la table/vue portant le nom de l'objets
+     * @param String $order strin contenant les critère concernant l'ordre des resultats ex : id ASC,date DESC
      * @return mixed: tableau contenant les information des utilisateurs repondant aux condition
      */
 
-    public function find($cond){
+    public function find($cond,$order=""){
         $sql='SELECT * FROM '.get_class($this);
 
         $a_cond=array();
@@ -133,6 +140,10 @@ abstract class  Model
             }
         }
         // echo $sql.'<br>';
+        if($order!="")
+        {
+            $sql.="ORDER BY ".$order;
+        }
         $req=$this->pdo->prepare($sql);
         try{
             $req->execute();
@@ -243,8 +254,8 @@ abstract class  Model
  * @param int $id : id  dont il faut verifier l'existence dans la table
  * @param string $table nom de la table
  * @return int 1 : id absent
- *										0 : id present
- *										2 : nom de table erronée
+ *			0 : id present
+ *			2 : nom de table erronée
  */
 		 static function idAbsent($id,$table)
 		{

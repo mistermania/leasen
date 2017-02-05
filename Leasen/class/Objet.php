@@ -8,6 +8,10 @@
  */
 class Objet extends  Model
 {
+
+    /**
+     * @var array contenant le nom des colonnes de la table
+     */
     const champ=array('nom_objet','description_objet','a_une_caution','prix_caution','est_payant','prix','o_est_affiche','id_utilisateur','id_type');
 
     /**
@@ -61,7 +65,6 @@ class Objet extends  Model
 								$info['prix']=0;
             }else {
             	$info['est_payant']='TRUE';
-							$info['prix']=0;
             }
 
         }

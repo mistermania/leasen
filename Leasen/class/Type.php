@@ -8,6 +8,9 @@
  */
 class Type extends Model
 {
+    /**
+     * @var array contenant le nom des colonnes de la table
+     */
     const champ=array('description_type');
 
 		/**
@@ -15,7 +18,7 @@ class Type extends Model
 		*@return int 1 : description_type non defini
 		*@return int 7 : clé incorrecte dans le tableau
 		*/
-		public function FunctionName($i)
+		public function insert($i)
 		{
 			if(!isset($i['description_type']))
 			{
