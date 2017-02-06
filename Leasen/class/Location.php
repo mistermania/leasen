@@ -63,7 +63,7 @@ class Location extends Model
             return 6;
         }
         $info['statut_location'] = 1;
-        return $this->insertBdd($info);
+        return parent::insert($info);
     }
 
     /**
@@ -134,7 +134,7 @@ class Location extends Model
         if ($info['statut_location'] > 4 || $info['statut_location'] < 0 || !is_int($info['statut_location'])) {
             return 8;
         }
-        return $this->updateBdd($info, $id);
+        return parent::update($info, $id);
     }
 
     /**

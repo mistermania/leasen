@@ -19,9 +19,9 @@ abstract class  Model
      */
     protected $pdo;
     /**
-     * @var array contenant le noms de toutes les tables
+     * @var array String contenant le noms de toutes les tables
      */
-    const nomTable = array('Utilisateur', 'Location', 'Demande_objet', 'Type', 'Objet', 'Demande_objet', 'Question');
+    const nomTable = array('Utilisateur', 'Location', 'Demande_objet', 'Type', 'Objet', 'Demande_objet', 'Question','Appreciation');
 
     /**
      * @var array contenant le nom des champs dans chaque table
@@ -158,7 +158,7 @@ abstract class  Model
      * @return int 0 si la modification a été effectue
      * @return int 1 si trop de clé dans le tableau
      */
-    protected function updateBdd($info, $id)
+    protected function update($info, $id)
     {
         $sql = 'UPDATE ' . get_class($this) . ' SET ';
         foreach ($info as $k => $v) {
@@ -194,7 +194,7 @@ abstract class  Model
      * @return int 0 si l'insertion a été effectue
      * @return int 7 si trop de clé dans le tableau
      */
-    protected function insertBdd($info)
+    protected function insert($info)
     {
         foreach ($info as $k => $v) {
             //si une clé ne fait pas partie de la liste
@@ -259,5 +259,31 @@ abstract class  Model
         } else {
             return 2;
         }
+    }
+
+
+    /**
+     * @param $id int id de l'objet à supprimer
+     * @return int -1 si l'objet n'est pas dans la bdd
+     * @return int 0 si tout c'est bien passé
+     */
+    public function delete($id)
+    {
+        if(self::idAbsent($id,get_class($this)))
+        {
+            return -1;
+        }
+        $sql='DELETE FROM '.get_class($this).' WHERE id_'.get_class($this).' = '.$this->pdo->quote($id);
+        $req=$this->pdo->prepare($sql);
+        try {
+            $req->execute();
+        } catch (PDOException $e) {
+            if (Config::$debug >= 1) {
+                echo $e->getMessage();
+            } else {
+                echo 'bdd indispo';
+            }
+        }
+        return 0;
     }
 }

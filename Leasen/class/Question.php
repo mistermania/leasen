@@ -39,7 +39,7 @@ class Question extends Model
         if (Model::idAbsent($info['id_utilisateur'], 'Utilisateur')) {
             return 4;
         }
-        return $this->insertBdd($info);
+        return parent::insert($info);
     }
 
     /**
@@ -70,6 +70,6 @@ class Question extends Model
                 return 5;
             }
         }
-        return $this->updateBdd($info, $id);
+        return parent::update($info, $id);
     }
 }
