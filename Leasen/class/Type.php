@@ -23,6 +23,6 @@ class Type extends Model
         if (!isset($i['description_type'])) {
             return 1;
         }
-        return $this->insertBdd($i);
+        return parent::insert($i);
     }
 }

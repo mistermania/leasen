@@ -75,7 +75,7 @@ class Objet extends Model
             $info['a_une_caution'] = 'FALSE';
             $info['prix_caution'] = 0;
         }
-        $this->insertBdd($info);
+        parent::insert($info);
         return 0;
     }
 
@@ -100,6 +100,6 @@ class Objet extends Model
                 return 3;
             }
         }
-        return $this->updateBdd($info, $id);
+        return parent::update($info, $id);
     }
 }

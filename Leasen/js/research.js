@@ -12,7 +12,7 @@ function request() {
             //console.log(xhr.readyState);
             if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
                 //document.getElementById("loader").style.display = "none";
-                read_data(xhr.responseText, id_result);
+                read_data(xhr.responseText);
             } else if (xhr.readyState < 4) {
                 //document.getElementById("loader").style.display = "inline";
             }
@@ -25,8 +25,8 @@ function request() {
         //console.log('hoho');
     }
 }
-function read_data(sData, id_result) {
-    var oSelect = document.getElementById(id_result);
+function read_data(sData) {
+    var oSelect = document.getElementById('result');
     oSelect.innerHTML = sData;
 
 }

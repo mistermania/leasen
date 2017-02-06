@@ -80,7 +80,7 @@ class Utilisateur extends Model
         $info['date_creation_compte'] = date('Y-m-d');
         //un nouvel utilisateur est TOUJOURS un utilisateur lambda
         $info['statut'] = 0;
-        return $this->insertBdd($info);
+        return parent::insert($info);
     }
 
     /**
@@ -142,6 +142,6 @@ class Utilisateur extends Model
                 $info['est_ban'] = 'FALSE';
             }
         }
-        return $this->updateBdd($info, $id);
+        return parent::update($info, $id);
     }
 }

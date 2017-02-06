@@ -32,6 +32,6 @@ class Demande_objet extends Model
         if (Model::idAbsent($i['id_type'], 'Type')) {
             return 3;
         }
-        return $this->insertBdd($i);
+        return parent::insert($i);
     }
 }
