@@ -20,8 +20,8 @@ function request() {
         xhr.open("POST", "../fonctions/research.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         //console.log(recherche);
-        xhr.send("categorie=" + categorie + "&recherche=" + recherche + "&date=" + date+ "&duree=" + duree);
-    }else{
+        xhr.send("categorie=" + categorie + "&recherche=" + recherche + "&date=" + date + "&duree=" + duree);
+    } else {
         //console.log('hoho');
     }
 }

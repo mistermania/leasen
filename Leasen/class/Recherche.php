@@ -17,25 +17,24 @@ class Recherche extends Model
      * chaine
      * date_debut
      * duree (en jour)
+     * @return mixed
      */
     public function effectueRecherche($info)
     {
         //la requete ne concerne que les objet qui sont affichée
-        $requete='NOT(o_est_affiche=FALSE)';
-        if(isset($info['id_type']))
-        {
-            if($info['id_type'] != 0) {
+        $requete = 'NOT(o_est_affiche=FALSE)';
+        if (isset($info['id_type'])) {
+            if ($info['id_type'] != 0) {
                 //l'egalite avec le type
-                $requete .= ' AND id_type=' .$this->pdo->quote($info['id_type']) . ' ';
+                $requete .= ' AND id_type=' . $this->pdo->quote($info['id_type']) . ' ';
             }
-            }
-        if(isset($info['chaine']))
-        {
+        }
+        if (isset($info['chaine'])) {
             //verifie que la chaine souhaité est contenu dans le nom de l'objet
-            $requete.= 'AND nom_objet ILIKE'.$this->pdo->quote('%'.$info['chaine'].'%');
+            $requete .= 'AND nom_objet ILIKE' . $this->pdo->quote('%' . $info['chaine'] . '%');
         }
         //verifie la disponibilité de l'objet au dates renseignées
-        if(isset($info['date_debut']) AND isset($info['duree'])) {
+        if (isset($info['date_debut']) AND isset($info['duree'])) {
             if (!empty($info['date_debut']) AND !empty($info['duree'])) {//creation d'un ojet datetime pour permettre l'ajout de la duree
                 $date = new DateTime($info['date_debut']);
                 // duréee transformé en un objet date interval ( durée en jour
