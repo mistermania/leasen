@@ -10,7 +10,8 @@ statut_location
 1 : demande effectue
 2 : demande accepte
 3 : location effectue
-4 : location refuse
+4 : commentaire effectue/refus de faire un commentaire
+5 : location refuse
 
 Table appreciation
 
