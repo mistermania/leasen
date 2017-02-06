@@ -48,7 +48,6 @@ class Recherche extends Model
          (date_debut>=\'' . $info['date_debut'] . '\' AND date_fin <=\'' . $info['date_fin'] . '\'))))';
             }
         }
-				echo $requete;
         return $this->find($requete);
     }
 }

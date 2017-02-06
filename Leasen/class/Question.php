@@ -8,6 +8,9 @@
  */
 class Question extends Model
 {
+    /**
+     *
+     */
     const champ = array('id_question','contenu_question','date_question','id_objet','id_question_mere','id_utilisateur');
 
 

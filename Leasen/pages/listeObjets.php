@@ -36,7 +36,7 @@ $res=$ty->find($req);
 <form class="col s12">
     <div class="col s3">
     <label for="categorie"></label>
-    <select id="categorie" class="browser-default center-align" name="categorie"  oninput="request('categorie','date','duree','recherche','result');">
+    <select id="categorie" class="browser-default center-align" name="categorie"  oninput="request();">
         <option value="0" >Toutes les categories</option>
         <?php
         foreach ($res as $k =>$v)
@@ -49,13 +49,13 @@ $res=$ty->find($req);
     </div>
     <div class="col s3">
         <input type="date" id="date" name="date" placeholder="Date:
-			 Année-Mois-Jour" oninput="request('categorie','date','duree','recherche','result');"/>
+			 Année-Mois-Jour" oninput="request();"/>
     </div>
     <div class="col s3">
-    <input type="number" id="duree" min="0" placeholder="Durée de la location" oninput="request('categorie','date','duree','recherche','result');"/>
+    <input type="number" id="duree" min="0" placeholder="Durée de la location" oninput="request();"/>
     </div>
         <div class="col s3">
-    <input type="text" id="recherche" placeholder="Taper votre recherche" onkeyup="request('categorie','date','duree','recherche','result');"/>
+    <input type="text" id="recherche" placeholder="Taper votre recherche" onkeyup="request();"/>
         </div>
 </form>
 </div>
