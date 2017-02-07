@@ -11,7 +11,8 @@ class Utilisateur extends Model
     /**
      * @var array contenant le nom des colonnes de la table
      */
-    const champ=array('nom','prenom','e_mail','partager_telephone','telephone','hash_mot_de_passe','est_ban','raison_ban','token_regeneration','date_token','date_creation_compte','statut');
+    const champ = array('nom', 'prenom', 'e_mail', 'partager_telephone', 'telephone', 'hash_mot_de_passe', 'est_ban', 'raison_ban', 'token_regeneration', 'date_token', 'date_creation_compte', 'statut');
+
     /**
      * @param $info array contenant : nom, prenom, email, partager_telephone, telephone,statut, mot de passe
      * @return int 1 : nom, prenom et email absent
@@ -24,76 +25,63 @@ class Utilisateur extends Model
      */
     public function insert($info)
     {
-
-        if(!isset($info['nom']) or !isset($info['prenom']) or !isset($info['e_mail']) or !isset($info['mot_de_passe']))
-        {
+        if (!isset($info['nom']) or !isset($info['prenom']) or !isset($info['e_mail']) or !isset($info['mot_de_passe'])) {
             //si les informations minimales ne sont pas remplies.
             return 1;
         }
-        if(isset($info['telephone'])) {
-            if(!$this->estValideTelephone($info['telephone'])){
-               echo 'numero de merde';
+        if (isset($info['telephone'])) {
+            if (!$this->estValideTelephone($info['telephone'])) {
+                echo 'numero de merde';
                 return 2;
             }
-            $cond_tel=array('telephone'=> $info['telephone']);
-            if(!empty($this->find($cond_tel))){
+            $cond_tel = array('telephone' => $info['telephone']);
+            if (!empty($this->find($cond_tel))) {
                 return 6;
             }
-
-        }else{
+        } else {
             //on prepare le champ pour le rentrer dans la BDD
-            $info['telephone']='NULL';
+            $info['telephone'] = 'NULL';
         }
         //si l'adresse email ne correspond pas au paterne attendu
-        if(!$this->estValideMail($info['e_mail']))
-        {
+        if (!$this->estValideMail($info['e_mail'])) {
             return 3;
         }
-
         //si le mot de passe contient moins de 8 caractère, dont une minuscule, une majuscule et un chiffre
-        if ($debug=0)
-        {
-                if (!$this->estValideMotDePasse($info["mot_de_passe"])) {
-            return 4;
+        if ($debug = 0) {
+            if (!$this->estValideMotDePasse($info["mot_de_passe"])) {
+                return 4;
+            }
         }
-        }
-        $cond=array('e_mail'=> $info['e_mail']);
-        $mail=$this->find($cond);
+        $cond = array('e_mail' => $info['e_mail']);
+        $mail = $this->find($cond);
         //si l'email est present dans la base de donnée
-        if(!empty($mail)) {
+        if (!empty($mail)) {
             return 5;
         }
-        if(isset($info['partager_telephone']))
-        {
-            if($info['partager_telephone'])
-            {
-                $info['partager_telephone']='TRUE';
+        if (isset($info['partager_telephone'])) {
+            if ($info['partager_telephone']) {
+                $info['partager_telephone'] = 'TRUE';
+            } else {
+                $info['partager_telephone'] = 'FALSE';
             }
-            else
-            {
-                $info['partager_telephone']='FALSE';
-            }
-        }else{
-            $info['partager_telephone']='FALSE';
+        } else {
+            $info['partager_telephone'] = 'FALSE';
         }
         //on modifie les elements du tableau pour les rentrer proprement dans la BDD
         //on hash le mot de passe
-        $info['hash_mot_de_passe']=password_hash($info['mot_de_passe'],PASSWORD_DEFAULT);
+        $info['hash_mot_de_passe'] = password_hash($info['mot_de_passe'], PASSWORD_DEFAULT);
         //on supprime le mot de passe du tableau
         unset($info['mot_de_passe']);
         //on passe en lowercase le nom
-        $info['nom']=strtolower($info['nom']);
+        $info['nom'] = strtolower($info['nom']);
         //et le prenom
-        $info['prenom']=strtolower($info['prenom']);
+        $info['prenom'] = strtolower($info['prenom']);
         //on ajoute la date de creation
-        $info['date_creation_compte']=date('Y-m-d');
+        $info['date_creation_compte'] = date('Y-m-d');
         //un nouvel utilisateur est TOUJOURS un utilisateur lambda
-        $info['statut']=0;
-
-        return $this->insertBdd($info);
+        $info['statut'] = 0;
+        return parent::insert($info);
     }
-
-
 
     /**
      * @param array $info tableau contenant les information a modifier
@@ -108,72 +96,52 @@ class Utilisateur extends Model
      */
     public function update($info, $id)
     {
-        foreach ($info as $k => $v)
-        {
-            if(!in_array($k,Utilisateur::champ))
-            {
+        foreach ($info as $k => $v) {
+            if (!in_array($k, Utilisateur::champ)) {
                 return 1;
             }
         }
-        if(isset($info['mot_de_passe']))
-        {
-            if(!$this->estValideMotDePasse($info['mot_de_passe']))
-            {
+        if (isset($info['mot_de_passe'])) {
+            if (!$this->estValideMotDePasse($info['mot_de_passe'])) {
                 return 4;
             }
-            $info['hash_mot_de_passe']=password_hash($info['mot_de_passe'],PASSWORD_DEFAULT);
+            $info['hash_mot_de_passe'] = password_hash($info['mot_de_passe'], PASSWORD_DEFAULT);
             unset($info['mot_de_passe']);
         }
-        if(isset($info['e_mail']))
-        {
-            if(!$this->estValideMail($info['e_mail']))
-            {
+        if (isset($info['e_mail'])) {
+            if (!$this->estValideMail($info['e_mail'])) {
                 return 3;
             }
-            $cond=' e_mail= \''.$info['e_mail'].'\' AND id_utilisateur !='.$id.';';
-            $mail=$this->find($cond);
+            $cond = ' e_mail= \'' . $info['e_mail'] . '\' AND id_utilisateur !=' . $id . ';';
+            $mail = $this->find($cond);
             //si l'email est present dans la base de donnée
-            if(!empty($mail)) {
+            if (!empty($mail)) {
                 return 5;
             }
-
         }
-        if(isset($info['telephone'])) {
-            if(!$this->estValideTelephone($info['telephone'])){
+        if (isset($info['telephone'])) {
+            if (!$this->estValideTelephone($info['telephone'])) {
                 return 2;
             }
-            $cond_tel=' telephone=\''.$info['telephone'].'\' AND id_utilisateur !='.$id.';';
-            if(!empty($this->find($cond_tel))){
+            $cond_tel = ' telephone=\'' . $info['telephone'] . '\' AND id_utilisateur !=' . $id . ';';
+            if (!empty($this->find($cond_tel))) {
                 return 6;
             }
-
         }
-        if(isset($info['partager_telephone']))
-        {
-            if($info['partager_telephone'])
-            {
-                $info['partager_telephone']='TRUE';
-            }
-            else
-            {
-                $info['partager_telephone']='FALSE';
+        if (isset($info['partager_telephone'])) {
+            if ($info['partager_telephone']) {
+                $info['partager_telephone'] = 'TRUE';
+            } else {
+                $info['partager_telephone'] = 'FALSE';
             }
         }
-        if(isset($info['est_ban']))
-        {
-            if($info['est_ban'])
-            {
-                $info['est_ban']='TRUE';
-            }
-            else
-            {
-                $info['est_ban']='FALSE';
+        if (isset($info['est_ban'])) {
+            if ($info['est_ban']) {
+                $info['est_ban'] = 'TRUE';
+            } else {
+                $info['est_ban'] = 'FALSE';
             }
         }
-
-        return $this->updateBdd($info,$id);
+        return parent::update($info, $id);
     }
-
-
-
 }

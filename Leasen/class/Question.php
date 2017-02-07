@@ -8,8 +8,10 @@
  */
 class Question extends Model
 {
-    const champ = array('id_question','contenu_question','date_question','id_objet','id_question_mere','id_utilisateur');
-
+    /**
+     *
+     */
+    const champ = array('id_question', 'contenu_question', 'date_question', 'id_objet', 'id_question_mere', 'id_utilisateur');
 
     /**
      * @param array $info tableau contenant les informations à inserer
@@ -20,27 +22,24 @@ class Question extends Model
      */
     public function insert($info)
     {
-        if(!isset($info['contenue_question']) || !isset($info['id_objet']) ||!isset($info['id_utilisateur']) )
-        {
+        if (!isset($info['contenue_question']) || !isset($info['id_objet']) || !isset($info['id_utilisateur'])) {
             return 1;
         }
-        $info['date_question']=date('Y-M-D H:m:s');
-        if(Model::idAbsent($info['id_objet'],'Objet'))
-        {
+        $info['date_question'] = date('Y-M-D H:m:s');
+        if (Model::idAbsent($info['id_objet'], 'Objet')) {
             return 2;
         }
-        if(isset($info['id_question_mere'])) {
+        if (isset($info['id_question_mere'])) {
             if (Model::idAbsent($info['id_question_mere'], 'Question')) {
                 return 3;
             }
-        }else{
-            $info['id_question_mere']='NULL';
+        } else {
+            $info['id_question_mere'] = 'NULL';
         }
-        if(Model::idAbsent($info['id_utilisateur'],'Utilisateur'))
-        {
+        if (Model::idAbsent($info['id_utilisateur'], 'Utilisateur')) {
             return 4;
         }
-        return $this->insertBdd($info);
+        return parent::insert($info);
     }
 
     /**
@@ -53,25 +52,24 @@ class Question extends Model
      */
     public function update($info, $id)
     {
-        if(Model::idAbsent($id,'Question'))
-        {
+        if (Model::idAbsent($id, 'Question')) {
             return 2;
         }
-        if(isset($info['id_question_mere'])) {
+        if (isset($info['id_question_mere'])) {
             if (Model::idAbsent($info['id_question_mere'], 'Question')) {
                 return 3;
             }
         }
-        if(isset($info['id_objet'])) {
+        if (isset($info['id_objet'])) {
             if (Model::idAbsent($info['id_objet'], 'Objet')) {
                 return 4;
             }
         }
-        if(isset($info['id_utilisateur'])) {
+        if (isset($info['id_utilisateur'])) {
             if (Model::idAbsent($info['id_utilisateur'], 'Utilisateur')) {
                 return 5;
             }
         }
-        return $this->updateBdd($info, $id);
+        return parent::update($info, $id);
     }
 }
