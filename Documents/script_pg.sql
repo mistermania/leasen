@@ -160,21 +160,8 @@ description_type,objet.id_objet,objet.nom_objet,objet.description_objet,objet.pr
 
 CREATE VIEW appreciations_v as SELECT location.id_utilisateur as id_loueur,objet.id_utilisateur as id_preteur,appreciation.notes,appreciation.commentaire,appreciation.a_est_affiche,appreciation.statut_appreciation,objet.id_objet FROM appreciation LEFT JOIN location on appreciation.id_location=location.id_location  LEFT JOIN objet on location.id_objet=objet.id_objet;
 
-INSERT INTO utilisateur (id_utilisateur, nom ,prenom) VALUES (1,'Poutou','Philipe');
+INSERT INTO utilisateur (id_utilisateur) VALUES (1);
 INSERT INTO location (id_location) VALUES (1);
-INSERT INTO objet (id_objet,nom_objet,description_objet,a_une_caution,prix_caution,est_payant,prix,o_est_affiche,id_utilisateur,id_type) 
-VALUES (1,'Velo','velo tout terrain 3 plateaux 7 vitesses',TRUE, 50, TRUE, 20 , TRUE , 1 ,2);
-INSERT INTO objet (id_objet,nom_objet,description_objet,a_une_caution,prix_caution,est_payant,prix,o_est_affiche,id_utilisateur,id_type) 
-VALUES (2,'Playstation 4','PS4 + fifa2017',TRUE, 50, TRUE, 10 , TRUE , 1 ,4);
-INSERT INTO objet (id_objet,nom_objet,description_objet,a_une_caution,prix_caution,est_payant,prix,o_est_affiche,id_utilisateur,id_type) 
-VALUES (3,'Appareil a raclette','Pour 8 personnes ',TRUE, 20, TRUE, 15 , TRUE , 1 ,2);
-INSERT INTO objet (id_objet,nom_objet,description_objet,a_une_caution,prix_caution,est_payant,prix,o_est_affiche,id_utilisateur,id_type) 
-VALUES (4,'Perceuse','Perceuse filaire avec foret',TRUE, 40, TRUE, 10 , TRUE , 1 ,2);
-INSERT INTO type (id_type,description_type) VALUES (1,'Vehicule');
-INSERT INTO type (id_type,description_type) VALUES (2,'Informatique');
-INSERT INTO type (id_type,description_type) VALUES (3,'Console & Jeux video');
-INSERT INTO type (id_type,description_type) VALUES (4,'Electromenager');
-INSERT INTO type (id_type,description_type) VALUES (5,'Bricolage');
-INSERT INTO type (id_type,description_type) VALUES (6,'Ameublement');
+INSERT INTO type(id_type) VALUES (1);
 INSERT INTO Question (id_question) VALUES (1);
 INSERT INTO demande_objet (id_demande_objet) values (1);
