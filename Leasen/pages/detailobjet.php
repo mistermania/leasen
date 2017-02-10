@@ -67,7 +67,19 @@ if (empty($infosLoc['date_debut']) OR empty($duree)) {
         </div>
         <input type="submit" value="Envoyer demmande de location">
     </form>
-<?php } ?>
+<?php
+}
+$test = new Question();
+$infoQuestion['id_objet'] = $infosLoc['id_objet'];
+$res = $test->find($infoQuestion);
+foreach ($res as $k => $v) {
+    echo "<div>" . $v["contenu_question"] . "</div>";
+}
+?>
+<form method="post" action="">
+    <textarea id="question" name="question"> </textarea>
+    <input type="submit" value="Poster votre question">
+</form>
 </body>
 <?php
 ?>
