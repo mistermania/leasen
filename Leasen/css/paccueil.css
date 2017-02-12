@@ -8,10 +8,10 @@ and open the template in the editor.
     Author     : mbouteille
 */
 
-.imagefond{
-color: black;
-background-color: white;
-background-image: url('../image/41.jpg');
-background-attachment: fixed;
+.imagefond {
+    color: black;
+    background-color: white;
+    background-image: url('../image/41.jpg');
+    background-attachment: fixed;
 
 }
