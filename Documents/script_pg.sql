@@ -1,7 +1,7 @@
 --CREATE USER leasen NOSUPERUSER NOCREATEDB NOCREATEROLE LOGIN PASSWORD 'root'
 -- CREATE DATABASE db_leasen OWNER leasen
 ------------------------------------------------------------
---        Script Postgre 
+--        Script Postgre
 ------------------------------------------------------------
 
 
@@ -59,18 +59,16 @@ CREATE TABLE public.location(
 	CONSTRAINT prk_constraint_location PRIMARY KEY (id_location)
 )WITHOUT OIDS;
 
-
 ------------------------------------------------------------
 -- Table: appreciation
 ------------------------------------------------------------
 CREATE TABLE public.appreciation(
-	id_appreciation INT  NOT NULL ,
-	notes           INTEGER   ,
-	commentaire     VARCHAR (2000)   ,
-	est_preteur     BOOL   ,
-	est_loueur      BOOL   ,
-	a_est_affiche   BOOL   ,
-	id_location     INT   ,
+	id_appreciation     INT  NOT NULL ,
+	notes               INTEGER   ,
+	commentaire         VARCHAR (2000)   ,
+	a_est_affiche       BOOL   ,
+	statut_appreciation INT   ,
+	id_location         INT   ,
 	CONSTRAINT prk_constraint_appreciation PRIMARY KEY (id_appreciation),
 	CONSTRAINT notes_positive CHECK (notes > -1)
 )WITHOUT OIDS;
@@ -157,11 +155,13 @@ ALTER TABLE public.demande_objet ADD CONSTRAINT FK_demande_objet_id_type FOREIGN
 
 CREATE VIEW moderateur AS SELECT * FROM utilisateur WHERE (statut > 0);
 CREATE INDEX index_statut ON utilisateur (statut);
-	CREATE VIEW recherche AS  SELECT 
+	CREATE VIEW recherche AS  SELECT
 description_type,objet.id_objet,objet.nom_objet,objet.description_objet,objet.prix,objet.prix_caution,objet.o_est_affiche,type.id_type  FROM Objet  RIGHT JOIN type ON type.id_type=objet.id_type;
+
+CREATE VIEW appreciations_v as SELECT location.id_utilisateur as id_loueur,objet.id_utilisateur as id_preteur,appreciation.notes,appreciation.commentaire,appreciation.a_est_affiche,appreciation.statut_appreciation,objet.id_objet FROM appreciation LEFT JOIN location on appreciation.id_location=location.id_location  LEFT JOIN objet on location.id_objet=objet.id_objet;
+
 INSERT INTO utilisateur (id_utilisateur) VALUES (1);
 INSERT INTO location (id_location) VALUES (1);
-INSERT INTO objet (id_objet) VALUES (1);
-INSERT INTO type (id_type) VALUES (1);
+INSERT INTO type(id_type) VALUES (1);
 INSERT INTO Question (id_question) VALUES (1);
 INSERT INTO demande_objet (id_demande_objet) values (1);

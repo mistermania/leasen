@@ -1,10 +1,11 @@
-<?php 
+<?php
 /**
  * Created by PhpStorm.
  * User: billaud
  * Date: 04/12/16
  * Time: 17:20
  */
+
 /**
  * Class Autoloader
  * Autoloader à appeller dans tout les fichier utilisant des classes
@@ -22,15 +23,14 @@ class Autoloader
      */
     static function register($hauteur)
     {
-        if($hauteur==0) {
+        if ($hauteur == 0) {
             spl_autoload_register(array(__CLASS__, 'autoload'));
-        }elseif ($hauteur==1)
-        {
+        } elseif ($hauteur == 1) {
             spl_autoload_register(array(__CLASS__, 'autoload1'));
-        }else{
+        } else {
             spl_autoload_register(array(__CLASS__, 'autoload1'));
         }
-        }
+    }
 
     /**
      * @param string $class_name nom de la class
@@ -38,7 +38,7 @@ class Autoloader
      */
     static function autoload($class_name)
     {
-        require 'class/'. $class_name .'.php';
+        require 'class/' . $class_name . '.php';
     }
 
     /**
@@ -47,8 +47,6 @@ class Autoloader
      */
     static function autoload1($class_name)
     {
-        require '../class/'. $class_name .'.php';
+        require '../class/' . $class_name . '.php';
     }
-
-
 }
