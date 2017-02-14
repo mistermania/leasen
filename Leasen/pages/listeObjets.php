@@ -28,11 +28,16 @@ $req = 'id_type > 0';
 $ty = new Type();
 $res = $ty->find($req);
 ?>
-<div class="row ">
+ <div class="grey lighten-3">
+<div class="row "> 
+    <div>
+        
+        </br><span class="grey-text text-darken-4 "><h5 class="center-align">Que cherchez-vous ?</h5> </span></br></br>
+    </div>
     <form class="col s12">
         <div class="col s3">
             <label for="categorie"></label>
-            <select id="categorie" class="browser-default center-align" name="categorie" oninput="request();">
+            <select id="categorie" class="browser-default center-align white" name="categorie" oninput="request();">
                 <option value="0">Toutes les categories</option>
                 <?php
                 foreach ($res as $k => $v) {
@@ -42,17 +47,37 @@ $res = $ty->find($req);
             </select>
         </div>
         <div class="col s3">
-            <input type="date" id="date" name="date" placeholder="Date:
+            <input class="white" type="date" id="date" name="date" placeholder="Date:
 			 Année-Mois-Jour" oninput="request();"/>
         </div>
         <div class="col s3">
-            <input type="number" id="duree" min="0" placeholder="Durée de la location" oninput="request();"/>
+            <input class="white" type="number" id="duree" min="0" placeholder="Durée de la location" oninput="request();"/>
         </div>
         <div class="col s3">
-            <input type="text" id="recherche" placeholder="Taper votre recherche" onkeyup="request();"/>
+            <input class="white" type="text" id="recherche" placeholder="Taper votre recherche" onkeyup="request();"/>
         </div>
     </form>
 </div>
+ 
 <p id="result"></p>
+
+ <!--//footer-->
+<footer class="page-footer cyan darken-1">
+    <div class="container cyan darken-1">
+    <div class="row">
+    <div class="col l6 s12">
+      <p class="grey-text text-lighten-4">You can use rows and columns here to organize your
+                                footer content.</p>
+    </div>
+    </div>
+    </div>
+    <div class="footer-copyright">
+    <div class="container">
+        © 2017 LEASEN Tous droits réservés.
+                        
+    </div>
+    </div>
+</footer>
+</div>
 </body>
 </html>
