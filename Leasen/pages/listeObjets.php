@@ -31,8 +31,10 @@ $res = $ty->find($req);
  <div class="grey lighten-3">
 <div class="row "> 
     <div>
-        
-        </br><span class="grey-text text-darken-4 "><h5 class="center-align">Que cherchez-vous ?</h5> </span></br></br>
+        <br>
+        <span class="grey-text text-darken-4 "><h5 class="center-align">Que cherchez-vous ?</h5> </span>
+        <br>
+        <br>
     </div>
     <form class="col s12">
         <div class="col s3">
@@ -47,8 +49,8 @@ $res = $ty->find($req);
             </select>
         </div>
         <div class="col s3">
-            <input class="white" type="date" id="date" name="date" placeholder="Date:
-			 Année-Mois-Jour" oninput="request();"/>
+            <input class="white validate datepicker" type="date" id="date" name="date" placeholder="Date:
+			 Année-Mois-Jour" oninput="request();" min="<?php echo date('Y-m-d');?>" max="2050-01-01"/>
         </div>
         <div class="col s3">
             <input class="white" type="number" id="duree" min="0" placeholder="Durée de la location" oninput="request();"/>
