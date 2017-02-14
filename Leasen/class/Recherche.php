@@ -18,6 +18,7 @@ class Recherche extends Model
      * date_debut
      * duree (en jour)
      * @return mixed
+     * @return int 2 si le debut de la location demandé est dans le passé.
      */
     public function effectueRecherche($info)
     {
@@ -37,6 +38,11 @@ class Recherche extends Model
         if (isset($info['date_debut']) AND isset($info['duree'])) {
             if (!empty($info['date_debut']) AND !empty($info['duree'])) {//creation d'un ojet datetime pour permettre l'ajout de la duree
                 $date = new DateTime($info['date_debut']);
+                $now = new dateTime(date('Y-m-d'));
+                if($now>$date)
+                {
+                    return 2;
+                }
                 // duréee transformé en un objet date interval ( durée en jour
                 $duree = new DateInterval('P' . $info['duree'] . 'D');
                 $info['date_fin'] = $date->add($duree)->format('Y-m-d');

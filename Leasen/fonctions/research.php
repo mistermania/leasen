@@ -19,31 +19,36 @@ $res = $test->effectueRecherche($info);
     </tr>
     </thead>
     <?php
-    foreach ($res as $k => $v) {
-        ?>
-        <tr>
-            <td> <?php echo $v["nom_objet"]; ?> </td>
-            <td> <?php echo $v["description_objet"]; ?> </td>
-            <td> <?php echo $v["prix_caution"]; ?> </td>
-            <td> <?php echo $v["prix"]; ?> </td>
-            <td>
-                <form method="post" action="../pages/detailobjet.php">
-                    <?php
+    if (is_nan($res)) {
+        foreach ($res as $k => $v) {
+            ?>
+            <tr>
+                <td> <?php echo $v["nom_objet"]; ?> </td>
+                <td> <?php echo $v["description_objet"]; ?> </td>
+                <td> <?php echo $v["prix_caution"]; ?> </td>
+                <td> <?php echo $v["prix"]; ?> </td>
+                <td>
+                    <form method="post" action="../pages/detailobjet.php">
+                        <?php
                         echo '<input type="submit" value="Voir en détails" >';
 
-                    ?>
-                    <div id="hide" style="display:none">
-                        <label for="id_objet"></label>
-                        <input type="number" id="id_objet" name="id_objet" value="<?php echo $v["id_objet"]; ?>"/>
-                        <label for="duree"></label>
-                        <input type="number" id="duree" name="duree" value="<?php echo $info['duree']; ?>"/>
-                        <label for="date"></label>
-                        <input type="date" id="date" name="date" value="<?php echo $info['date_debut']; ?>"/>
-                    </div>
-                </form>
-            </td>
-        </tr>
-        <?php
+                        ?>
+                        <div id="hide" style="display:none">
+                            <label for="id_objet"></label>
+                            <input type="number" id="id_objet" name="id_objet" value="<?php echo $v["id_objet"]; ?>"/>
+                            <label for="duree"></label>
+                            <input type="number" id="duree" name="duree" value="<?php echo $info['duree']; ?>"/>
+                            <label for="date"></label>
+                            <input type="date" id="date" name="date" value="<?php echo $info['date_debut']; ?>"/>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+            <?php
+        }
+    }else if($res=2){
+        echo 'date invalides';
     }
+
     ?>
 </table>
