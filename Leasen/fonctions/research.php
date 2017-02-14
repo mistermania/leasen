@@ -7,6 +7,7 @@ $info['id_type'] = filter_input(INPUT_POST, 'categorie');
 $info['date_debut'] = filter_input(INPUT_POST, 'date');
 $info['duree'] = filter_input(INPUT_POST, 'duree');
 $test = new Recherche();
+/** @var mixed $res */
 $res = $test->effectueRecherche($info);
 ?>
 <table border="1" class="responsive-table striped">
@@ -19,7 +20,10 @@ $res = $test->effectueRecherche($info);
     </tr>
     </thead>
     <?php
-    if (is_nan($res)) {
+
+    if($res==2){
+        echo 'date invalides';
+    }else {
         foreach ($res as $k => $v) {
             ?>
             <tr>
@@ -46,8 +50,6 @@ $res = $test->effectueRecherche($info);
             </tr>
             <?php
         }
-    }else if($res=2){
-        echo 'date invalides';
     }
 
     ?>
