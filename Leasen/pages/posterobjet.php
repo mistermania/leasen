@@ -19,42 +19,63 @@
 <script type="text/javascript" src="../js/materialize.min.js"></script>
 <?php
 include "../fonctions/fnavbar.php";
-navbarcall(1, 4);
+navbarcall(1, 3);
 require('../class/Autoloader.php');
 Autoloader::register(1);
 $req = 'id_type >0';
 $ty = new Type();
 $res = $ty->find($req);
 ?>
+<div class="grey lighten-3">
 <div class="row ">
-    <form method="post" class="col s12" action="../newobjet.php">
-        <label for="nom">Titre de l'annonce</label><br/>
-        <input type="text" id="nom" name="nom" class="col s12" placeholder="Ex: Appareil à Raclette"/>
-        <label for="categorie">Categorie</label>
-        <select id="categorie" class="col s12 browser-default " name="categorie">
+   
+       <div class="row">
+           <div>
+               <span class="grey-text text-darken-4 "></br><h5 class="center-align">Poster un objet en location</h5></br> </span>
+            </div>
+          </div>
+    <form method="post" class="col s6 offset-s3  " action="../newobjet.php">
+        <label for="nom" class="col s6 offset-s3 grey-text text-darken-4">Titre de l'annonce</label><br/>
+        <input type="text" id="nom" name="nom" class="col s6 offset-s3 white" placeholder="Ex: Appareil à Raclette"/>
+        <label for="categorie" class="col s6 offset-s3 grey-text text-darken-4">Categorie</label>
+        <select id="categorie" class="col s6 offset-s3 browser-default white " name="categorie">
             <?php
             foreach ($res as $k => $v) {
                 echo "<option value=\"" . $v["id_type"] . "\">" . $v["description_type"] . "</option>";
             }
             ?>
         </select>
-        <br>
-        <label for="description">Description du bien</label>
-        <textarea name="description" class="col s12 " id="description"
+        
+        <label for="description" class="col s6 offset-s3 grey-text text-darken-4">Description du bien</label>
+        <textarea name="description" class="col s6 offset-s3 white " id="description"
                   placeholder="Ex: Appareil pour 8 personnes"></textarea>
-        <input type="button" class="col s12" value="Ajouter un prix" onclick="afficher_cacher('id_div_prix'); ">
+        
+         <input type="button" class="col s6 offset-s3 deep-orange btn" value="Ajouter un prix" onclick="afficher_cacher('id_div_prix'); ">
         <div id="id_div_prix" style="display:none">
-            <label for="prix">Prix de la location à la journée </label>
-            <input type="number" class="col s12" id="prix" name="prix" min="0" value="0"/>
+            <label for="prix" class="col s6 offset-s3 grey-text text-darken-4">Prix de la location à la journée </label>
+            <input type="number" class="col s6 offset-s3 white" id="prix" name="prix" min="0" value="0"/>
         </div>
-        <input type="button" class=" col s12" value="Ajouter une caution"
+        <input type="button" class="col s6 offset-s3 deep-orange btn" value="Ajouter une caution"
                onclick="afficher_cacher('id_div_caution');">
         <div id="id_div_caution" style="display:none">
-            <label for="prix_caution">prix Cautions</label>
-            <input type="number" class="col s12" id="prix_caution" name="prix_caution" min="0" value="0"/>
+            <label for="prix_caution" class="col s6 offset-s3 grey-text text-darken-4">Montant de la caution</label>
+            <input type="number" class="col s6 offset-s3 white" id="prix_caution" name="prix_caution" min="0" value="0"/>
         </div>
-        <input type="submit" class=" col s12" value="Poster">
+        
+        <input type="submit" class=" col s6 offset-s3 deep-orange btn" value="Poster">
+       
     </form>
+    <br>
+</div>
+    <footer class="page-footer cyan darken-1">
+
+                <div class="footer-copyright">
+                    <div class="container">
+                        © 2017 LEASEN Tous droits réservés.
+                        
+                    </div>
+                </div>
+            </footer>
 </div>
 </body>
 </html>

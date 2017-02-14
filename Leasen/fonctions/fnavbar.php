@@ -28,33 +28,37 @@ function navbarcall($connexion, $pageactive)
     ?>
         <div class="navbar-fixed">
         <nav>
-            <div class="nav-wrapper white">
-            <a href="#" class="brand-logo cyan-text text-darken-4"> Leasen</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">'
+            
+            <div class="nav-wrapper cyan">
+            <a href="../index.php" class="brand-logo white-text">  Leasen</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <?php
     if($connexion ==1){
         /*tableau contenant les nom des pages, le nom du fichier, numero page*/
-        $page=array('Accueil'=>array('../index.php',1),'Les objets'=>array('listeObjets.php',2),'Les demandes'=>array('lesdemandes.php',3),'Proposer un objet'=>array('posterobjet.php',4),'Faire une demande'=>array('fairedemande.php',5),'Guide'=>array('guide.php',6));
+        $page=array('Accueil'=>array('../index.php',1),'Les objets'=>array('listeObjets.php',2),'Proposer un objet'=>array('posterobjet.php',3),'Guide'=>array('guide.php',4));
       foreach($page as $k =>$v)
       {
       if($pageactive==$v[1])
       {
           //affichage pour la page active
-       echo '<li class="active  "><a href="'.$sep[0].$v[0].'" class="cyan-text text-darken-4">'.$k.'</a></li> ';
+       echo '<li class="active  "><a href="'.$sep[0].$v[0].'" class="grey-text text-darken-3">'.$k.'</a></li> ';
       }else{
           //affichage pour les autres pages
-      echo ' <li><a href="'.$sep[0].$v[0].'" class="amber-text text-darken-2">'.$k.'</a></li>';
+      echo ' <li><a href="'.$sep[0].$v[0].'" class="<white-text">'.$k.'</a></li>';
       }
       }
-      if($pageactive==7){
-             echo '<li><a href="'.$sep[0].'moncompte.php" class="cyan-text text-darken-4"> Mon compte</a></li>';
+      if($pageactive==5){
+             echo '<li><a href="'.$sep[0].'moncompte.php" class="grey-text text-darken-3"> Mon compte</a></li>';
         }
         else{
             ?>
-             <li><a class="amber-text text-darken-2 dropdown-button" href="#" data-activates="dropdown1">Mon compte <i class="material-icons right">arrow_drop_down</i></a></li>
+
+             <li><a class="white-text dropdown-button" href="#" data-activates="dropdown1">Mon compte <i class="material-icons right">arrow_drop_down</i></a></li>
+             
+             
            <!--menu déroulant dans l'onglet moncompte -->
               <ul id="dropdown1" class="dropdown-content">
-                <li><a href="#!">Modifier mes informations</a></li>
+                <li><a href="moncompte.php">Modifier mes informations</a></li>
                 <li class="divider"></li>
                 <li><a href="<?php echo $sep[1];?>deco.php">Déconnexion</a></li>
               </ul>
@@ -62,9 +66,9 @@ function navbarcall($connexion, $pageactive)
         } //fermeture else
     }// fermeture du test de la connexion
     else{
-        echo '<li><a href="'.$sep[2].'index.php" class="amber-text text-darken-2">Accueil</a></li>
-              <li><a href="'.$sep[0].'inscription.php" class="amber-text text-darken-2">Inscription</a></li>
-              <li><a href="'.$sep[0].'connexion.php" class="amber-text text-darken-2">Connexion</a></li> ';
+        echo '<li><a href="'.$sep[2].'index.php" class="white-text">Accueil</a></li>
+              <li><a href="'.$sep[0].'inscription.php" class="white-text">Inscription</a></li>
+              <li><a href="'.$sep[0].'connexion.php" class="white-text">Connexion</a></li> ';
     }//fermeture else
     //fin barre de navigation
     echo '  </ul>
