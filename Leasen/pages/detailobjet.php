@@ -76,7 +76,7 @@ foreach ($res as $k => $v) {
     echo "<div>" . $v["contenu_question"] . "</div>";
 }
 ?>
-<form method="post" action="">
+<form method="post" action="../fonctions/posteQuestion">
     <textarea id="question" name="question"> </textarea>
     <input type="submit" value="Poster votre question">
 </form>
