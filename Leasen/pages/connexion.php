@@ -23,13 +23,13 @@ include "../fonctions/fnavbar.php";
 ?>
 <?php
 if (isset($_SESSION['USER'])) {
-    navbarcall(1, -1);
+    navbarcall(1, 0);
     echo "Bienvenue " . $_SESSION['USER'];
     echo "<p>Vous êtes déjà connecté. Souhaitez vous vous déconnecter ?</p>";
     echo '<input type="button" value="Deconnexion" onclick="document.location.href=\'../fonctions/deco.php\';">';
     echo '<input type="button" value="Retour" onclick="document.location.href=\'../index.php\';">';
 } else {
-    navbarcall(0, -1);
+    navbarcall(0, 0);
     ?>
     
     <div class="grey lighten-3">

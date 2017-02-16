@@ -66,7 +66,7 @@ function navbarcall($connexion, $pageactive) {
                     else {
                         echo '<li><a href="' . $sep[2] . 'index.php" class="white-text">Accueil</a></li>
               <li><a href="' . $sep[0] . 'inscription.php" class="white-text">Inscription</a></li>
-              <li><a href="' . $sep[2] . 'connexion.php" class="white-text">Connexion</a></li> ';
+              <li><a href="' . $sep[0] . 'connexion.php" class="white-text">Connexion</a></li> ';
                     }//fermeture else
                     //fin barre de navigation
                     echo '  </ul>

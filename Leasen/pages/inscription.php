@@ -25,7 +25,7 @@ and open the template in the editor.
     <script type="text/javascript" src="../js/materialize.min.js"></script>
 <?php
     include "../fonctions/fnavbar.php";
-    navbarcall(0, 1);
+    navbarcall(0, 0);
 ?>
 <div class="grey lighten-3">
 <div class="row"> 
