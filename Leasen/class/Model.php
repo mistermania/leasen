@@ -136,7 +136,7 @@ abstract class  Model
         }
         // echo $sql.'<br>';
         if ($order != "") {
-            $sql .= "ORDER BY " . $order;
+            $sql .= " ORDER BY " . $order;
         }
         $req = $this->pdo->prepare($sql);
         try {
