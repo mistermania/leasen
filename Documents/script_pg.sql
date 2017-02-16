@@ -155,10 +155,14 @@ ALTER TABLE public.demande_objet ADD CONSTRAINT FK_demande_objet_id_type FOREIGN
 
 CREATE VIEW moderateur AS SELECT * FROM utilisateur WHERE (statut > 0);
 CREATE INDEX index_statut ON utilisateur (statut);
-	CREATE VIEW recherche AS  SELECT
+CREATE VIEW recherche AS  SELECT
 description_type,objet.id_objet,objet.nom_objet,objet.description_objet,objet.prix,objet.prix_caution,objet.o_est_affiche,type.id_type  FROM Objet  RIGHT JOIN type ON type.id_type=objet.id_type;
 
 CREATE VIEW appreciations_v as SELECT location.id_utilisateur as id_loueur,objet.id_utilisateur as id_preteur,appreciation.notes,appreciation.commentaire,appreciation.a_est_affiche,appreciation.statut_appreciation,objet.id_objet FROM appreciation LEFT JOIN location on appreciation.id_location=location.id_location  LEFT JOIN objet on location.id_objet=objet.id_objet;
+
+CREATE VIEW recherche_location 
+AS SELECT location.id_objet, location.date_debut, location.date_fin, location.statut_location, location.id_utilisateur, objet.nom_objet
+FROM location INNER JOIN objet ON location.id_objet=objet.id_objet;
 
 INSERT INTO utilisateur (id_utilisateur) VALUES (1);
 INSERT INTO location (id_location) VALUES (1);
