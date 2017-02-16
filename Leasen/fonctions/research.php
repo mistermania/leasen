@@ -29,11 +29,8 @@ $res = $test->effectueRecherche($info);
             <td>
                 <form method="post" action="../pages/detailobjet.php">
                     <?php
-                    if (!empty($info['duree']) AND !empty($info['duree'])) {
-                        echo '<input type="submit" value="Louer" >';
-                    } else {
-                        echo '<input type="submit" value="fiche de l\'objet" >';
-                    }
+                        echo '<input type="submit" value="Voir en détails" >';
+
                     ?>
                     <div id="hide" style="display:none">
                         <label for="id_objet"></label>
