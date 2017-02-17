@@ -23,13 +23,13 @@ Autoloader::register(1);
     <body>
 
 <?php
-$infosQuestion['contenue_question'] = filter_input(INPUT_POST, 'question');
+$infosQuestion['contenu_question'] = filter_input(INPUT_POST, 'question');
 $infosQuestion['id_utilisateur'] = $_SESSION['IDUSER'];
 $infosQuestion['id_objet'] = filter_input(INPUT_POST, 'id_objet');
 $newQuestion = new Question();
 $res = $newQuestion->insert($infosQuestion);
 
 echo "id objet :  " . $infosQuestion['id_objet']."<br>";
-echo "question :  " . $infosQuestion['contenue_question']."<br>";
+echo "question :  " . $infosQuestion['contenu_question']."<br>";
 echo "id utilisateur :  " . $infosQuestion['id_utilisateur']."<br>";
 echo "Resultat de la requete: " . $res;

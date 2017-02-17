@@ -11,7 +11,7 @@ class Question extends Model
     /**
      *
      */
-    const champ = array('id_question', 'contenue_question', 'date_question', 'id_objet', 'id_question_mere', 'id_utilisateur');
+    const champ = array('id_question', 'contenu_question', 'date_question', 'id_objet', 'id_question_mere', 'id_utilisateur');
 
     /**
      * @param array $info tableau contenant les informations à inserer
@@ -22,10 +22,10 @@ class Question extends Model
      */
     public function insert($info)
     {
-        if (!isset($info['contenue_question']) || !isset($info['id_objet']) || !isset($info['id_utilisateur'])) {
+        if (!isset($info['contenu_question']) || !isset($info['id_objet']) || !isset($info['id_utilisateur'])) {
             return 1;
         }
-        $info['date_question'] = date('Y-M-D H:m:s');
+        $info['date_question'] = date('Y-m-d');
         if (Model::idAbsent($info['id_objet'], 'Objet')) {
             return 2;
         }

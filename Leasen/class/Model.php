@@ -214,7 +214,7 @@ abstract class  Model
         //ajout de ponctuation
         $debut .= ')';
         $fin .= ') ;';
-        //la requete totale est la concatenation des deux requete qui ont été preparé
+        //la requete totale est la concatenation des deux requetes qui ont été preparé
         if (Config::$debug > 0) {
             echo $debut . $fin . '<br>';
         }
