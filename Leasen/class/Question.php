@@ -33,8 +33,6 @@ class Question extends Model
             if (Model::idAbsent($info['id_question_mere'], 'Question')) {
                 return 3;
             }
-        } else {
-            $info['id_question_mere'] = 'NULL';
         }
         if (Model::idAbsent($info['id_utilisateur'], 'Utilisateur')) {
             return 4;
