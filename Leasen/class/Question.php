@@ -11,7 +11,7 @@ class Question extends Model
     /**
      *
      */
-    const champ = array('id_question', 'contenu_question', 'date_question', 'id_objet', 'id_question_mere', 'id_utilisateur');
+    const champ = array('id_question', 'contenue_question', 'date_question', 'id_objet', 'id_question_mere', 'id_utilisateur');
 
     /**
      * @param array $info tableau contenant les informations à inserer
