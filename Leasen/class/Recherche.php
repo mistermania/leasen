@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Created by PhpStorm.
  * User: billaud
@@ -8,7 +7,6 @@
  */
 class Recherche extends Model
 {
-
     /**
      * Recherche constructor.
      * @param $info

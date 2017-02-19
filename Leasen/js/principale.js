@@ -9,7 +9,6 @@
 //menu déroulant dans l'onglet moncompte
 (function ($) {
     $(function () {
-
         $('.dropdown-button').dropdown({
                 inDuration: 300,
                 outDuration: 225,
@@ -20,11 +19,8 @@
                 alignment: 'right' // Displays dropdown with edge aligned to the left of button
             }
         );
-
     }); // End Document Ready
 })(jQuery); // End of jQuery name space
-
-
 //pour la barre de navigation qui a le mouvement de la page
 
 (function ($) {
@@ -35,10 +31,7 @@
 
 (function ($) {
     $(function () {
-
         $('.scrollspy').scrollSpy();
         $('#menu').pushpin({bottom: $('.container').offset().top});
-
-
     }); // End Document Ready
 })(jQuery); // End of jQuery name space   
