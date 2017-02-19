@@ -22,10 +22,10 @@ class Question extends Model
      */
     public function insert($info)
     {
-        if (!isset($info['contenue_question']) || !isset($info['id_objet']) || !isset($info['id_utilisateur'])) {
+        if (!isset($info['contenu_question']) || !isset($info['id_objet']) || !isset($info['id_utilisateur'])) {
             return 1;
         }
-        $info['date_question'] = date('Y-M-D H:m:s');
+        $info['date_question'] = date('Y-m-d');
         if (Model::idAbsent($info['id_objet'], 'Objet')) {
             return 2;
         }
@@ -33,8 +33,6 @@ class Question extends Model
             if (Model::idAbsent($info['id_question_mere'], 'Question')) {
                 return 3;
             }
-        } else {
-            $info['id_question_mere'] = 'NULL';
         }
         if (Model::idAbsent($info['id_utilisateur'], 'Utilisateur')) {
             return 4;
