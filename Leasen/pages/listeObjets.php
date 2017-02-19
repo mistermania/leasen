@@ -28,58 +28,57 @@ $req = 'id_type > 0';
 $ty = new Type();
 $res = $ty->find($req);
 ?>
- <div class="grey lighten-3">
-<div class="row "> 
-    <div>
-        <br>
-        <span class="grey-text text-darken-4 "><h5 class="center-align">Que cherchez-vous ?</h5> </span>
-        <br>
-        <br>
-    </div>
-    <form class="col s12">
-        <div class="col s3">
-            <label for="categorie"></label>
-            <select id="categorie" class="browser-default center-align white" name="categorie" oninput="request();">
-                <option value="0">Toutes les categories</option>
-                <?php
-                foreach ($res as $k => $v) {
-                    echo "<option value=\"" . $v["id_type"] . "\">" . $v["description_type"] . "</option>";
-                }
-                ?>
-            </select>
+<div class="grey lighten-3">
+    <div class="row ">
+        <div>
+            <br>
+            <h5 class="center-align grey-text text-darken-4">Que cherchez-vous ?</h5>
+            <br>
+            <br>
         </div>
-        <div class="col s3">
-            <input class="white validate datepicker" type="date" id="date" name="date" placeholder="Date:
-			 Année-Mois-Jour" oninput="request();" min="<?php echo date('Y-m-d');?>" max="2050-01-01"/>
+        <form class="col s12">
+            <div class="col s3">
+                <label for="categorie"></label>
+                <select id="categorie" class="browser-default center-align white" name="categorie" oninput="request();">
+                    <option value="0">Toutes les categories</option>
+                    <?php
+                    foreach ($res as $k => $v) {
+                        echo "<option value=\"" . $v["id_type"] . "\">" . $v["description_type"] . "</option>";
+                    }
+                    ?>
+                </select>
+            </div>
+            <div class="col s3">
+                <input class="white validate datepicker" type="date" id="date" name="date" placeholder="Date:
+			 Année-Mois-Jour" oninput="request();" min="<?php echo date('Y-m-d'); ?>" max="2050-01-01"/>
+            </div>
+            <div class="col s3">
+                <input class="white" type="number" id="duree" min="0" placeholder="Durée de la location"
+                       oninput="request();"/>
+            </div>
+            <div class="col s3">
+                <input class="white" type="text" id="recherche" placeholder="Taper votre recherche"
+                       onkeyup="request();"/>
+            </div>
+        </form>
+    </div>
+    <p id="result"></p>
+    <!--//footer-->
+    <footer class="page-footer cyan darken-1">
+        <div class="container cyan darken-1">
+            <div class="row">
+                <div class="col l6 s12">
+                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your
+                        footer content.</p>
+                </div>
+            </div>
         </div>
-        <div class="col s3">
-            <input class="white" type="number" id="duree" min="0" placeholder="Durée de la location" oninput="request();"/>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2017 LEASEN Tous droits réservés.
+            </div>
         </div>
-        <div class="col s3">
-            <input class="white" type="text" id="recherche" placeholder="Taper votre recherche" onkeyup="request();"/>
-        </div>
-    </form>
-</div>
- 
-<p id="result"></p>
-
- <!--//footer-->
-<footer class="page-footer cyan darken-1">
-    <div class="container cyan darken-1">
-    <div class="row">
-    <div class="col l6 s12">
-      <p class="grey-text text-lighten-4">You can use rows and columns here to organize your
-                                footer content.</p>
-    </div>
-    </div>
-    </div>
-    <div class="footer-copyright">
-    <div class="container">
-        © 2017 LEASEN Tous droits réservés.
-                        
-    </div>
-    </div>
-</footer>
+    </footer>
 </div>
 </body>
 </html>
