@@ -1,4 +1,4 @@
-<?php
+<?php //
 session_start();
 if (!isset($_SESSION['USER']) || !isset($_SESSION['IDUSER'])) {
     header('Location:index.php');
@@ -26,43 +26,64 @@ require('../class/Autoloader.php');
 Autoloader::register(1);
 $infoUser['id_utilisateur'] = $_SESSION['IDUSER'];
 $annonce = new Objet();
-$res = $annonce->find($infoUser);
+$res=$annonce->find($infoUser);
+
 ?>
-<div class="grey lighten-3">
-    <div class="row ">
-        <br/><h5 class="center-align"> Mes annonces </h5> <br>
-        <table class="centered bordered responsive-table white grey-text text-darken-4">
-            <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Description</th>
-                <th>Caution</th>
-                <th>Prix</th>
-                <th> Modifier l'annonce</th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php
-            foreach ($res as $k => $v) {
-                ?>
-                <tr>
-                    <td> <?php echo $v["nom_objet"]; ?> </td>
-                    <td> <?php echo $v["description_objet"]; ?> </td>
-                    <td> <?php echo $v["prix_caution"]; ?> </td>
-                    <td> <?php echo $v["prix"]; ?> </td>
-                    <td>
-                        <form method="post" action="editerobjet.php">
-                            <input type="hidden" id="id_objet" name="id_objet" value="<?php echo $v["id_objet"]; ?>"/>
-                            <input type="submit" value="Modifier" class="btn deep-orange darken-1 white-text">
-                        </form>
-                    </td>
-                </tr>
-                <?php
-            }
-            ?>
-            </tbody>
-        </table>
-    </div>
+    
+   <div class="grey lighten-3">
+   <div class="row ">
+   <br/><h5 class="center-align"> Mes annonces </h5> <br>
+  
+    <table class="centered bordered responsive-table white grey-text text-darken-4">
+    <thead>
+    <tr>
+        <th>Nom</th>
+        <th>Description</th>
+        <th>Caution</th>
+        <th>Prix</th>
+        <th> Modifier l'annonce </th>
+
+    </tr>
+    </thead>
+    
+    <tbody>
+    
+   
+    
+    <?php
+        
+    
+    foreach ($res as $k =>$v){
+        if($v['o_est_affiche'] == true){
+
+    ?>
+       
+    <tr>
+        <td> <?php echo  $v["nom_objet"]; ?> </td>
+        <td> <?php echo $v["description_objet"]; ?> </td>
+        <td> <?php echo $v["prix_caution"]; ?> </td>
+        <td> <?php echo $v["prix"]; ?> </td>
+        <td>
+        
+        <form method="post" action="editerobjet.php">
+        <input type="hidden" id="id_objet" name="id_objet" value="<?php echo $v["id_objet"]; ?>"/>
+        <input type="submit" value="Modifier" class="btn deep-orange darken-1 white-text">
+        
+        
+        </form>
+        </td>
+
+    </tr>
+        	
+        
+ <?php
+    }
+    }
+   
+    ?>
+    </tbody>
+    </table>
+</div>
     <br>
     <footer class="page-footer cyan darken-1">
 
