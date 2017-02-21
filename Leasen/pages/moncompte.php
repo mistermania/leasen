@@ -42,6 +42,7 @@ $res=$annonce->find($infoUser);
         <th>Caution</th>
         <th>Prix</th>
         <th> Modifier l'annonce </th>
+        <th> Supprimer </th>
 
     </tr>
     </thead>
@@ -71,6 +72,15 @@ $res=$annonce->find($infoUser);
         
         
         </form>
+        </td>
+        <td>
+
+            <form method="post" action="supprimerobjet.php">
+                <input type="hidden" id="id_objet" name="id_objet" value="<?php echo $v["id_objet"]; ?>"/>
+                <input type="submit" value="Supprimer" class="btn deep-orange darken-1 white-text">
+
+
+            </form>
         </td>
 
     </tr>
