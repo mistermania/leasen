@@ -61,7 +61,7 @@ $res = $newobjet->find($objetInfos);
                             de la location</label>
                         <input type="date" id="date_debut"
                                class="col s6 offset-s3 white green-text text-darken-4" name="date_debut"
-                               placeholder="Date: Année-Mois-Jour"/>
+                               placeholder="Année-Mois-Jour"/>
                         <label for="duree" class="col s6 offset-s3 green-text text-darken-4"> Durée de la
                             location </label>
                         <input type="number" class="col s6 offset-s3 white green-text text-darken-4" id="duree"
@@ -72,7 +72,7 @@ $res = $newobjet->find($objetInfos);
                     <?php
                 } else if (!empty($infosLoc['date_debut']) AND !empty($duree)) {
                     ?>
-                    <form method="post" action="../fonctions/confirmerLocation.php">
+                    <form method="post" class="col s6 offset-s3" action="../fonctions/confirmerLocation.php">
                         <div id="hide" style="display:none">
                             <label for="id_objet"></label>
                             <input type="number" id="id_objet" name="id_objet"
@@ -83,7 +83,7 @@ $res = $newobjet->find($objetInfos);
                             <input type="date" id="date_debut" name="date_debut"
                                    value="<?php echo $infosLoc['date_debut']; ?>"/>
                         </div>
-                        <input type="submit" value="Envoyer demmande de location">
+                        <input type="submit" class="deep-orange btn col s6 offset-s3 value="Envoyer demmande de location">
                     </form>
                     <?php
                 }
@@ -96,6 +96,7 @@ $res = $newobjet->find($objetInfos);
                 ?>
                 <form method="post" class="col s6 offset-s3" action="../fonctions/posterQuestion.php">
                     <label for="question"></label>
+                    <label for="question" class="col s6 offset-s3 green-text text-darken-4"> Poser une question / Laisser une remarque</label>
                     <textarea class="col s6 offset-s3 white green-text text-darken-4" id="question"
                               name="question"> </textarea>
                     <div id="hide" style="display:none">
@@ -103,7 +104,7 @@ $res = $newobjet->find($objetInfos);
                         <input type="number" id="id_objet" name="id_objet"
                                value="<?php echo $infosLoc["id_objet"]; ?>"/>
                     </div>
-                    <input type="submit" value="Poster votre question" class="deep-orange btn col s6 offset-s3">
+                    <input type="submit" value="Poster votre commentaire" class="deep-orange btn col s6 offset-s3">
                 </form>
             </div>
 

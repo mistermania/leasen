@@ -26,7 +26,7 @@ session_start();
 
         <?php
             include "../fonctions/fnavbar.php";
-            navbarcall(1,4);
+            navbarcall(1,0);
 
             require('../class/Autoloader.php');
             Autoloader::register(1);
@@ -96,7 +96,7 @@ session_start();
         <br>
         </div>
          </section><br>
-        <footer class="page-footer cyan darken-1">
+        <footer  class="page-footer cyan darken-1">
                 
                 <div class="footer-copyright">
                     <div class="container">

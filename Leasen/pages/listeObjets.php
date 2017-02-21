@@ -34,6 +34,7 @@ $res = $ty->find($req);
         
         </br><span class="grey-text text-darken-4 "><h5 class="center-align">Que cherchez-vous ?</h5> </span></br></br>
     </div>
+
     <form class="col s12">
         <div class="col s3">
             <label for="categorie"></label>
