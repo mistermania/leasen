@@ -19,7 +19,7 @@ Autoloader::register(1);
 <script type="text/javascript" src="../js/materialize.min.js"></script>
 <?php
 include "../fonctions/fnavbar.php";
-navbarcall(1, 4);
+navbarcall(1, 2);
 $objetInfos['id_objet'] = filter_input(INPUT_POST, 'id_objet');
 $newobjet = new Objet();
 $res = $newobjet->find($objetInfos);
