@@ -12,41 +12,23 @@ session_start();
     <link href="../css/paccueil.css" rel="stylesheet" type="text/css"/>
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<<<<<<< HEAD
-        
-        
-    </head>
-    <body>
-      <!--Import jQuery before materialize.js-->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" src="../js/materialize.min.js"></script>
-
-        <?php
-            include "../fonctions/fnavbar.php";
-            navbarcall(1,0);
-
-            require('../class/Autoloader.php');
-            Autoloader::register(1);
-        ?>
-        
-        
-        <article class="col s8 offset-s2 white">
-            <div class="grey lighten-3">
-=======
 </head>
 <body>
 <!--Import jQuery before materialize.js-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="../js/materialize.min.js"></script>
+
 <?php
 include "../fonctions/fnavbar.php";
-navbarcall(1, 4);
+navbarcall(1, 0);
+
 require('../class/Autoloader.php');
 Autoloader::register(1);
 ?>
+
 <article class="col s8 offset-s2 white">
     <div class="grey lighten-3">
->>>>>>> master
+
         <section>
             <br><br>
             <div class="container white ">
@@ -107,7 +89,8 @@ Autoloader::register(1);
                     remplir un contrat de location et de le garder le temps de la location ou du prêt.
                     Vous pouvez téléchargé le contrat que nous vous proposons ci-dessous. Il est a remplir par le
                     propriétaire et le locataire lors de la rencontre. <br><br/>
-                    <a class="waves-effect waves-light deep-orange white-text btn" href="../res/Contrat de location.pdf">
+                    <a class="waves-effect waves-light deep-orange white-text btn"
+                       href="../res/Contrat de location.pdf">
                         Télécharger un exemplaire</a> <br/><br/>
                     Vous êtes libre de rédiger votre propre contrat ci celui-ci ne vous convient pas.
                 </p>
@@ -115,26 +98,26 @@ Autoloader::register(1);
             </div>
         </section>
         <br>
-<<<<<<< HEAD
-        </div>
-         </section><br>
-        <footer  class="page-footer cyan darken-1">
-                
+
+    </div>
+    </section><br>
+    <footer class="page-footer cyan darken-1">
+
+        <div class="footer-copyright">
+            <div class="container">
+                © 2017 LEASEN Tous droits réservés.
+
+            </div>
+
+            <footer class="page-footer cyan darken-1">
                 <div class="footer-copyright">
                     <div class="container">
                         © 2017 LEASEN Tous droits réservés.
-                        
+
                     </div>
-=======
-        <footer class="page-footer cyan darken-1">
-            <div class="footer-copyright">
-                <div class="container">
-                    © 2017 LEASEN Tous droits réservés.
->>>>>>> master
                 </div>
-            </div>
-        </footer>
-    </div>
+            </footer>
+        </div>
 </article>
 </body>
 </html>

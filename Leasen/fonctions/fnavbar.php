@@ -54,11 +54,11 @@ function navbarcall($connexion, $pageactive) {
 
                             <!--menu déroulant dans l'onglet moncompte -->
                             <ul id="dropdown1" class="dropdown-content">
-                                <li><a href="./pages/moncompte.php">Modifier mes informations</a></li>
+                                <?php echo '<li><a href="'.$sep[0].'moncompte.php">Modifier mes informations</a></li>'; ?>
                                 <li class="divider"></li>
-                                <li><a href="./pages/historiquelocation.php">Historique de mes locations</a></li>
+                                <?php echo '<li><a href="'.$sep[0].'historiquelocation.php">Historique de mes locations</a></li>'; ?>
                                 <li class="divider"></li>
-                                <li><a href="./pages/message.php">Mes messages</a></li>
+                                <?php echo '<li><a href="'.$sep[0].'message.php">Mes messages</a></li>'; ?>
                                 <li class="divider"></li>
                                 <li><a href="<?php echo $sep[1]; ?>deco.php">Déconnexion</a></li>
                             </ul>
