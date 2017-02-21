@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Created by PhpStorm.
  * User: billaud
@@ -8,7 +7,6 @@
  */
 class recherche_location extends Model
 {
-
     /**
      * Recherche constructor.
      * @param $info
@@ -25,4 +23,3 @@ class recherche_location extends Model
         return $this->find($requete, ' date_debut DESC');
     }
 }
-
