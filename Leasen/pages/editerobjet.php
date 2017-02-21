@@ -54,10 +54,24 @@ $res = $newobjet->find($objetInfos);
       
         <input type="hidden" id="id_objet" class="col s6 offset-s3 white grey-text text-darken-4" name="id_objet" value="<?php echo $v["id_objet"]; ?>"/>
         <input type="submit" class=" col s6 offset-s3 deep-orange btn" value="Mettre à jour">
-         
+        
+        
             <?php 
     }
     ?>  
+        </form>
+        
+        <form method="post" class="col s6 offset-s3" action="./supprimerobjet.php">
+        <?php    
+        foreach ($res as $k =>$v)
+        {
+         ?>
+        <input type="hidden" id="id_objet" class="col s6 offset-s3 white grey-text text-darken-4" name="id_objet" value="<?php echo $v["id_objet"]; ?>"/>
+        <input type="submit" class=" col s6 offset s3 deep-orange btn" value="Supprimer">  
+        <?php    
+        }
+         ?>
+        </form>
          
          </div>
         <footer class="page-footer cyan darken-1">

@@ -4,7 +4,7 @@ session_start();
 require('../class/Autoloader.php');
 Autoloader::register(1);
 include "../fonctions/fnavbar.php";
-navbarcall(1, 7);
+navbarcall(1, 4);
 
 
 $newobjet = new Objet();
@@ -15,7 +15,7 @@ $objetModif['prix']=filter_input(INPUT_POST,'prix');
 $objetModif['prix_caution']=filter_input(INPUT_POST,'prix_caution');
 $objetModif['id_utilisateur']=$_SESSION['IDUSER'] ;
 $modif= $newobjet->update($objetModif,$idobjet);
-header('Location:../index.php');
+header('Location:pages/moncompte.php');
 
 
 

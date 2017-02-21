@@ -1,4 +1,4 @@
-<?php
+<?php //
 session_start();
 if (!isset($_SESSION['USER']) || !isset($_SESSION['IDUSER'])) {
     header('Location:index.php');
@@ -32,11 +32,12 @@ Autoloader::register(1);
 $infoUser['id_utilisateur'] = $_SESSION['IDUSER'];
 $annonce = new Objet();
 $res=$annonce->find($infoUser);
-?>
 
-<div class="grey lighten-3">
-<div class="row ">
-    <br/><h5 class="center-align"> Mes annonces </h5> <br>
+?>
+    
+   <div class="grey lighten-3">
+   <div class="row ">
+   <br/><h5 class="center-align"> Mes annonces </h5> <br>
   
     <table class="centered bordered responsive-table white grey-text text-darken-4">
     <thead>
@@ -51,12 +52,17 @@ $res=$annonce->find($infoUser);
     </thead>
     
     <tbody>
-     
-    <?php
-    foreach ($res as $k =>$v)
-    {
-    ?>
     
+   
+    
+    <?php
+        
+    
+    foreach ($res as $k =>$v){
+        if($v['o_est_affiche'] == true){
+
+    ?>
+       
     <tr>
         <td> <?php echo  $v["nom_objet"]; ?> </td>
         <td> <?php echo $v["description_objet"]; ?> </td>
@@ -77,6 +83,8 @@ $res=$annonce->find($infoUser);
         
  <?php
     }
+    }
+   
     ?>
     </tbody>
     </table>
