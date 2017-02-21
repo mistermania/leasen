@@ -164,6 +164,13 @@ CREATE VIEW recherche_location
 AS SELECT location.id_objet, location.date_debut, location.date_fin, location.statut_location, location.id_utilisateur, objet.nom_objet
 FROM location INNER JOIN objet ON location.id_objet=objet.id_objet;
 
+CREATE VIEW recherche_message 
+AS SELECT objet.id_objet, objet.id_utilisateur, objet.nom_objet, 
+location.statut_location, location.date_debut, location.date_fin, location.id_utilisateur AS id_loueur,
+utilisateur.nom
+FROM objet INNER JOIN location ON objet.id_objet=location.id_objet
+INNER JOIN utilisateur ON objet.id_utilisateur=utilisateur.id_utilisateur;
+
 INSERT INTO utilisateur (id_utilisateur) VALUES (1);
 INSERT INTO location (id_location) VALUES (1);
 INSERT INTO type(id_type) VALUES (1);

@@ -19,7 +19,7 @@ class recherche_location extends Model
      */
     public function effectueRecherche($info)
     {     
-        $requete = 'id_utilisateur = '.$info['id_utilisateur'];
+        $requete = 'id_utilisateur = '.$info['id_utilisateur'].'AND statut_location = 2';
         return $this->find($requete, ' date_debut DESC');
     }
 }

@@ -58,6 +58,8 @@ function navbarcall($connexion, $pageactive) {
                                 <li class="divider"></li>
                                 <li><a href="./pages/historiquelocation.php">Historique de mes locations</a></li>
                                 <li class="divider"></li>
+                                <li><a href="./pages/message.php">Mes messages</a></li>
+                                <li class="divider"></li>
                                 <li><a href="<?php echo $sep[1]; ?>deco.php">Déconnexion</a></li>
                             </ul>
                             <?php
