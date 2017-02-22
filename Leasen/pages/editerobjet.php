@@ -3,7 +3,7 @@ session_start();
 require('../class/Autoloader.php');
 Autoloader::register(1);
 ?>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8"/>
     <!--Import Google Icon Font-->
@@ -35,23 +35,22 @@ $res = $newobjet->find($objetInfos);
                 ?>
                 <label for="nom" class="col s6 offset-s3 grey-text text-darken-4">Nom du bien</label><br/>
                 <input type="text" id="nom" class="col s6 offset-s3 white grey-text text-darken-4" name="nom"
-                       class="col s12" value="<?php echo $v["nom_objet"]; ?>"/>
+                       value="<?php echo $v["nom_objet"]; ?>"/>
                 <label for="description" class="col s6 offset-s3 grey-text text-darken-4">Description du bien</label>
                 <br/>
                 <input type='text' id="description" class="col s6 offset-s3 white grey-text text-darken-4"
-                       name="description" class="col s12" value="<?php echo $v["description_objet"]; ?>"</textarea>
+                       name="description" value="<?php echo $v["description_objet"]; ?>"/>
                 <label for="prix" class="col s6 offset-s3 grey-text text-darken-4">Prix de la location à la
                     journée </label><br/>
                 <input type="number" id="prix" class="col s6 offset-s3 grey-text white text-darken-4" name="prix"
-                       class="col s12" min="0" value="<?php echo $v["prix"]; ?>"/>
-                <label for="prix" class="col s6 offset-s3 grey-text text-darken-4">Prix de la caution </label><br/>
+                       min="0" value="<?php echo $v["prix"]; ?>"/>
+                <label for="prix_caution" class="col s6 offset-s3 grey-text text-darken-4">Prix de la caution </label>
+                <br/>
                 <input type="number" id="prix_caution" class="col s6 offset-s3 white grey-text text-darken-4"
-                       name="prix_caution" class="col s12" min="0" value="<?php echo $v["prix_caution"]; ?>"/>
+                       name="prix_caution" min="0" value="<?php echo $v["prix_caution"]; ?>"/>
                 <input type="hidden" id="id_objet" class="col s6 offset-s3 white grey-text text-darken-4"
                        name="id_objet" value="<?php echo $v["id_objet"]; ?>"/>
                 <input type="submit" class=" col s6 offset-s3 deep-orange btn" value="Mettre à jour">
-
-
                 <?php
             }
             ?>
@@ -71,7 +70,7 @@ $res = $newobjet->find($objetInfos);
         ?>
     </form>
     </div>
- */?>
+ */ ?>
     <footer class="page-footer cyan darken-1">
         <div class="footer-copyright">
             <div class="container">

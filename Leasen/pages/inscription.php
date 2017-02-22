@@ -45,8 +45,10 @@ navbarcall(0, 0);
                    id="user_email">
             <label for="numerotel" class="col s6 offset-s3 grey-text text-darken-4">Numero de telephone:</label>
             <input type="tel" class=" col s6 offset-s3 white grey-text text-darken-4" name="numerotel" id="numerotel">
-            <label for="telchoix" class="col s6 offset-s3 grey-text text-darken-4"> Partager votre numéro ? </label><br/>
-            <select name="telchoix" id="telchoix" class="col s6 offset-s3 white grey-text text-darken-4 browser-default">
+            <label for="telchoix" class="col s6 offset-s3 grey-text text-darken-4"> Partager votre numéro
+                ? </label><br/>
+            <select name="telchoix" id="telchoix"
+                    class="col s6 offset-s3 white grey-text text-darken-4 browser-default">
                 <option value="1" selected>Oui</option>
                 <option value="0">Non</option>
             </select>

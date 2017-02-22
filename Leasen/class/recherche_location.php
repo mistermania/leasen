@@ -15,7 +15,7 @@ class recherche_location extends Model
      * chaine
      * date_debut
      * duree (en jour)
-     * @return mixed
+     * @return array
      */
     public function effectueRecherche($info)
     {     

@@ -100,6 +100,15 @@ class Objet extends Model
                 return 3;
             }
         }
+        if (isset($info['o_est_affiche'])) {
+            if ($info['o_est_affiche']) {
+                $info['o_est_affiche'] = 'TRUE';
+            } else {
+                $info['o_est_affiche'] = 'FALSE';
+            }
+        } else {
+            $info['o_est_affiche'] = 'TRUE';
+        }
         return parent::update($info, $id);
     }
 }

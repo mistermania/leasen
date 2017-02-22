@@ -111,7 +111,7 @@ abstract class  Model
      * sinon ajout de la conditon après le where
      * recherche dans la table/vue portant le nom de l'objets
      * @param String $order strin contenant les critère concernant l'ordre des resultats ex : id ASC,date DESC
-     * @return mixed: tableau contenant les information des utilisateurs repondant aux condition
+     * @return array tableau contenant les information des utilisateurs repondant aux condition
      */
 
     public function find($cond, $order = "")
