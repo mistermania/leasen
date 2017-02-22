@@ -38,14 +38,27 @@ function navbarcall($connexion, $pageactive) {
                         foreach ($page as $k => $v) {
                             if ($pageactive == $v[1]) {
                                 //affichage pour la page active
+
                                 echo '<li class="active  "><a href="' . $sep[0] . $v[0] . '" class="grey-text text-darken-3">' . $k . '</a></li> ';
                             } else {
                                 //affichage pour les autres pages
                                 echo ' <li><a href="' . $sep[0] . $v[0] . '" class="<white-text">' . $k . '</a></li>';
                             }
                         }
-                        if ($pageactive == 5) {
-                            echo '<li><a href="' . $sep[0] . 'moncompte.php" class="grey-text text-darken-3"> Mon compte</a></li>';
+                        if ($pageactive == 5    ) { ?>
+                            <li><a class="grey-text text-darken-3 dropdown-button" href="#" data-activates="dropdown1">Mon compte <i class="material-icons right">arrow_drop_down</i></a></li>
+
+                            <!--menu déroulant dans l'onglet moncompte -->
+                            <ul id="dropdown1" class="dropdown-content">
+                                <?php echo '<li><a href="'.$sep[0].'moncompte.php">Modifier mes informations</a></li>'; ?>
+                                <li class="divider"></li>
+                                <?php echo '<li><a href="'.$sep[0].'historiquelocation.php">Historique de mes locations</a></li>'; ?>
+                                <li class="divider"></li>
+                                <?php echo '<li><a href="'.$sep[0].'message.php">Mes messages</a></li>'; ?>
+                                <li class="divider"></li>
+                                <li><a href="<?php echo $sep[1]; ?>deco.php">Déconnexion</a></li>
+                            </ul>
+                            <?php
                         } else {
                             ?>
 
@@ -54,9 +67,11 @@ function navbarcall($connexion, $pageactive) {
 
                             <!--menu déroulant dans l'onglet moncompte -->
                             <ul id="dropdown1" class="dropdown-content">
-                                <li><a href="./pages/moncompte.php">Modifier mes informations</a></li>
+                                <?php echo '<li><a href="'.$sep[0].'moncompte.php">Modifier mes informations</a></li>'; ?>
                                 <li class="divider"></li>
-                                <li><a href="./pages/historiquelocation.php">Historique de mes locations</a></li>
+                                <?php echo '<li><a href="'.$sep[0].'historiquelocation.php">Historique de mes locations</a></li>'; ?>
+                                <li class="divider"></li>
+                                <?php echo '<li><a href="'.$sep[0].'message.php">Mes messages</a></li>'; ?>
                                 <li class="divider"></li>
                                 <li><a href="<?php echo $sep[1]; ?>deco.php">Déconnexion</a></li>
                             </ul>

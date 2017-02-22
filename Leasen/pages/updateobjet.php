@@ -4,7 +4,7 @@ session_start();
 require('../class/Autoloader.php');
 Autoloader::register(1);
 include "../fonctions/fnavbar.php";
-navbarcall(1, 7);
+navbarcall(1, 4);
 
 
 $newobjet = new Objet();
