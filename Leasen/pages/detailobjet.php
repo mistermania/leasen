@@ -60,7 +60,7 @@ $res = $newobjet->find($objetInfos);
                     location </label>
                 <input type="number" class="col s6 offset-s3 white green-text text-darken-4" id="duree"
                        name="duree" min="0" placeholder="Durée de la location"/>
-                <input type="submit" class="deep-orange btn col s6 offset-s3"
+                <input type="submit" class="deep-orange btn co  l s6 offset-s3"
                        value="Envoyer demmande de location">
             </form>
             <?php
@@ -77,37 +77,42 @@ $res = $newobjet->find($objetInfos);
                     <input type="date" id="date_debut" name="date_debut"
                            value="<?php echo $infosLoc['date_debut']; ?>"/>
                 </div>
-                <input type="submit" value="Envoyer demmande de location">
+                <input type="submit" class="deep-orange btn co  l s6 offset-s3" value="Envoyer demmande de location">
             </form>
             <?php
         }
-        $test = new Question();
+        $recherche = new recherche_question();
         $infoQuestion['id_objet'] = $infosLoc['id_objet'];
-        $res = $test->find($infoQuestion);
-        foreach ($res as $k => $v) {
-            echo "<div>" . $v["contenu_question"] . "</div>";
-        }
+        $res = $recherche->effectueRecherche($infoQuestion);
         ?>
-        <form method="post" class="col s6 offset-s3" action="../fonctions/posterQuestion.php">
-            <label for="question"></label>
-            <textarea class="col s6 offset-s3 white green-text text-darken-4" id="question"
-                      name="question"> </textarea>
-            <div id="hide" style="display:none">
-                <label for="id_objet"></label>
-                <input type="number" id="id_objet" name="id_objet"
-                       value="<?php echo $infosLoc["id_objet"]; ?>"/>
-            </div>
-            <input type="submit" value="Poster votre question" class="deep-orange btn col s6 offset-s3">
-        </form>
+        <ul class="collection">
+            <?php
+            foreach ($res as $k => $v) {
+                echo "<li class=\"collection-item avatar\">
+            <span class=\"title\">".$v["nom"]." ".$v["prenom"]."</span>
+<p>" . $v["contenu_question"] . "</p></li>";
+            }
+            ?>
+            <form method="post" class="col s6 offset-s3" action="../fonctions/posterQuestion.php">
+                <label for="question"></label>
+                <textarea class="col s6 offset-s3 white green-text text-darken-4" id="question"
+                          name="question"> </textarea>
+                <div id="hide" style="display:none">
+                    <label for="id_objet"></label>
+                    <input type="number" id="id_objet" name="id_objet"
+                           value="<?php echo $infosLoc["id_objet"]; ?>"/>
+                </div>
+                <input type="submit" value="Poster votre question" class="deep-orange btn col s6 offset-s3">
+            </form>
+
     </div>
+
+    <!--//footer-->
+    <?php
+    include "../fonctions/footer.php";
+    footer();
+    ?>
 </div>
-<footer class="page-footer cyan darken-1">
-    <div class="footer-copyright">
-        <div class="container">
-            © 2017 LEASEN Tous droits réservés.
-        </div>
-    </div>
-</footer>
 </body>
 <?php
 ?>
