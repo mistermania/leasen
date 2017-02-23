@@ -43,7 +43,7 @@ echo "id utilisateur : ",$infosLoc['id_utilisateur'], "<br>" ;
 echo "date debut : ", $infosLoc['date_debut'], "<br>" ;
 echo "date fin : ",$infosLoc['date_fin'],"<br>" ;*/
 include "../fonctions/fnavbar.php";
-navbarcall(0, 3);
+navbarcall(1, 3);
 Autoloader::register(1);
 $newLoc = new Location();
 $res = $newLoc->insert($infosLoc);
@@ -62,7 +62,7 @@ $res = $newLoc->insert($infosLoc);
                     } else {
                         echo "<h5 class=\"center-align\">Une erreur est survenu. Veuillez nous excusez. Merci de bien vouloir ressayer ulterieurement </h5></br> ";
                     }
-                    echo "<h5 class=\"center-align\">Vous allez être redirigez dans 5 secondes</h5></br>" ;
+                    echo "<h5 class=\"center-align\">Vous allez être redirigé dans 5 secondes</h5></br>" ;
                     ?>
                 </span>
         <?php
@@ -90,12 +90,10 @@ $res = $newLoc->insert($infosLoc);
                </div> -->
         </div>
     </div>
-    <div class="footer-copyright">
-        <div class="container">
-            © 2017 LEASEN Tous droits réservés.
-
-        </div>
-    </div>
+    <?php
+    include "../fonctions/footer.php";
+    footer();
+    ?>
 </footer>
 </body>
 </html>
