@@ -98,9 +98,8 @@ Autoloader::register(1);
             </div>
         </section>
         <br>
-
     </div>
-    </section><br>
+    <br>
     <footer class="page-footer cyan darken-1">
 
         <div class="footer-copyright">
