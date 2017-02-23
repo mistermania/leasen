@@ -43,7 +43,7 @@ echo "id utilisateur : ",$infosLoc['id_utilisateur'], "<br>" ;
 echo "date debut : ", $infosLoc['date_debut'], "<br>" ;
 echo "date fin : ",$infosLoc['date_fin'],"<br>" ;*/
 include "../fonctions/fnavbar.php";
-navbarcall(0, 3);
+navbarcall(1, 3);
 Autoloader::register(1);
 $newLoc = new Location();
 $res = $newLoc->insert($infosLoc);
