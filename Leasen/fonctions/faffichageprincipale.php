@@ -13,15 +13,13 @@ function affichageprincipale($connexion)
         <div class="grey lighten-3">
         <div class="row">
             <div>
-                <br>
-                <span class="grey-text text-darken-4 "><h5 class="center-align">Annonces les plus récentes</h5> </span>
+                <br><h5 class="center-align grey-text text-darken-4">Annonces les plus récentes</h5>
             </div>
         </div>
         <br>
-
         <?php
         $info = array();
-        $info['id_utilisateur'] = $_SESSION['IDUSER'];
+        $info['id_utilisateur'] = isset($_SESSION['IDUSER'])?$_SESSION['IDUSER']:0;
         $test = new Recherche();
         $res = $test->effectueRecherche($info);
         foreach ($res as $k => $v) {
@@ -50,10 +48,9 @@ function affichageprincipale($connexion)
         <?php
         } // fin du foreach
         ?>
-
         <div class="row">
             <div class="col s4 offset-s4">
-                <a href="./pages/listeObjets.php" class="waves-effect waves-light deep-orange white-text btn">Explorer
+                <a href="../pages/listeObjets.php" class="waves-effect waves-light deep-orange white-text btn">Explorer
                     toutes les annonces<i class="material-icons right">add</i></a>
             </div>
         </div>

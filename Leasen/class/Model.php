@@ -110,11 +110,12 @@ abstract class  Model
      * si $cond est un tableau, ajout a la requete de condtion where clé=valeur pour chaque couple clé valeur
      * sinon ajout de la conditon après le where
      * recherche dans la table/vue portant le nom de l'objets
-     * @param String $order strin contenant les critère concernant l'ordre des resultats ex : id ASC,date DESC
+     * @param String $order strin contenant les critère concernant l'ordre des resultats ex : id ASC,date DESC, mettre "" si aucun ordre n'est necessaire
+     * @param int $limit nombre limite de resultat
      * @return array tableau contenant les information des utilisateurs repondant aux condition
      */
 
-    public function find($cond, $order = "")
+    public function find($cond, $order = "", $limit =0)
     {
         $sql = 'SELECT * FROM ' . get_class($this);
 
@@ -137,6 +138,10 @@ abstract class  Model
         // echo $sql.'<br>';
         if ($order != "") {
             $sql .= " ORDER BY " . $order;
+        }
+        if($limit>0)
+        {
+            $sql.="LIMIT ".$limit;
         }
         $req = $this->pdo->prepare($sql);
         try {

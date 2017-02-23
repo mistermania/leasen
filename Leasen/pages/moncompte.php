@@ -28,11 +28,9 @@ $annonce = new Objet();
 $infoUser['o_est_affiche'] = true;
 $res = $annonce->find($infoUser);
 ?>
-
 <div class="grey lighten-3">
     <div class="row ">
         <br/><h5 class="center-align"> Mes annonces </h5> <br>
-
         <table class="centered bordered responsive-table white grey-text text-darken-4">
             <thead>
             <tr>
@@ -42,61 +40,42 @@ $res = $annonce->find($infoUser);
                 <th>Prix</th>
                 <th> Modifier l'annonce</th>
                 <th> Supprimer</th>
-
             </tr>
             </thead>
-
             <tbody>
-
-
             <?php
-
-
             foreach ($res as $k => $v) {
                 if ($v['o_est_affiche'] == true) {
-
                     ?>
-
                     <tr>
                         <td> <?php echo $v["nom_objet"]; ?> </td>
                         <td> <?php echo $v["description_objet"]; ?> </td>
                         <td> <?php echo $v["prix_caution"]; ?> </td>
                         <td> <?php echo $v["prix"]; ?> </td>
                         <td>
-
                             <form method="post" action="editerobjet.php">
                                 <input type="hidden" id="id_objet" name="id_objet"
                                        value="<?php echo $v["id_objet"]; ?>"/>
                                 <input type="submit" value="Modifier" class="btn deep-orange darken-1 white-text">
-
-
                             </form>
                         </td>
                         <td>
-
                             <form method="post" action="supprimerobjet.php">
                                 <input type="hidden" id="id_objet" name="id_objet"
                                        value="<?php echo $v["id_objet"]; ?>"/>
                                 <input type="submit" value="Supprimer" class="btn deep-orange darken-1 white-text">
-
-
                             </form>
                         </td>
-
                     </tr>
-
-
                     <?php
                 }
             }
-
             ?>
             </tbody>
         </table>
     </div>
     <br>
     <footer class="page-footer cyan darken-1">
-
         <div class="footer-copyright">
             <div class="container">
                 © 2017 LEASEN Tous droits réservés.
@@ -104,7 +83,5 @@ $res = $annonce->find($infoUser);
         </div>
     </footer>
 </div>
-
 </body>
-
 </html>

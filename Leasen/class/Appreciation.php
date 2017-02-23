@@ -45,10 +45,14 @@ class Appreciation extends model
                 return 4;
             }
         }
-
         return parent::insert($info);
     }
 
+    /**
+     * @param array $info
+     * @param int $id
+     * @return int
+     */
     public function update($info, $id)
     {
         return parent::update($info, $id);
