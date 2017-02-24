@@ -1,10 +1,8 @@
 function request() {
-
     var categorie = document.getElementById('categorie').value;
     var date = document.getElementById('date').value;
     var recherche = document.getElementById('recherche').value;
     var duree = document.getElementById('duree').value;
-
     if (recherche.length > 2) { // si la chaine est superieur a 2
         var xhr = new getXMLHttpRequest();
         console.log('haha');

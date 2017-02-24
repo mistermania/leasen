@@ -170,5 +170,3 @@ class Location extends Model
         }
     }
 }
-
-

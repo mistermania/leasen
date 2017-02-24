@@ -171,6 +171,17 @@ utilisateur.nom
 FROM objet INNER JOIN location ON objet.id_objet=location.id_objet
 INNER JOIN utilisateur ON objet.id_utilisateur=utilisateur.id_utilisateur;
 
+CREATE VIEW recherche_question
+AS SELECT id_question,
+	contenu_question ,
+	date_question ,
+	utilisateur.id_utilisateur ,
+	id_objet ,
+	utilisateur.nom, utilisateur.prenom
+FROM question INNER JOIN utilisateur ON question.id_utilisateur= utilisateur.id_utilisateur;
+
+
+
 INSERT INTO utilisateur (id_utilisateur) VALUES (1);
 INSERT INTO location (id_location) VALUES (1);
 INSERT INTO type(id_type) VALUES (1);
