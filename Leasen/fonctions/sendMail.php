@@ -9,6 +9,12 @@
     $contenu_txt = "Salut à tous, voici un e-mail envoyé par un script PHP.";
     $contenu_html = "<html><head></head><body><b>Salut à tous</b>, voici un e-mail envoyé par un <i>script PHP</i>.</body></html>";
 */
+/**
+ * @param $mail adresse mail du destinataire
+ * @param $sujet sujet du mail
+ * @param $contenu contenu du mail
+ * @param $mailContact adresse mail a laquelle l'utilisateur doit repondre
+ */
 function sendMail($mail, $sujet ,$contenu, $mailContact)
 {
     if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mail)) // On filtre les serveurs qui rencontrent des bogues.

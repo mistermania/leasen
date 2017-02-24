@@ -33,5 +33,6 @@ include "fonctions/faffichageprincipale.php";
 isset($_SESSION['USER']) ? navbarcall(1, 1) : navbarcall(0, 1);
 affichageprincipale(1);
 ?>
+
 </body>
 </html>

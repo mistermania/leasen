@@ -15,11 +15,13 @@ class recherche_location extends Model
      * chaine
      * date_debut
      * duree (en jour)
+     * @param $limit
+     * nombre d'elements a affiché
      * @return array
      */
-    public function effectueRecherche($info)
+    public function effectueRecherche($info, $limit = 50)
     {     
         $requete = 'id_utilisateur = '.$info['id_utilisateur'].'AND statut_location = 2';
-        return $this->find($requete, ' date_debut DESC');
+        return $this->find($requete,' date_debut DESC', $limit);
     }
 }
