@@ -115,7 +115,7 @@ abstract class  Model
      * @return array tableau contenant les information des utilisateurs repondant aux condition
      */
 
-    public function find($cond, $order = "", $limit =0)
+    public function find($cond, $order = "", $limit = 0)
     {
         $sql = 'SELECT * FROM ' . get_class($this);
 
@@ -141,9 +141,10 @@ abstract class  Model
         }
         if($limit>0)
         {
-            $sql.="LIMIT ".$limit;
+            $sql.=" LIMIT ".$limit;
         }
         $req = $this->pdo->prepare($sql);
+        //echo $sql.'<br>';
         try {
             $req->execute();
         } catch (PDOException $e) {
