@@ -167,7 +167,7 @@ FROM location INNER JOIN objet ON location.id_objet=objet.id_objet;
 CREATE VIEW recherche_message 
 AS SELECT objet.id_objet, objet.id_utilisateur, objet.nom_objet, 
 location.statut_location, location.date_debut, location.date_fin, location.id_utilisateur AS id_loueur,
-utilisateur.nom
+utilisateur.nom,location.id_location
 FROM objet INNER JOIN location ON objet.id_objet=location.id_objet
 INNER JOIN utilisateur ON objet.id_utilisateur=utilisateur.id_utilisateur;
 

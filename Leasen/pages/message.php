@@ -62,11 +62,11 @@ $res = $annonce->effectueRecherche($infoUser);
                     <td> <?php echo $v["nom"]; ?> </td>
                     <td>
                         <form method="post" action="confirmer_location.php">
-                            <input type="hidden" id="id_objet" name="id_objet" value="<?php echo $v["id_objet"]; ?>"/>
+                            <input type="hidden" id="id_loc" name="id_loc" value="<?php echo $v["id_location"]; ?>"/>
                             <input type="submit" class=" col s3 offset-s3 deep-orange btn" value="Oui">
                         </form>
                         <form method="post" action="refuser_location.php">
-                            <input type="hidden" id="id_objet" name="id_objet" value="<?php echo $v["id_objet"]; ?>"/>
+                            <input type="hidden" id="id_loc" name="id_loc" value="<?php echo $v["id_location"]; ?>"/>
                             <input type="submit" class=" col s3 offset-s1 deep-orange btn" value="Non">
                         </form>
                     </td>

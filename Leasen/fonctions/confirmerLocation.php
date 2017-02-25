@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['USER']) || !isset($_SESSION['IDUSER'])) {
+    header('Location:../index.php');
+}
+require('../class/Autoloader.php');
+?>
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -18,12 +25,6 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="../js/materialize.min.js"></script>
 <?php
-session_start();
-if (!isset($_SESSION['USER']) || !isset($_SESSION['IDUSER'])) {
-    header('Location:../index.php');
-}
-require('../class/Autoloader.php');
-
 $infosLoc['id_objet'] = filter_input(INPUT_POST, 'id_objet');
 $infosLoc['id_utilisateur'] = $_SESSION['IDUSER'];
 $infosLoc['date_debut'] = filter_input(INPUT_POST, 'date_debut');
