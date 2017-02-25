@@ -51,7 +51,7 @@ $res = $newLoc->insert($infosLoc);
 ?>
 <div class="grey lighten-3">
     <div class="row ">
-                <span class="grey-text text-darken-4 "></br>
+                <span class="grey-text text-darken-4 "><br>
                     <?php
                     if ($res == 0) {
                         echo "<h5 class=\"center - align\">Votre demande a bien été transmise !</h5></br>";
