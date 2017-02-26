@@ -98,11 +98,11 @@ class Location extends Model
             }
         }
         //recuperation des informations précedente
-        $precedent = $this->find('id_location=' . $id);
+        $precedent = ($this->find('id_location=' . $id));
         foreach (Location::champ as $k) {
             if (!isset($info[$k])) {
                 //si aucune information n'a été transmise, on récupère la précédente
-                $info[$k] = $precedent[$k];
+                $info[$k] = $precedent[0][$k];
             }
         }
         //verifie si l'id de l'objet est present dans la base  de donnée
@@ -114,7 +114,7 @@ class Location extends Model
             return 2;
         }
         //mise des dates sous une formes standard afin de les comparer
-        if ($info['date_debut'] != $precedent['date_debut']) {
+        if ($info['date_debut'] != $precedent[0]['date_debut']) {
             $now = new dateTime(date('Y-m-d'));
             $debut = new DateTime($info['date_debut']);
             //verifie que le debut soit dans le futur
@@ -131,7 +131,7 @@ class Location extends Model
         if ($a == 2) {
             return 6;
         }
-        if ($info['statut_location'] > 4 || $info['statut_location'] < 0 || !is_int($info['statut_location'])) {
+        if ($info['statut_location'] > 4 || $info['statut_location'] < 0 ) {
             return 8;
         }
         return parent::update($info, $id);

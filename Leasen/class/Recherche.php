@@ -15,10 +15,10 @@ class Recherche extends Model
      * chaine
      * date_debut
      * duree (en jour)
+     * @param $limit
      * @return mixed
-     * @return int 2 si le debut de la location demandé est dans le passé.
      */
-    public function effectueRecherche($info)
+    public function effectueRecherche($info,$limit=0)
     {
         //la requete ne concerne que les objet qui sont affichée
         $requete = 'NOT(o_est_affiche=FALSE)';
@@ -51,6 +51,6 @@ class Recherche extends Model
          (date_debut>=\'' . $info['date_debut'] . '\' AND date_fin <=\'' . $info['date_fin'] . '\'))))';
             }
         }
-        return $this->find($requete);
+        return $this->find($requete,"",$limit);
     }
 }
