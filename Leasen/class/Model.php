@@ -144,7 +144,7 @@ abstract class  Model
             $sql.=" LIMIT ".$limit;
         }
         $req = $this->pdo->prepare($sql);
-        //echo $sql.'<br>';
+        echo $sql.'<br>';
         try {
             $req->execute();
         } catch (PDOException $e) {
@@ -180,7 +180,6 @@ abstract class  Model
         //on enleve la dernière virgule
         $sql = substr($sql, 0, -1);
         $sql .= ' WHERE id_' . get_class($this) . ' = ' . $id;
-        echo $sql;
         $req = $this->pdo->prepare($sql);
         try {
             $req->execute();

@@ -10,10 +10,10 @@
     $contenu_html = "<html><head></head><body><b>Salut à tous</b>, voici un e-mail envoyé par un <i>script PHP</i>.</body></html>";
 */
 /**
- * @param $mail adresse mail du destinataire
- * @param $sujet sujet du mail
- * @param $contenu contenu du mail
- * @param $mailContact adresse mail a laquelle l'utilisateur doit repondre
+ * @param String $mail adresse mail du destinataire
+ * @param String $sujet sujet du mail
+ * @param String $contenu contenu du mail
+ * @param String $mailContact adresse mail a laquelle l'utilisateur doit repondre
  */
 function sendMail($mail, $sujet ,$contenu, $mailContact)
 {
@@ -50,4 +50,3 @@ function sendMail($mail, $sujet ,$contenu, $mailContact)
     mail($mail, $sujet, $message, $header);
 //==========
 }
-?>
