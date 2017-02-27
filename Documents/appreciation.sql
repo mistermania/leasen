@@ -1,0 +1,1 @@
+CREATE VIEW appreciations_v as SELECT location.id_utilisateur as id_loueur,objet.id_utilisateur as id_preteur,appreciation.notes,appreciation.commentaire,appreciation.a_est_affiche,appreciation.statut_appreciation,objet.id_objet FROM appreciation LEFT JOIN location on appreciation.id_location=location.id_location  LEFT JOIN objet on location.id_objet=objet.id_objet;

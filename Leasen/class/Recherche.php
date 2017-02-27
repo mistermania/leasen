@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Created by PhpStorm.
  * User: billaud
@@ -8,7 +7,6 @@
  */
 class Recherche extends Model
 {
-
     /**
      * Recherche constructor.
      * @param $info
@@ -17,35 +15,42 @@ class Recherche extends Model
      * chaine
      * date_debut
      * duree (en jour)
+     * @param $limit
+     * @return mixed
      */
-    public function effectueRecherche($info)
+    public function effectueRecherche($info,$limit=0)
     {
-        //ajout du 1=1 pour simplifier l'ajout des AND, car aucune des conditions auouté ci dessous ne seras la première
-        $requete=' 1=1 ';
-        if(isset($info['id_type']))
-        {
-            if($info['id_type'] != 0) {
+        //la requete ne concerne que les objet qui sont affichée
+        $requete = 'NOT(o_est_affiche=FALSE)';
+        if (isset($info['id_type'])) {
+            if ($info['id_type'] != 0) {
                 //l'egalite avec le type
-                $requete .= ' AND id_type=' . $info['id_type'] . ' ';
+                $requete .= ' AND id_type=' . $this->pdo->quote($info['id_type']) . ' ';
             }
-            }
-        if(isset($info['chaine']))
-        {
+        }
+        if (isset($info['chaine'])) {
             //verifie que la chaine souhaité est contenu dans le nom de l'objet
-            $requete.= 'AND nom_objet ILIKE \'%'.$info['chaine'].'%\'';
+            $requete .= 'AND nom_objet ILIKE' . $this->pdo->quote('%' . $info['chaine'] . '%');
         }
         //verifie la disponibilité de l'objet au dates renseignées
-        if(isset($info['date_debut']) AND isset($info['duree'])) {
+        if (isset($info['date_debut']) AND isset($info['duree'])) {
             if (!empty($info['date_debut']) AND !empty($info['duree'])) {//creation d'un ojet datetime pour permettre l'ajout de la duree
                 $date = new DateTime($info['date_debut']);
+                $now = new dateTime(date('Y-m-d'));
+                if($now>$date)
+                {
+                    return 2;
+                }
                 // duréee transformé en un objet date interval ( durée en jour
                 $duree = new DateInterval('P' . $info['duree'] . 'D');
-                $info['date_fin'] = $date->add($duree)->format('Y-m-d H:i:s');
-                $requete .= ' AND (NOT ((date_debut<=\'' . $info['date_debut'] . '\' AND date_fin >=\'' . $info['date_debut'] . '\') OR
+                $info['date_fin'] = $date->add($duree)->format('Y-m-d');
+                $requete .= ' AND NOT( id_objet IN(SELECT DISTINCT id_objet FROM location WHERE
+    	    statut_location=2
+    	    AND ((date_debut<=\'' . $info['date_debut'] . '\' AND date_fin >=\'' . $info['date_debut'] . '\') OR
          (date_debut<=\'' . $info['date_fin'] . '\' AND date_fin >=\'' . $info['date_fin'] . '\') OR
-         (date_debut>=\'' . $info['date_debut'] . '\' AND date_fin <=\'' . $info['date_fin'] . '\')) OR (date_debut IS NULL OR date_fin IS NULL))';
+         (date_debut>=\'' . $info['date_debut'] . '\' AND date_fin <=\'' . $info['date_fin'] . '\'))))';
             }
         }
-        return $this->find($requete);
+        return $this->find($requete,"",$limit);
     }
 }
