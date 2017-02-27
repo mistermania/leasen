@@ -111,7 +111,7 @@ class Utilisateur extends Model
             if (!$this->estValideMail($info['e_mail'])) {
                 return 3;
             }
-            $cond = ' e_mail= \'' . $info['e_mail'] . '\' AND id_utilisateur !=' . $id . ';';
+            $cond = ' e_mail= ' .$this->pdo->quote($info['e_mail']). ' AND id_utilisateur !='.$this->pdo->quote($id);
             $mail = $this->find($cond);
             //si l'email est present dans la base de donnée
             if (!empty($mail)) {
@@ -122,7 +122,7 @@ class Utilisateur extends Model
             if (!$this->estValideTelephone($info['telephone'])) {
                 return 2;
             }
-            $cond_tel = ' telephone=\'' . $info['telephone'] . '\' AND id_utilisateur !=' . $id . ';';
+            $cond_tel = ' telephone=' . $this->pdo->quote($info['telephone']). ' AND id_utilisateur !='.$this->pdo->quote($id);
             if (!empty($this->find($cond_tel))) {
                 return 6;
             }
@@ -132,13 +132,6 @@ class Utilisateur extends Model
                 $info['partager_telephone'] = 'TRUE';
             } else {
                 $info['partager_telephone'] = 'FALSE';
-            }
-        }
-        if (isset($info['est_ban'])) {
-            if ($info['est_ban']) {
-                $info['est_ban'] = 'TRUE';
-            } else {
-                $info['est_ban'] = 'FALSE';
             }
         }
         return parent::update($info, $id);
