@@ -44,3 +44,34 @@ if ($test == 0) {
         header('Location:../index.php');
     }
 }
+
+
+
+
+
+// Mail
+/*
+$objet = 'Bienvenue sur Leasen' ;
+$contenu = '
+<html>
+<head>
+   <title>Voici vos données...</title>
+</head>
+<body>
+   <p>Bonjour Mr/Mme '.$nom.'</p>
+   <p>Vous pouvez trouvez ci-joint vos informations de connexion, suite au
+   formulaire rempli lors de votre inscription: </br>
+            Email: '.$e_mail.' </br>
+            Mot de passe: '.$mot_de_passe.' </br>
+            </p>
+</body>
+</html>';
+
+$entetes =
+'Content-type: text/html; charset=utf-8' . "\r\n" .
+'From: email@domain.tld' . "\r\n" .
+'Reply-To: email@domain.tld' . "\r\n" .
+'X-Mailer: PHP/' . phpversion();
+                         
+//Envoi du mail
+mail($mail, $objet, $contenu, $entetes);*/ 
