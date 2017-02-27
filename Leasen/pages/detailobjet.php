@@ -19,11 +19,12 @@ Autoloader::register(1);
     <link href="../css/paccueil.css" rel="stylesheet" type="text/css"/>
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="../css/footerb.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <?php
 include "../fonctions/fnavbar.php";
-navbarcall(1, 0);
+navbarcall(1, 2);
 $newobjet = new Objet();
 $objetInfos['id_objet'] = filter_input(INPUT_POST, 'id_objet');
 //echo $objetInfos['id_objet'];
@@ -107,11 +108,10 @@ $res = $newobjet->find($objetInfos);
 
     </div>
 
-    <!--//footer-->
-    <?php
+ <?php
     include "../fonctions/footer.php";
     footer();
-    ?>
+    ?>   
 </div>
 </body>
 <?php
