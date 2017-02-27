@@ -34,6 +34,7 @@ if (!empty($test)) {
 } else {
     echo 'Mauvaise combinaison, merci de réessayer.';
 }
+include "../fonctions/footer.php";
 ?>
 </body>
 </html>

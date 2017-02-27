@@ -144,7 +144,6 @@ abstract class  Model
             $sql.=" LIMIT ".$limit;
         }
         $req = $this->pdo->prepare($sql);
-        echo $sql.'<br>';
         try {
             $req->execute();
         } catch (PDOException $e) {

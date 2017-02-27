@@ -12,6 +12,7 @@ session_start();
     <link href="../css/paccueil.css" rel="stylesheet" type="text/css"/>
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="../css/footerb.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <!--Import jQuery before materialize.js-->
@@ -99,24 +100,9 @@ Autoloader::register(1);
         </section>
         <br>
     </div>
-    <br>
-    <footer class="page-footer cyan darken-1">
-
-        <div class="footer-copyright">
-            <div class="container">
-                © 2017 LEASEN Tous droits réservés.
-
-            </div>
-
-            <footer class="page-footer cyan darken-1">
-                <div class="footer-copyright">
-                    <div class="container">
-                        © 2017 LEASEN Tous droits réservés.
-
-                    </div>
-                </div>
-            </footer>
-        </div>
 </article>
+<?php
+include "../fonctions/footer.php";
+?>
 </body>
 </html>
