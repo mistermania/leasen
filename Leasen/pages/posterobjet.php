@@ -35,7 +35,7 @@ $res = $ty->find($req);
                 <br>
             </div>
         </div>
-        <form method="post" class="col s6 offset-s3  " action="../fonctions/newobjet.php">
+        <form method="post" class="col s6 offset-s3  " action="../fonctions/newobjet.php" enctype="multipart/form-data">
             <label for="nom" class="col s6 offset-s3 grey-text text-darken-4">Titre de l'annonce</label><br/>
             <input type="text" id="nom" name="nom" class="col s6 offset-s3 white"
                    placeholder="Ex: Appareil à Raclette"/>
@@ -53,9 +53,10 @@ $res = $ty->find($req);
             <div class=" col s6 offset-s3 file-field input-field">
                 <div class="deep-orange btn">
                     <span> Ajouter une image</span>
-                    <input type="file" name="image" id="image">
+                    <input id="image1"  name="image" type="file"  />
                 </div>
                 <div class="file-path-wrapper">
+                    <label for="image"></label>
                     <input class="file-path validate" type="text" name="image" id="image">
                 </div>
             </div>
