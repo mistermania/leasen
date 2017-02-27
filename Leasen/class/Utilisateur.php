@@ -94,17 +94,17 @@ class Utilisateur extends Model
      */
     public function update($info, $id)
     {
-        foreach ($info as $k => $v) {
-            if (!in_array($k, Utilisateur::champ)) {
-                return 1;
-            }
-        }
         if (isset($info['mot_de_passe'])) {
             if (!$this->estValideMotDePasse($info['mot_de_passe'])) {
                 return 4;
             }
             $info['hash_mot_de_passe'] = password_hash($info['mot_de_passe'], PASSWORD_DEFAULT);
             unset($info['mot_de_passe']);
+        }
+        foreach ($info as $k => $v) {
+            if (!in_array($k, Utilisateur::champ)) {
+                return 1;
+            }
         }
         if (isset($info['e_mail'])) {
             if (!$this->estValideMail($info['e_mail'])) {
