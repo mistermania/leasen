@@ -30,7 +30,6 @@ class Utilisateur extends Model
         }
         if (isset($info['telephone'])) {
             if (!$this->estValideTelephone($info['telephone'])) {
-                echo 'numero de merde';
                 return 2;
             }
             $cond_tel = array('telephone' => $info['telephone']);

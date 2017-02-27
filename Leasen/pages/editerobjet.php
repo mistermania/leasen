@@ -59,22 +59,5 @@ $res = $newobjet->find($objetInfos);
     </div>
     <?php
     include "../fonctions/footer.php";
-    footer();
     ?> 
 </div>
-    <?php /*
-    <div class="row ">
-    <form method="post" class="col s6 offset-s3" action="./supprimerobjet.php">
-        <?php
-        foreach ($res as $k => $v) {
-            ?>
-            <input type="hidden" id="id_objet" class="col s6 offset-s3 white grey-text text-darken-4" name="id_objet"
-                   value="<?php echo $v["id_objet"]; ?>"/>
-            <input type="submit" class=" col s6 offset s3 deep-orange btn" value="Supprimer">
-            <?php
-        }
-        ?>
-    </form>
-    </div>
- */ ?>
-    

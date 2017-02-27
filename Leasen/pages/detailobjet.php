@@ -90,7 +90,7 @@ $res = $newobjet->find($objetInfos);
             <?php
             foreach ($res as $k => $v) {
                 echo "<li class=\"collection-item avatar\">
-            <span class=\"title\">".$v["nom"]." ".$v["prenom"]."</span>
+            <span class=\"title\">" . $v["nom"] . " " . $v["prenom"] . "</span>
 <p>" . $v["contenu_question"] . "</p></li>";
             }
             ?>
@@ -107,12 +107,10 @@ $res = $newobjet->find($objetInfos);
             </form>
 
     </div>
-
- <?php
-    include "../fonctions/footer.php";
-    footer();
-    ?>   
 </div>
+<?php
+include "../fonctions/footer.php";
+?>
 </body>
 <?php
 ?>

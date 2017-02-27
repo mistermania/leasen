@@ -25,10 +25,7 @@ and open the template in the editor.
 <?php
 include "../fonctions/accueil.php";
 navbaraccueil(0);
+include "../fonctions/footer.php";
 ?>
 </body>
-<?php
-include"../fonctions/footer.php";
-footer();
-?>
 </html>

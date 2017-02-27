@@ -21,7 +21,7 @@ function affichageprincipale($connexion)
         $info = array();
         $info['id_utilisateur'] = isset($_SESSION['IDUSER'])?$_SESSION['IDUSER']:0;
         $test = new Recherche();
-        $res = $test->effectueRecherche($info,4);
+        $res = $test->effectueRecherche($info,3);
         foreach ($res as $k => $v) {
         ?>
         <div class="row">

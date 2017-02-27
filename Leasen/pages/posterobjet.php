@@ -71,7 +71,6 @@ $res = $ty->find($req);
     </div>
     <?php
     include "../fonctions/footer.php";
-    footer();
     ?>
 </div>
 </body>

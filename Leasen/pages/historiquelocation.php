@@ -56,8 +56,7 @@ $res = $annonce->effectueRecherche($infoUser);
     </div>
     <?php
     include "../fonctions/footer.php";
-    footer();
-    ?> 
+    ?>
 </div>
 </body>
 </html>

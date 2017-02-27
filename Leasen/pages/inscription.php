@@ -66,8 +66,7 @@ navbarcall(0, 0);
     <br/>
     <?php
     include "../fonctions/footer.php";
-    footer();
-    ?> 
+    ?>
 </div>
 </body>
 </html>

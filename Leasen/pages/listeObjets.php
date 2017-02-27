@@ -19,7 +19,7 @@ Autoloader::register(1);
     <link href="../css/footerb.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-   
+
 <!--Import jQuery before materialize.js-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="../js/materialize.min.js"></script>
@@ -66,13 +66,11 @@ $res = $ty->find($req);
         </form>
     </div>
     <p id="result"></p>
-    <!--//footer-->
-    <?php
-    include "../fonctions/footer.php";
-    footer();
-    ?>
-</div>
-  
 
+</div>
+<!--//footer-->
+<?php
+include "../fonctions/footer.php";
+?>
 </body>
 </html>

@@ -99,12 +99,10 @@ Autoloader::register(1);
             </div>
         </section>
         <br>
-    <?php
-    include "../fonctions/footer.php";
-    footer();
-    ?> 
     </div>
-    
 </article>
+<?php
+include "../fonctions/footer.php";
+?>
 </body>
 </html>

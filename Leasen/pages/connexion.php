@@ -47,17 +47,10 @@ if (isset($_SESSION['USER'])) {
                 <input type="submit" class="deep-orange btn col s6 offset-s3" value="Connexion"/>
             </form>
         </div>
-        <br/>
-    <?php
-
-include"../fonctions/footer.php";
-footer();
-?>   
     </div>
-    <br/>
     <?php
 }
-
+include "../fonctions/footer.php";
 ?>
 </body>
 </html>
