@@ -15,6 +15,7 @@ and open the template in the editor.
     <link href="../css/paccueil.css" rel="stylesheet" type="text/css"/>
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="../css/footerb.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <!--Import jQuery before materialize.js-->
@@ -26,4 +27,8 @@ include "../fonctions/accueil.php";
 navbaraccueil(0);
 ?>
 </body>
+<?php
+include"../fonctions/footer.php";
+footer();
+?>
 </html>

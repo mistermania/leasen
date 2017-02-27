@@ -7,8 +7,11 @@
  */
 function footer()
 {
+  
     ?>
+    
     <footer class="page-footer cyan darken-1">
+      
         <div class="container cyan darken-1">
             <div class="row">
                 <div class="col l6 s12">
@@ -22,7 +25,9 @@ function footer()
             <div class="container">
                 © 2017 LEASEN Tous droits réservés.
             </div>
+           
         </div>
+        
     </footer>
     <?php
 }

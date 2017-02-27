@@ -12,6 +12,7 @@ Autoloader::register(1);
     <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection"/>
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="../css/footerb.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <!--Import jQuery before materialize.js-->
@@ -56,6 +57,11 @@ $res = $newobjet->find($objetInfos);
             ?>
         </form>
     </div>
+    <?php
+    include "../fonctions/footer.php";
+    footer();
+    ?> 
+</div>
     <?php /*
     <div class="row ">
     <form method="post" class="col s6 offset-s3" action="./supprimerobjet.php">
@@ -71,11 +77,4 @@ $res = $newobjet->find($objetInfos);
     </form>
     </div>
  */ ?>
-    <footer class="page-footer cyan darken-1">
-        <div class="footer-copyright">
-            <div class="container">
-                © 2017 LEASEN Tous droits réservés.
-            </div>
-        </div>
-    </footer>
-</html>
+    
