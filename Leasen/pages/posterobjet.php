@@ -10,6 +10,7 @@
     <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection"/>
     <!-- <link href="css/navbar.css" rel="stylesheet" type="text/css"/> -->
     <link href="../css/paccueil.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/footerb.css" rel="stylesheet" type="text/css"/>
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
@@ -79,13 +80,9 @@ $res = $ty->find($req);
         </form>
         <br>
     </div>
-    <footer class="page-footer cyan darken-1">
-        <div class="footer-copyright">
-            <div class="container">
-                © 2017 LEASEN Tous droits réservés.
-            </div>
-        </div>
-    </footer>
+    <?php
+    include "../fonctions/footer.php";
+    ?>
 </div>
 </body>
 </html>

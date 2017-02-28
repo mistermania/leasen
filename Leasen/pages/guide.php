@@ -12,6 +12,7 @@ session_start();
     <link href="../css/paccueil.css" rel="stylesheet" type="text/css"/>
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="../css/footerb.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <!--Import jQuery before materialize.js-->
@@ -25,9 +26,9 @@ navbarcall(1, 0);
 require('../class/Autoloader.php');
 Autoloader::register(1);
 ?>
-
+ <div class="grey lighten-3">
 <article class="col s8 offset-s2 white">
-    <div class="grey lighten-3">
+   <div class="grey lighten-3">
 
         <section>
             <br><br>
@@ -45,12 +46,7 @@ Autoloader::register(1);
                     de prêter ou de louer des objets de différents types
                     : petit electroménager, bricolage, hightech, sport... <br>
                 </p>
-                <p class="center-align grey-text text-darken-4"> Les propriétaires gagnent de l’argent et rentabilisent
-                    leurs biens en les mettant à louer sur e‐loue.
-                    Les locataires économisent de l’argent en louant des objets près de chez eux, au lieu de les
-                    acheter.
-                    Bref, avec e‐loue, ils louent, et ça leur rapporte...
-                </p>
+                
                 <br>
                 <h4 class="center-align deep-orange-text"> Comment ça marche ?</h4>
                 <p class="center-align grey-text text-darken-4"> Si vous souhaitez mettre en location ou prêter des
@@ -98,25 +94,11 @@ Autoloader::register(1);
             </div>
         </section>
         <br>
-    </div>
-    <br>
-    <footer class="page-footer cyan darken-1">
-
-        <div class="footer-copyright">
-            <div class="container">
-                © 2017 LEASEN Tous droits réservés.
-
-            </div>
-
-            <footer class="page-footer cyan darken-1">
-                <div class="footer-copyright">
-                    <div class="container">
-                        © 2017 LEASEN Tous droits réservés.
-
-                    </div>
-                </div>
-            </footer>
         </div>
 </article>
+<?php
+include "../fonctions/footer.php";
+?>
+</div>
 </body>
 </html>

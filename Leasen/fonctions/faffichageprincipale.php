@@ -21,11 +21,11 @@ function affichageprincipale($connexion)
         $info = array();
         $info['id_utilisateur'] = isset($_SESSION['IDUSER'])?$_SESSION['IDUSER']:0;
         $test = new Recherche();
-        $res = $test->effectueRecherche($info,4);
+        $res = $test->effectueRecherche($info,3);
         foreach ($res as $k => $v) {
         ?>
         <div class="row">
-        <div class="col s3 ">
+        <div class="col s4 ">
             <div class="white  grey-text  text-darken-1">
                 <br>
                 <h6 class="center-align">
@@ -40,23 +40,28 @@ function affichageprincipale($connexion)
                         <label for="id_objet"></label>
                         <input type="number" id="id_objet" name="id_objet" value="<?php echo $v["id_objet"]; ?>"/>
                     </div>
-                    <input type="submit" value="Voir en détails" >
+                    <input type="submit" class="col s6 offset-s3" value="Voir en détails" >
                 </form>
-                <br>
+              <br/>  
             </div>
         </div>
         <?php
         } // fin du foreach
         ?>
+        
         <div class="row">
-            <div class="col s4 offset-s4">
+           
+            <div class="col s6 offset-s4"><br/>
                 <a href="../pages/listeObjets.php" class="waves-effect waves-light deep-orange white-text btn">Explorer
-                    toutes les annonces<i class="material-icons right">add</i></a>
+                    toutes les annonces de biens<i class="material-icons right">add</i></a>
             </div>
         </div>
+            
+        </div>
+        </div>
         <?php
-        include "fonctions/footer.php";
-        footer();
+        
     } // fin du if
 } // fin de la fonction
 ?>
+        

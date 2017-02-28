@@ -72,20 +72,15 @@ if ($infosLoc['date_debut'] != NULL && $duree != NULL) {
     ?>
     <div class="grey lighten-3">
         <div class="row ">
-                <span class="grey-text text-darken-4 "><br>
-                  <h5 class="center - align">Les dates que vous avez saisient sont inccorectes. La requete n'a pas pu aboutir"</h5></br>
-                <h5 class="center-align">Vous allez être redirigé dans 5 secondes</h5></br>
-                </span>
+            <h5 class="center - align grey-text text-darken-4 ">Les dates que vous avez saisient sont inccorectes. La requete n'a pas pu aboutir"</h5><br>
+            <h5 class="center-align grey-text text-darken-4 ">Vous allez être redirigé dans 5 secondes</h5><br>
 
         </div>
     </div>
     <?php
 }
 include "../fonctions/footer.php";
-footer();
-
 header('Refresh:5; URL=../index.php');
-
 ?>
 </body>
 </html>

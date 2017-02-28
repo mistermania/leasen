@@ -17,6 +17,7 @@ if (!isset($_SESSION['USER']) || !isset($_SESSION['IDUSER'])) {
     <link href="../css/paccueil.css" rel="stylesheet" type="text/css"/>
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="../css/footerb.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <?php
@@ -24,8 +25,7 @@ require('../class/Autoloader.php');
 Autoloader::register(1);
 
 include "../fonctions/fnavbar.php";
-navbarcall(1, 3);
-
+navbarcall(1, 2);
 $newobjet = new Objet();
 $objetInfos['id_objet'] = filter_input(INPUT_POST, 'id_objet');
 $res = $newobjet->find($objetInfos);
@@ -94,7 +94,7 @@ $res = $newobjet->find($objetInfos);
             <?php
             foreach ($res as $k => $v) {
                 echo "<li class=\"collection-item avatar\">
-            <span class=\"title\">".$v["nom"]." ".$v["prenom"]."</span>
+            <span class=\"title\">" . $v["nom"] . " " . $v["prenom"] . "</span>
 <p>" . $v["contenu_question"] . "</p></li>";
             }
             ?>
@@ -111,13 +111,10 @@ $res = $newobjet->find($objetInfos);
             </form>
 
     </div>
-
-    <!--//footer-->
-    <?php
-    include "../fonctions/footer.php";
-    footer();
-    ?>
 </div>
+<?php
+include "../fonctions/footer.php";
+?>
 </body>
 <?php
 ?>

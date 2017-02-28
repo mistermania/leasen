@@ -30,7 +30,6 @@ class Utilisateur extends Model
         }
         if (isset($info['telephone'])) {
             if (!$this->estValideTelephone($info['telephone'])) {
-                echo 'numero de merde';
                 return 2;
             }
             $cond_tel = array('telephone' => $info['telephone']);
@@ -95,11 +94,6 @@ class Utilisateur extends Model
      */
     public function update($info, $id)
     {
-        foreach ($info as $k => $v) {
-            if (!in_array($k, Utilisateur::champ)) {
-                return 1;
-            }
-        }
         if (isset($info['mot_de_passe'])) {
             if (!$this->estValideMotDePasse($info['mot_de_passe'])) {
                 return 4;
@@ -107,11 +101,16 @@ class Utilisateur extends Model
             $info['hash_mot_de_passe'] = password_hash($info['mot_de_passe'], PASSWORD_DEFAULT);
             unset($info['mot_de_passe']);
         }
+        foreach ($info as $k => $v) {
+            if (!in_array($k, Utilisateur::champ)) {
+                return 1;
+            }
+        }
         if (isset($info['e_mail'])) {
             if (!$this->estValideMail($info['e_mail'])) {
                 return 3;
             }
-            $cond = ' e_mail= \'' . $info['e_mail'] . '\' AND id_utilisateur !=' . $id . ';';
+            $cond = ' e_mail= ' .$this->pdo->quote($info['e_mail']). ' AND id_utilisateur !='.$this->pdo->quote($id);
             $mail = $this->find($cond);
             //si l'email est present dans la base de donnée
             if (!empty($mail)) {
@@ -122,7 +121,7 @@ class Utilisateur extends Model
             if (!$this->estValideTelephone($info['telephone'])) {
                 return 2;
             }
-            $cond_tel = ' telephone=\'' . $info['telephone'] . '\' AND id_utilisateur !=' . $id . ';';
+            $cond_tel = ' telephone=' . $this->pdo->quote($info['telephone']). ' AND id_utilisateur !='.$this->pdo->quote($id);
             if (!empty($this->find($cond_tel))) {
                 return 6;
             }
@@ -132,13 +131,6 @@ class Utilisateur extends Model
                 $info['partager_telephone'] = 'TRUE';
             } else {
                 $info['partager_telephone'] = 'FALSE';
-            }
-        }
-        if (isset($info['est_ban'])) {
-            if ($info['est_ban']) {
-                $info['est_ban'] = 'TRUE';
-            } else {
-                $info['est_ban'] = 'FALSE';
             }
         }
         return parent::update($info, $id);
