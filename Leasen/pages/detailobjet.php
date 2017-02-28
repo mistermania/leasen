@@ -3,8 +3,6 @@ session_start();
 if (!isset($_SESSION['USER']) || !isset($_SESSION['IDUSER'])) {
     header('Location:../index.php');
 }
-require('../class/Autoloader.php');
-Autoloader::register(1);
 ?>
     <html>
 <head>
@@ -23,12 +21,15 @@ Autoloader::register(1);
 </head>
 <body>
 <?php
+require('../class/Autoloader.php');
+Autoloader::register(1);
+
 include "../fonctions/fnavbar.php";
 navbarcall(1, 2);
 $newobjet = new Objet();
 $objetInfos['id_objet'] = filter_input(INPUT_POST, 'id_objet');
-//echo $objetInfos['id_objet'];
 $res = $newobjet->find($objetInfos);
+
 ?>
 <div class="grey lighten-3">
     <br><br>
@@ -39,6 +40,9 @@ $res = $newobjet->find($objetInfos);
             echo "  <p class=\"grey-text text-darken-4\"> Description:<br/>" . $v["description_objet"] . "<br/>";
             echo "Caution:" . $v["prix_caution"] . "<br/>";
             echo "Prix:" . $v["prix"] . "<br/></p>";
+            if($v["url_photo"] !=NULL) {
+                echo '<img src =../' . $v["url_photo"] . ' class=\" responsive-img\">';
+            }
         }
         $infosLoc['id_objet'] = filter_input(INPUT_POST, 'id_objet');
         $infosLoc['id_utilisateur'] = $_SESSION['IDUSER'];

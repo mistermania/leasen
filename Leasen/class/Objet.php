@@ -11,7 +11,7 @@ class Objet extends Model
     /**
      * @var array contenant le nom des colonnes de la table
      */
-    const champ = array('nom_objet', 'description_objet', 'a_une_caution', 'prix_caution', 'est_payant', 'prix', 'o_est_affiche', 'id_utilisateur', 'id_type');
+    const champ = array('nom_objet', 'description_objet', 'a_une_caution', 'prix_caution', 'est_payant', 'prix', 'o_est_affiche', 'id_utilisateur', 'id_type','url_photo');
 
     /**
      * @param array $info : tableau contenant les valeurs à inserer
