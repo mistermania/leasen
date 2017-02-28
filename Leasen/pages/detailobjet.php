@@ -41,7 +41,7 @@ $res = $newobjet->find($objetInfos);
             echo "Caution:" . $v["prix_caution"] . "<br/>";
             echo "Prix:" . $v["prix"] . "<br/></p>";
             if($v["url_photo"] !=NULL) {
-                echo '<img src =\"' . $v["url_photo"] . '\" class=\" responsive-img\">';
+                echo '<img src =../' . $v["url_photo"] . ' class=\" responsive-img\">';
             }
         }
         $infosLoc['id_objet'] = filter_input(INPUT_POST, 'id_objet');
