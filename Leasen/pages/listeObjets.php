@@ -16,8 +16,10 @@ Autoloader::register(1);
     <link href="../css/paccueil.css" rel="stylesheet" type="text/css"/>
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="../css/footerb.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
+
 <!--Import jQuery before materialize.js-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="../js/materialize.min.js"></script>
@@ -28,6 +30,7 @@ $req = 'id_type > 0';
 $ty = new Type();
 $res = $ty->find($req);
 ?>
+
 <div class="grey lighten-3">
     <div class="row ">
         <div>
@@ -63,11 +66,11 @@ $res = $ty->find($req);
         </form>
     </div>
     <p id="result"></p>
-    <!--//footer-->
-    <?php
-    include "../fonctions/footer.php";
-    footer();
-    ?>
+
 </div>
+<!--//footer-->
+<?php
+include "../fonctions/footer.php";
+?>
 </body>
 </html>

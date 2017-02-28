@@ -44,3 +44,4 @@ if ($test == 0) {
         header('Location:../index.php');
     }
 }
+include "../fonctions/footer.php";
