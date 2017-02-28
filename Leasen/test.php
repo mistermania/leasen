@@ -1,25 +1,38 @@
+<html>
+<head>
+<link href="css/calendar.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
 <?php
-$message="";
-$Limg="";
-var_dump($_FILES);
-if (isset($_FILES['fichier'])) $LeFic=trim($_FILES['fichier']['name']);
-else $LeFic="";
-if(  $LeFic!="" )
-{
-    $destination="";
-    $extensions_ok = array ( ".jpg",".rar",".gif",".png");
-    if (in_array(strtolower(substr($LeFic, -4)),$extensions_ok))
-    {
-        //========= bonne  extention on copie =====
-        copy($_FILES['fichier']['tmp_name'],$destination.$LeFic);
+require('class/Autoloader.php');
+Autoloader::register(0);
+$calendar = new Calendar();
+
+$loc=new Location();
+$info=array("id_objet"=>7,"statut_location"=>2);
+$res=$loc->find($info);
+$c=array();
+function dateRange( $first, $last,&$array, $step = '+1 day', $format = 'Y-m-d' ) {
+
+    $current = strtotime( $first );
+    $last = strtotime( $last );
+
+    while( $current <= $last ) {
+
+        $array[] = date( $format, $current );
+        $current = strtotime( $step, $current );
     }
+
 }
+foreach ($res as $k)
+{
+    print_r($k);
+    $d=date("Y-m-d",strtotime($k['date_debut']));
+    $v=date("Y-m-d",strtotime($k['date_fin']));
+    dateRange($d,$v,$c);
+}
+print_r($c);
+echo $calendar->show($c);
 ?>
-<html><body><br /><p align=center>
-    <br />
-<form name="formulaire" method="POST"  action="test.php"  enctype="multipart/form-data" >
-    <input id="fichier1"  name="fichier" type="file"  />
-    <input value="Valider" name="submit" type="submit" />
-</form><br />
-</p>
-</body></html>
+</body>
+</html>
