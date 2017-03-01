@@ -27,9 +27,42 @@ class Calendar {
     private $daysInMonth=0;
 
     private $naviHref= null;
+    private $idObjet=null;
 
     /********************* PUBLIC **********************/
+    /**
+     * @param int $id de l'objet
+     * @return string
+     */
 
+    public function afficheCalendrierObjet($id)
+    {
+        $loc=new Location();
+        $info=array("id_objet"=>$id,"statut_location"=>2);
+        $this->idObjet=$id;
+        $res=$loc->find($info);
+        $c=array();
+
+        function dateRange( $first, $last,&$array, $step = '+1 day', $format = 'Y-m-d' ) {
+
+            $current = strtotime( $first );
+            $last = strtotime( $last );
+
+            while( $current <= $last ) {
+
+                $array[] = date( $format, $current );
+                $current = strtotime( $step, $current );
+            }
+
+        }
+        foreach ($res as $k)
+        {
+            $d=date("Y-m-d",strtotime($k['date_debut']));
+            $v=date("Y-m-d",strtotime($k['date_fin']));
+            dateRange($d,$v,$c);
+        }
+        return $this->show($c);
+    }
     /**
      * print out the calendar
      * @param array $color
@@ -156,9 +189,9 @@ class Calendar {
 
         return
             '<div class="header">'.
-            '<a class="prev" href="'.$this->naviHref.'?month='.sprintf('%02d',$preMonth).'&year='.$preYear.'">Precedent</a>'.
+            '<a class="prev" href="'.$this->naviHref.'?month='.sprintf('%02d',$preMonth).'&year='.$preYear.'&id_objet='.$this->idObjet.'">Precedent</a>'.
             '<span class="title">'.date('Y M',strtotime($this->currentYear.'-'.$this->currentMonth.'-1')).'</span>'.
-            '<a class="next" href="'.$this->naviHref.'?month='.sprintf("%02d", $nextMonth).'&year='.$nextYear.'">Suivant</a>'.
+            '<a class="next" href="'.$this->naviHref.'?month='.sprintf("%02d", $nextMonth).'&year='.$nextYear.'&id_objet='.$this->idObjet.'">Suivant</a>'.
             '</div>';
     }
 
