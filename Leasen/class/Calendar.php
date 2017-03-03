@@ -73,9 +73,9 @@ class Calendar {
 
         $month = null;
 
-        if(null==$year&&isset($_GET['year'])){
+        if(null==$year&&isset($_POST['year'])){
 
-            $year = $_GET['year'];
+            $year = $_POST['year'];
 
         }else if(null==$year){
 
@@ -83,9 +83,9 @@ class Calendar {
 
         }
 
-        if(null==$month&&isset($_GET['month'])){
+        if(null==$month&&isset($_POST['month'])){
 
-            $month = $_GET['month'];
+            $month = $_POST['month'];
 
         }else if(null==$month){
 
@@ -99,8 +99,7 @@ class Calendar {
 
         $this->daysInMonth=$this->_daysInMonth($month,$year);
 
-        $content='<div id="calendar">'.
-            '<div class="box">'.
+        $content='<div class="box">'.
             $this->_createNavi().
             '</div>'.
             '<div class="box-content">'.
@@ -127,8 +126,6 @@ class Calendar {
         $content.='</ul>';
 
         $content.='<div class="clear"></div>';
-
-        $content.='</div>';
 
         $content.='</div>';
         return $content;
@@ -189,9 +186,9 @@ class Calendar {
 
         return
             '<div class="header">'.
-            '<a class="prev" href="'.$this->naviHref.'?month='.sprintf('%02d',$preMonth).'&year='.$preYear.'&id_objet='.$this->idObjet.'">Precedent</a>'.
+            '<a class="prev" onClick="calendrier('.$preMonth.','.$preYear.')">Precedent</a>'.
             '<span class="title">'.date('Y M',strtotime($this->currentYear.'-'.$this->currentMonth.'-1')).'</span>'.
-            '<a class="next" href="'.$this->naviHref.'?month='.sprintf("%02d", $nextMonth).'&year='.$nextYear.'&id_objet='.$this->idObjet.'">Suivant</a>'.
+            '<a class="next" onClick="calendrier('.$nextMonth.','.$nextYear.')">Suivant</a>'.
             '</div>';
     }
 

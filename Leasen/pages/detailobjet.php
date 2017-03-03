@@ -7,8 +7,8 @@ if (!isset($_SESSION['USER']) || !isset($_SESSION['IDUSER'])) {
     <html>
 <head>
     <meta charset="utf-8"/>
-    <script type="text/javascript" src="../js/research.js"></script>
     <script type="text/javascript" src="../js/xhr.js"></script>
+    <script type="text/javascript" src="../js/calendrier.js"></script>
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
@@ -21,7 +21,7 @@ if (!isset($_SESSION['USER']) || !isset($_SESSION['IDUSER'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="../css/footerb.css" rel="stylesheet" type="text/css"/>
 </head>
-<body>
+<body onload="calendrier(-1,-1)">
 <?php
 require('../class/Autoloader.php');
 Autoloader::register(1);
@@ -30,10 +30,6 @@ include "../fonctions/fnavbar.php";
 navbarcall(1, 2);
 $newobjet = new Objet();
 $objetInfos['id_objet'] = filter_input(INPUT_POST, 'id_objet');
-if(isset($_GET['id_objet']))
-{
-    $objetInfos['id_objet']=$_GET['id_objet'];
-}
 $res = $newobjet->find($objetInfos);
 
 ?>
@@ -117,11 +113,8 @@ $res = $newobjet->find($objetInfos);
             </form>
 
     </div>
-    <div>
-        <?php
-        $calendar = new Calendar();
-        echo $calendar->afficheCalendrierObjet($objetInfos['id_objet']);
-        ?>
+    <div id="calendar">
+
     </div>
 </div>
 <?php
