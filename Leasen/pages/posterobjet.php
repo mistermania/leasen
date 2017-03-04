@@ -36,7 +36,7 @@ $res = $ty->find($req);
                 <br>
             </div>
         </div>
-        <form method="post" class="col s6 offset-s3  " action="../newobjet.php">
+        <form method="post" class="col s6 offset-s3  " action="../fonctions/newobjet.php" enctype="multipart/form-data">
             <label for="nom" class="col s6 offset-s3 grey-text text-darken-4">Titre de l'annonce</label><br/>
             <input type="text" id="nom" name="nom" class="col s6 offset-s3 white"
                    placeholder="Ex: Appareil à Raclette"/>
@@ -51,6 +51,17 @@ $res = $ty->find($req);
             <label for="description" class="col s6 offset-s3 grey-text text-darken-4">Description du bien</label>
             <textarea name="description" class="col s6 offset-s3 white " id="description"
                       placeholder="Ex: Appareil pour 8 personnes"></textarea>
+            <div class=" col s6 offset-s3 file-field input-field">
+                <div class="deep-orange btn">
+                    <span> Ajouter une image</span>
+                    <input id="image1"  name="image" type="file"  />
+                </div>
+                <div class="file-path-wrapper">
+                    <label for="image"></label>
+                    <input class="file-path validate" type="text" name="image" id="image">
+                </div>
+            </div>
+
             <input type="button" class="col s6 offset-s3 deep-orange btn" value="Ajouter un prix"
                    onclick="afficher_cacher('id_div_prix'); ">
             <div id="id_div_prix" style="display:none">

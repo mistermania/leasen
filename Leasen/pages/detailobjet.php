@@ -3,14 +3,12 @@ session_start();
 if (!isset($_SESSION['USER']) || !isset($_SESSION['IDUSER'])) {
     header('Location:../index.php');
 }
-require('../class/Autoloader.php');
-Autoloader::register(1);
 ?>
     <html>
 <head>
     <meta charset="utf-8"/>
-    <script type="text/javascript" src="../js/research.js"></script>
     <script type="text/javascript" src="../js/xhr.js"></script>
+    <script type="text/javascript" src="../js/calendrier.js"></script>
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
@@ -18,17 +16,22 @@ Autoloader::register(1);
     <!-- <link href="css/navbar.css" rel="stylesheet" type="text/css"/> -->
     <link href="../css/paccueil.css" rel="stylesheet" type="text/css"/>
     <!--Let browser know website is optimized for mobile-->
+    <!--css pour le calendrier-->
+    <link href="../css/calendar.css" type="text/css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="../css/footerb.css" rel="stylesheet" type="text/css"/>
 </head>
-<body>
+<body onload="calendrier(-1,-1)">
 <?php
+require('../class/Autoloader.php');
+Autoloader::register(1);
+
 include "../fonctions/fnavbar.php";
 navbarcall(1, 2);
 $newobjet = new Objet();
 $objetInfos['id_objet'] = filter_input(INPUT_POST, 'id_objet');
-//echo $objetInfos['id_objet'];
 $res = $newobjet->find($objetInfos);
+
 ?>
 <div class="grey lighten-3">
     <br><br>
@@ -39,8 +42,11 @@ $res = $newobjet->find($objetInfos);
             echo "  <p class=\"grey-text text-darken-4\"> Description:<br/>" . $v["description_objet"] . "<br/>";
             echo "Caution:" . $v["prix_caution"] . "<br/>";
             echo "Prix:" . $v["prix"] . "<br/></p>";
+            if ($v["url_photo"] != NULL) {
+                echo '<img src =../' . $v["url_photo"] . ' class=\" responsive-img\">';
+            }
         }
-        $infosLoc['id_objet'] = filter_input(INPUT_POST, 'id_objet');
+        $infosLoc['id_objet'] = $objetInfos['id_objet'];
         $infosLoc['id_utilisateur'] = $_SESSION['IDUSER'];
         $infosLoc['date_debut'] = filter_input(INPUT_POST, 'date');
         $duree = filter_input(INPUT_POST, 'duree');
@@ -105,6 +111,9 @@ $res = $newobjet->find($objetInfos);
                 </div>
                 <input type="submit" value="Poster votre question" class="deep-orange btn col s6 offset-s3">
             </form>
+
+    </div>
+    <div id="calendar">
 
     </div>
 </div>
