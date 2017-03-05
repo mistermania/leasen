@@ -1,0 +1,77 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 4 mars 2017, 14:36:23
+    Author     : mbouteille
+*/
+
+
+.parallax-container
+{
+    max-height: 400px;
+}
+
+.imageindex{
+    
+    max-width:100%;
+    height: auto;
+}
+
+body{
+    
+ /* Gris clair */
+ background :#eeeeee; 
+}
+
+footer{
+ 
+ height: 25px;
+ width : 100%;
+ position : fixed;
+ /* cyan darken 1 */
+ background: #00acc1; 
+ bottom: 0;
+}
+
+footer p{
+margin-top: 3px;
+color:white;
+text-align: center;
+}
+
+/* Smartphone */
+@media screen and (max-width:480px) {
+   
+ .parallax-container
+{
+    max-height: 125px;
+}
+
+.imageindex{
+    
+  width: auto;
+  height: auto;
+}
+}
+
+
+
+/* Tablette */
+@media screen and (min-width:481px) and (max-width:992px) {
+
+  
+    .parallax-container
+{
+    max-height: 250px;
+}
+
+.imageindex{
+    
+    max-width:100%;
+    height: auto;
+}
+}
+ 
