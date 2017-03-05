@@ -63,6 +63,28 @@ navbarcall(0, 0);
               <label class="col s6 offset-s3 grey-text text-darken-4">Non
                   <input type="radio" class="floating-btn" name="telchoix" value="0">
               </label> -->
+                <?php
+                if(isset($resu)) {
+                    if ($resu == 1) {
+                    }
+                    if ($resu == 2) {
+                        echo "<p class=\"center-align deep-orange-text\">numero de téléphone non valide</p>";
+                    }
+                        echo "<p class=\"center-align deep-orange-text\">nom, prenom ou email absent</p>";
+                    if ($resu == 3) {
+                        echo "<p class=\"center-align deep-orange-text\">adresse mail invalide</p>";
+                    if ($resu == 4) {
+                    }
+                        echo "<p class=\"center-align deep-orange-text\">mot de passe trop faible (moins de 8 caractère, pas de chiffre ou/et pas de majuscules</p>";
+                    }
+                    if ($resu == 5) {
+                    }
+                        echo "<p class=\"center-align deep-orange-text\">Adresse déjà utilisée</p>";
+                        echo "<p class=\"center-align deep-orange-text\">numero de telephone déjà utilisé</p>";
+                    if ($resu == 6) {
+                    }
+                ?>
+                }
             <br/>
             <input type="submit" class=" col s6 offset-s3 deep-orange btn" value="M'inscrire"/>
             

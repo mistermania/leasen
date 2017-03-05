@@ -62,4 +62,11 @@ if (isset($_SESSION['USER'])) {
 ?>
 
 </body>
+                    <?php 
+                        if(isset($resu)){
+                            if($resu==1){
+                                echo "<p class=\"center-align deep-orange-text\">Mauvaise combinaison, veuillez recommencer</p>";
+                            }
+                        }
+                    ?>
 </html>

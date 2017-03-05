@@ -34,6 +34,8 @@ include "../fonctions/fnavbar.php";
 navbarcall(1, 2);
 $newobjet = new Objet();
 $objetInfos['id_objet'] = filter_input(INPUT_POST, 'id_objet');
+$swap = filter_input(INPUT_POST, 'swap');
+//echo 'id objet: '.$s.'</br>';
 $res = $newobjet->find($objetInfos);
 
 ?>
@@ -72,7 +74,7 @@ $res = $newobjet->find($objetInfos);
                 <input type="number" class="col s6 offset-s3 white green-text text-darken-4" id="duree"
                        name="duree" min="0" placeholder="Durée de la location"/>
                 <input type="submit" class="deep-orange btn co  l s6 offset-s3"
-                       value="Envoyer demmande de location">
+                       value="Envoyer demande de location">
             </form>
             <?php
         } else if (!empty($infosLoc['date_debut']) AND !empty($duree)) {
@@ -88,7 +90,7 @@ $res = $newobjet->find($objetInfos);
                     <input type="date" id="date_debut" name="date_debut"
                            value="<?php echo $infosLoc['date_debut']; ?>"/>
                 </div>
-                <input type="submit" class="deep-orange btn co  l s6 offset-s3" value="Envoyer demmande de location">
+                <input type="submit" class="deep-orange btn co  l s6 offset-s3" value="Envoyer demande de location">
             </form>
             <?php
         }

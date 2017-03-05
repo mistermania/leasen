@@ -39,4 +39,4 @@ $newobjet = new Objet();
 $res = $newobjet->insert($objetInfos);
 echo 'resultat ' . $res;
 
-//header('Location:../index.php');
+header('Location:../index.php');
