@@ -23,3 +23,30 @@ if(  $LeFic!="" )
 </form><br />
 </p>
 </body></html>
+<?php
+
+require('PHPMailer/class.phpmailer.php');
+
+$mail = new PHPMailer();
+$mail->Host = 'localhost';
+$mail->SMTPAuth   = false;
+$mail->Port = 25; // Par défaut
+
+// Expéditeur
+$mail->SetFrom('thomas.artru@isen.yncrea.fr', 'ARTRU Thomas');
+// Destinataire
+$mail->AddAddress('artru.thomas.monchal@gmail.com', 'Thomas ARTRU');
+// Objet
+$mail->Subject = 'Test de php mailer';
+
+// Votre message
+$mail->MsgHTML('essai de php mailler');
+
+// Envoi du mail avec gestion des erreurs
+if(!$mail->Send()) {
+    echo 'Erreur : ' . $mail->ErrorInfo;
+} else {
+    echo 'Message envoyé !';
+}
+
+?>
