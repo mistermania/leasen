@@ -83,25 +83,25 @@ Autoloader::register(1);
         ?>
                 <div class="row">
         <br/><h5 class="center-align"> Modifier vos informations </h5> <br>
-        <form method="post" class="col s6 offset-s3" action="moncompte.php">
-            <label for="numerotel" class="col s6 offset-s3 green-text text-darken-4">Telephone: </label>
-            <input type="tel" class="col s6 offset-s3 white green-text text-darken-4 " name="numerotel" id="numerotel"/><br/>
-            <input type="hidden" id="varset" class="col s6 offset-s3 white grey-text text-darken-4"
+        <form method="post" class="col s12 m12 l8 offset-l2" action="moncompte.php">
+            <label for="numerotel" class="col s10 offset-s1 m6 offset-m3 l8 offset-l2 green-text text-darken-4">Telephone: </label>
+            <input type="tel" class="col s10 offset-s1 m6 offset-m3 l8 offset-l2 white green-text text-darken-4 " name="numerotel" id="numerotel"/><br/>
+            <input type="hidden" id="varset" class="col s10 offset-s1 m6 offset-m3 l8 offset-l2 white grey-text text-darken-4"
                    name="varset" value="1"/>
-            <input type="submit" class="deep-orange btn col s6 offset-s3" value="Modifier"/>
+            <input type="submit" class="deep-orange btn col s6 offset-s3 m4 offset-m4 l4 offset-l4" value="Modifier"/>
         </form>
 
-        <form method="post" class="col s6 offset-s3" action="moncompte.php">
+        <form method="post" class="col s12 m12 l8 offset-l2" action="moncompte.php">
 
-            <label for="pass" class="col s6 offset-s3 green-text text-darken-4">Mot de passe actuel:</label>
-            <input type="password" class="col s6 offset-s3 white green-text text-darken-4" name="pass" required
+            <label for="pass" class="col s10 offset-s1 m6 offset-m3 l8 offset-l2 green-text text-darken-4">Mot de passe actuel:</label>
+            <input type="password" class="col s10 offset-s1 m6 offset-m3 l8 offset-l2 white green-text text-darken-4" name="pass" required
                    id="pass"/><br/>
-            <label for="passmodif" class="col s6 offset-s3 green-text text-darken-4">Nouveau mot de passe:</label>
-            <input type="password" class="col s6 offset-s3 white green-text text-darken-4" name="passmodif" required
+            <label for="passmodif" class="col s10 offset-s1 m6 offset-m3 l8 offset-l2 green-text text-darken-4">Nouveau mot de passe:</label>
+            <input type="password" class="col s10 offset-s1 m6 offset-m3 l8 offset-l2 white green-text text-darken-4" name="passmodif" required
                    id="passmodif"/><br/>
             <input type="hidden" id="varset" class="col s6 offset-s3 white grey-text text-darken-4"
                    name="varset" value="2"/>
-            <input type="submit" class="deep-orange btn col s6 offset-s3" value="Modifier"/>
+            <input type="submit" class="deep-orange btn col s6 offset-s3 m4 offset-m4 l4 offset-l4" value="Modifier"/>
 
         </form>
 

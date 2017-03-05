@@ -10,13 +10,14 @@ $test = new Recherche();
 /** @var mixed $res */
 $res = $test->effectueRecherche($info);
 ?>
-<table border="1" class="responsive-table striped">
+<table border="1" class="responsive-table bordered white ">
     <thead>
     <tr>
         <th>Nom</th>
         <th>Description</th>
         <th>Caution</th>
         <th>Prix</th>
+        <th>Détails</th>
     </tr>
     </thead>
     <?php
@@ -31,10 +32,11 @@ $res = $test->effectueRecherche($info);
                 <td> <?php echo $v["description_objet"]; ?> </td>
                 <td> <?php echo $v["prix_caution"]; ?> </td>
                 <td> <?php echo $v["prix"]; ?> </td>
+                
                 <td>
                     <form method="post" action="../pages/detailobjet.php">
                         <?php
-                        echo '<input type="submit" value="Voir en détails" >';
+                        echo '<input type="submit" class="col s6 offset-s3 deep-orange btn" value="Voir plus" >';
 
                         ?>
                         <div id="hide" style="display:none">

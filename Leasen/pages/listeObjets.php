@@ -43,8 +43,8 @@ $res = $ty->find($req);
             <br>
             <br>
         </div>
-        <form class="col s12">
-            <div class="col s3">
+        <form class="col s12 m12 l12">
+            <div class="col s12 m4 l3">
                 <label for="categorie"></label>
                 <select id="categorie" class="browser-default center-align white" name="categorie" oninput="request();">
                     <option value="0">Toutes les categories</option>
@@ -53,17 +53,17 @@ $res = $ty->find($req);
                         echo "<option value=\"" . $v["id_type"] . "\">" . $v["description_type"] . "</option>";
                     }
                     ?>
-                </select>
+                </select> <br/>
             </div>
-            <div class="col s3">
+            <div class="col s12 m4 l3">
                 <input class="white validate datepicker" type="date" id="date" name="date" placeholder="Date:
 			 Année-Mois-Jour" oninput="request();" min="<?php echo date('Y-m-d'); ?>" max="2050-01-01"/>
             </div>
-            <div class="col s3">
+            <div class="col s12 m4 l3">
                 <input class="white" type="number" id="duree" min="0" placeholder="Durée de la location"
                        oninput="request();"/>
             </div>
-            <div class="col s3">
+            <div class="col s12 m6 offset-m3 l3">
                 <input class="white" type="text" id="recherche" placeholder="Taper votre recherche"
                        onkeyup="request();"/>
             </div>
