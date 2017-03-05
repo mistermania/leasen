@@ -3,7 +3,7 @@ function request() {
     var date = document.getElementById('date').value;
     var recherche = document.getElementById('recherche').value;
     var duree = document.getElementById('duree').value;
-    if (recherche.length > 2) { // si la chaine est superieur a 2
+   // if (recherche.length > 2) { // si la chaine est superieur a 2
         var xhr = new getXMLHttpRequest();
         console.log('haha');
         xhr.onreadystatechange = function () {
@@ -19,9 +19,9 @@ function request() {
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         //console.log(recherche);
         xhr.send("categorie=" + categorie + "&recherche=" + recherche + "&date=" + date + "&duree=" + duree);
-    } else {
+    //} else {
         //console.log('hoho');
-    }
+    //}
 }
 function read_data(sData) {
     var oSelect = document.getElementById('result');

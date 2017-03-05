@@ -1,19 +1,13 @@
+<html>
+<head>
+
+</head>
+<body>
 <?php
-$message="";
-$Limg="";
-var_dump($_FILES);
-if (isset($_FILES['fichier'])) $LeFic=trim($_FILES['fichier']['name']);
-else $LeFic="";
-if(  $LeFic!="" )
-{
-    $destination="";
-    $extensions_ok = array ( ".jpg",".rar",".gif",".png");
-    if (in_array(strtolower(substr($LeFic, -4)),$extensions_ok))
-    {
-        //========= bonne  extention on copie =====
-        copy($_FILES['fichier']['tmp_name'],$destination.$LeFic);
-    }
-}
+require('class/Autoloader.php');
+Autoloader::register(0);
+$calendar = new Calendar();
+echo $calendar->afficheCalendrierObjet(7);
 ?>
 <html><body><br /><p align=center>
     <br />
