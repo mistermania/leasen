@@ -7,8 +7,10 @@ if (!isset($_SESSION['USER']) || !isset($_SESSION['IDUSER'])) {
     <html>
 <head>
     <meta charset="utf-8"/>
+    
     <script type="text/javascript" src="../js/xhr.js"></script>
     <script type="text/javascript" src="../js/calendrier.js"></script>
+    <link href="../css/piedpage.css" rel="stylesheet" type="text/css"/>
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
@@ -19,9 +21,11 @@ if (!isset($_SESSION['USER']) || !isset($_SESSION['IDUSER'])) {
     <!--css pour le calendrier-->
     <link href="../css/calendar.css" type="text/css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link href="../css/footerb.css" rel="stylesheet" type="text/css"/>
+    
 </head>
 <body onload="calendrier(-1,-1)">
+    <script src="../js/principale.js" type="text/javascript"></script>
+
 <?php
 require('../class/Autoloader.php');
 Autoloader::register(1);
@@ -33,8 +37,8 @@ $objetInfos['id_objet'] = filter_input(INPUT_POST, 'id_objet');
 $res = $newobjet->find($objetInfos);
 
 ?>
-<div class="grey lighten-3">
-    <br><br>
+
+    <br/><br/>
     <div class="container white ">
         <?php
         foreach ($res as $k => $v) {
@@ -116,7 +120,7 @@ $res = $newobjet->find($objetInfos);
     <div id="calendar">
 
     </div>
-</div>
+
 <?php
 include "../fonctions/footer.php";
 ?>

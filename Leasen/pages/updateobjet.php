@@ -14,4 +14,4 @@ $objetModif['prix'] = filter_input(INPUT_POST, 'prix');
 $objetModif['prix_caution'] = filter_input(INPUT_POST, 'prix_caution');
 $objetModif['id_utilisateur'] = $_SESSION['IDUSER'];
 $modif = $newobjet->update($objetModif, $idobjet);
-header('Location:../index.php');
+header('Location:mesannonces.php');

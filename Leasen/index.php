@@ -14,12 +14,12 @@ and open the template in the editor.
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <link href="css/piedpage.css" rel="stylesheet" type="text/css"/>
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
     <link href="css/navbar.css" rel="stylesheet" type="text/css"/>
-    <link href="css/footerb.css" rel="stylesheet" type="text/css"/>
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
@@ -32,8 +32,10 @@ and open the template in the editor.
 include "fonctions/fnavbar.php";
 include "fonctions/faffichageprincipale.php";
 isset($_SESSION['USER']) ? navbarcall(1, 1) : navbarcall(0, 1);
+
 affichageprincipale(1);   
 include "fonctions/footer.php";
+
 ?>
 
 </body>
