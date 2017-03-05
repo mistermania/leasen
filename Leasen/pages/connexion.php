@@ -28,7 +28,7 @@ and open the template in the editor.
     <!--Import jQuery before materialize.js-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="../js/materialize.min.js"></script>
-   <script src="../js/principale.js" type="text/javascript"></script>
+<script src="../js/principale.js" type="text/javascript"></script>
 
 <?php
 if (isset($_SESSION['USER'])) {
@@ -46,6 +46,14 @@ if (isset($_SESSION['USER'])) {
             <br/>
             <h3 class=" center-align grey-text text-darken-4">Connexion </h3><br/>
             <p class=" center-align deep-orange-text">Entrez vos informations de login pour vous connecter </p>
+                <?php 
+                $resu = filter_input(INPUT_POST, 'resu');
+                        if(isset($resu)){
+                            if($resu==1){
+                                echo "<p class=\"center-align deep-orange-text\">Mauvaise combinaison, veuillez recommencer</p>";
+                            }
+                        }
+                    ?>
             <form method="post" class="col s12 m12 l8 offset-l2" action="signin.php">
                 <label for="user_email" class="col s10 offset-s1 m6 offset-m3 l8 offset-l2  green-text text-darken-4">Email: </label>
                 <input type="email" class="col s10 offset-s1 m6 offset-m3 l8 offset-l2  white green-text text-darken-4 " name="user_email" required
@@ -62,11 +70,5 @@ if (isset($_SESSION['USER'])) {
 ?>
 
 </body>
-                    <?php 
-                        if(isset($resu)){
-                            if($resu==1){
-                                echo "<p class=\"center-align deep-orange-text\">Mauvaise combinaison, veuillez recommencer</p>";
-                            }
-                        }
-                    ?>
+                
 </html>
