@@ -14,7 +14,7 @@ class Calendar {
     }
 
     /********************* PROPERTY ********************/
-    private $dayLabels = array("lundi","Mardi","Mercredi","Jeudi","Vendredi","Samemdi","Dimanche");
+    private $dayLabels = array("Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche");
 
     private $currentYear=0;
 
@@ -186,7 +186,7 @@ class Calendar {
 
         return
             '<div class="header">'.
-            '<a class="prev" onClick="calendrier('.$preMonth.','.$preYear.')">Precedent</a>'.
+            '<a class="prev" onClick="calendrier('.$preMonth.','.$preYear.')">Précédent</a>'.
             '<span class="title">'.date('Y M',strtotime($this->currentYear.'-'.$this->currentMonth.'-1')).'</span>'.
             '<a class="next" onClick="calendrier('.$nextMonth.','.$nextYear.')">Suivant</a>'.
             '</div>';

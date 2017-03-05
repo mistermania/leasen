@@ -35,7 +35,7 @@ $res = $annonce->effectueRecherche($infoUser);
 
     <div class="row ">
         <br/><h5 class="center-align"> Historique de mes locations </h5> <br>
-        <table class="centered bordered responsive-table white grey-text text-darken-4">
+        <table class="centered bordered white responsive-table grey-text text-darken-4">
             <thead>
             <tr>
                 <th>Nom</th>

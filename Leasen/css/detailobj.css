@@ -1,0 +1,46 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 5 mars 2017, 18:20:53
+    Author     : mbouteille
+*/
+
+
+.imgobjet{
+    max-width: auto;
+    height : 50%;
+    margin-left: 20px;
+    padding-bottom: 50px;
+    
+}
+
+.titre{
+    font-size: 45px;
+    text-align: center;
+    color:#ff5722;
+    padding-top: 30px;
+    padding-bottom:30px;
+    
+}
+
+.description{
+    font-size:20px;
+    float:right;
+    padding-right:400px;
+    color:#212121;
+    
+    
+    
+}
+
+@media screen and (max-width:480px) {
+   
+.imageobjet{
+    
+  max-width: auto;
+  max-height: auto;
+}
+}

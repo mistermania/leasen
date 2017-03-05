@@ -21,9 +21,12 @@ if (!isset($_SESSION['USER']) || !isset($_SESSION['IDUSER'])) {
     <!--css pour le calendrier-->
     <link href="../css/calendar.css" type="text/css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    
+    <link href="../css/detailobj.css" rel="stylesheet" type="text/css"/>
 </head>
 <body onload="calendrier(-1,-1)">
+    <!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="../js/materialize.min.js"></script>
     <script src="../js/principale.js" type="text/javascript"></script>
 
 <?php
@@ -42,14 +45,16 @@ $res = $newobjet->find($objetInfos);
 
     <br/><br/>
     <div class="container white ">
+       
         <?php
-        foreach ($res as $k => $v) {
-            echo " <h4 class=\"center-align deep-orange-text \">" . $v["nom_objet"] . "</h4>";
-            echo "  <p class=\"grey-text text-darken-4\"> Description:<br/>" . $v["description_objet"] . "<br/>";
-            echo "Caution:" . $v["prix_caution"] . "<br/>";
-            echo "Prix:" . $v["prix"] . "<br/></p>";
+        foreach ($res as $k => $v) { 
+            echo ' <h4 class="titre">' . $v["nom_objet"] . "</h4>";
+            echo '  <p class="description"> Description : ' . $v["description_objet"] . "<br/>";
+            echo "Caution : " . $v["prix_caution"] . "<br/>";
+            echo "Prix : " . $v["prix"] . "</p>";
+           
             if ($v["url_photo"] != NULL) {
-                echo '<img src =../' . $v["url_photo"] . ' class=\" responsive-img\">';
+                echo '<img src =../' . $v["url_photo"] . ' class="imgobjet">';
             }
         }
         $infosLoc['id_objet'] = $objetInfos['id_objet'];
@@ -58,20 +63,21 @@ $res = $newobjet->find($objetInfos);
         $duree = filter_input(INPUT_POST, 'duree');
         if (empty($infosLoc['date_debut']) OR empty($duree)) {
             ?>
-            <form method="post" class="col s6 offset-s3" action="../fonctions/confirmerLocation.php">
+            <form method="post" class="col s12 " action="../fonctions/confirmerLocation.php">
+                <br/><br/>
                 <div id="hide" style="display:none">
                     <label for="id_objet"></label>
                     <input type="number" id="id_objet" name="id_objet"
                            value="<?php echo $infosLoc["id_objet"]; ?>"/>
                 </div>
-                <label for="date_debut" class="col s6 offset-s3 green-text text-darken-4"> Date du début
+                <label for="date_debut" class="col s12 grey-text text-darken-4"> Date du début
                     de la location</label>
                 <input type="date" id="date_debut"
-                       class="col s6 offset-s3 white green-text text-darken-4" name="date_debut"
+                       class="col s6 offset-s3 white grey-text text-darken-4" name="date_debut"
                        placeholder="Date: Année-Mois-Jour"/>
-                <label for="duree" class="col s6 offset-s3 green-text text-darken-4"> Durée de la
+                <label for="duree" class="col s6 offset-s3 grey-text text-darken-4"> Durée de la
                     location </label>
-                <input type="number" class="col s6 offset-s3 white green-text text-darken-4" id="duree"
+                <input type="number" class="col s6 offset-s3 white grey-text text-darken-4" id="duree"
                        name="duree" min="0" placeholder="Durée de la location"/>
                 <input type="submit" class="deep-orange btn co  l s6 offset-s3"
                        value="Envoyer demande de location">
@@ -119,9 +125,10 @@ $res = $newobjet->find($objetInfos);
             </form>
 
     </div>
-    <div id="calendar">
-
+    <div id="calendar" class="white">
+        <br/><br/><br/>
     </div>
+    
 
 <?php
 include "../fonctions/footer.php";
