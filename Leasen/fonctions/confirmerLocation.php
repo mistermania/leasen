@@ -46,7 +46,7 @@ require('../class/Autoloader.php');
             $newLoc = new Location();
             $res = $newLoc->insert($infosLoc);
 //echo "resultat de la requete :",$res,"<br>";
-            echo $infosLoc['id_objet'];
+            //echo $infosLoc['id_objet'];
             ?>
             <form name="redirect" action="../pages/detailobjet.php" method="post">
                 <input type="hidden" id="id_objet" name="id_objet" value="<?php echo $infosLoc['id_objet']; ?>" >

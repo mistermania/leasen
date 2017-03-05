@@ -28,12 +28,12 @@ and open the template in the editor.
                     header('Location:../index.php');
                     exit();
                 } else {
-                    echo 'Mauvaise combinaison, merci de réessayer.';
+                    //echo 'Mauvaise combinaison, merci de réessayer.';
                     $retour=1;
                 }
             }
         } else {
-            echo 'Mauvaise combinaison, merci de réessayer.';
+            //echo 'Mauvaise combinaison, merci de réessayer.';
             $retour=1;
         }
         ?>
