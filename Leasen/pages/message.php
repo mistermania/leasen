@@ -7,11 +7,12 @@ if (!isset($_SESSION['USER']) || !isset($_SESSION['IDUSER'])) {
 <html>
 <head>
     <meta charset="utf-8"/>
+    <link href="../css/piedpage.css" rel="stylesheet" type="text/css"/>
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection"/>
-    <link href="../css/footerb.css" rel="stylesheet" type="text/css"/>
+    
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
@@ -20,11 +21,14 @@ if (!isset($_SESSION['USER']) || !isset($_SESSION['IDUSER'])) {
 <!--Import jQuery before materialize.js-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="../js/materialize.min.js"></script>
+<script src="../js/principale.js" type="text/javascript"></script>
+
 
 
 <?php
 include "../fonctions/fnavbar.php";
 navbarcall(1, 5);
+include "../fonctions/footer.php";
 
 require('../class/Autoloader.php');
 Autoloader::register(1);
@@ -34,7 +38,7 @@ $annonce = new recherche_message();
 $res = $annonce->effectueRecherche($infoUser);
 ?>
 
-<div class="grey lighten-3">
+
     <div class="row ">
         <br/><h5 class="center-align"> Vous avez reçu des demandes, avez vous prêté ces objets : </h5> <br>
 
@@ -78,10 +82,8 @@ $res = $annonce->effectueRecherche($infoUser);
             </tbody>
         </table>
     </div>
-</div>
-<?php
-include "../fonctions/footer.php";
-?>
+
+
 </body>
 </html>
 

@@ -4,13 +4,14 @@
     <script type="text/javascript" src="../js/research.js"></script>
     <script type="text/javascript" src="../js/xhr.js"></script>
     <script type="text/javascript" src="../js/posterobjet.js"></script>
+    <link href="../css/piedpage.css" rel="stylesheet" type="text/css"/>
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection"/>
     <!-- <link href="css/navbar.css" rel="stylesheet" type="text/css"/> -->
     <link href="../css/paccueil.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/footerb.css" rel="stylesheet" type="text/css"/>
+    
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
@@ -18,16 +19,20 @@
 <!--Import jQuery before materialize.js-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="../js/materialize.min.js"></script>
+<script src="../js/principale.js" type="text/javascript"></script>
+
 <?php
 include "../fonctions/fnavbar.php";
 navbarcall(1, 3);
+include "../fonctions/footer.php";
 require('../class/Autoloader.php');
 Autoloader::register(1);
 $req = 'id_type >0';
 $ty = new Type();
 $res = $ty->find($req);
 ?>
-<div class="grey lighten-3">
+
+
     <div class="row ">
         <div class="row">
             <div>
@@ -75,14 +80,12 @@ $res = $ty->find($req);
                 <label for="prix_caution" class="col s6 offset-s3 grey-text text-darken-4">Montant de la caution</label>
                 <input type="number" class="col s6 offset-s3 white" id="prix_caution" name="prix_caution" min="0"
                        value="0"/>
-            </div>
+            </div>/
             <input type="submit" class=" col s6 offset-s3 deep-orange btn" value="Poster">
         </form>
-        <br>
+        
     </div>
-    <?php
-    include "../fonctions/footer.php";
-    ?>
-</div>
+   
+
 </body>
 </html>

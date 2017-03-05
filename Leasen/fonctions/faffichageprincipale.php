@@ -7,7 +7,7 @@ function affichageprincipale($connexion)
     if ($connexion == 1) {
         ?>
         <div class="parallax-container">
-            <div class="parallax"><img class="responsive-img" src="image/OB82160.jpg">
+            <div class="parallax"><img class="imageindex" src="image/unnamed.jpg">
             </div>
         </div>
         <div class="grey lighten-3">
@@ -16,7 +16,6 @@ function affichageprincipale($connexion)
                 <br><h5 class="center-align grey-text text-darken-4">Annonces les plus récentes</h5>
             </div>
         </div>
-        <br>
         <?php
         $info = array();
         $info['id_utilisateur'] = isset($_SESSION['IDUSER'])?$_SESSION['IDUSER']:0;
@@ -25,12 +24,13 @@ function affichageprincipale($connexion)
         foreach ($res as $k => $v) {
         ?>
         <div class="row">
-        <div class="col s4 ">
-            <div class="white  grey-text  text-darken-1">
-                <br>
+        <div class="col s12 m6 l4"><br/>
+            <div class="white grey-text text-darken-4">
+                <br/>
                 <h6 class="center-align">
                     <?php
-                    echo $v["nom_objet"];
+                    echo $v["nom_objet"]; 
+                    echo '</br>';
                     echo $v["description_objet"];
                     ?>
                 </h6>
@@ -40,24 +40,22 @@ function affichageprincipale($connexion)
                         <label for="id_objet"></label>
                         <input type="number" id="id_objet" name="id_objet" value="<?php echo $v["id_objet"]; ?>"/>
                     </div>
-                    <input type="submit" class="col s6 offset-s3" value="Voir en détails" >
+                    <input type="submit" class="col s6 offset-s3 deep-orange btn" value="Voir plus" ><br/><br/>
                 </form>
-              <br/>  
+              <br/>
             </div>
         </div>
         <?php
         } // fin du foreach
         ?>
         
+        </div>
         <div class="row">
            
-            <div class="col s6 offset-s4"><br/>
-                <a href="../pages/listeObjets.php" class="waves-effect waves-light deep-orange white-text btn">Explorer
-                    toutes les annonces de biens<i class="material-icons right">add</i></a>
-            </div>
-        </div>
+                <a href="../pages/listeObjets.php" class="waves-effect waves-light deep-orange white-text btn col l4 offset-l4 m4 offset-m4 s4 offset-s4 ">Explorer toutes les annonces<i class="material-icons right">add</i></a>
             
         </div>
+       
         </div>
         <?php
         

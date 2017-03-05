@@ -6,19 +6,23 @@ Autoloader::register(1);
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8"/>
+    <link href="../css/piedpage.css" rel="stylesheet" type="text/css"/>
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection"/>
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link href="../css/footerb.css" rel="stylesheet" type="text/css"/>
+    
 </head>
 <body>
 <!--Import jQuery before materialize.js-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="../js/materialize.min.js"></script>
+<script src="../js/principale.js" type="text/javascript"></script>
+
 <?php
+include "../fonctions/footer.php";
 include "../fonctions/fnavbar.php";
 navbarcall(1, 2);
 $objetInfos['id_objet'] = filter_input(INPUT_POST, 'id_objet');
@@ -26,7 +30,7 @@ $newobjet = new Objet();
 $res = $newobjet->find($objetInfos);
 ?>
 <html>
-<div class="grey lighten-3">
+
     <br/>
     <h3 class="center-align grey-text text-darken-4">Modifier une annonce </h3><br/>
     <div class="row ">
@@ -57,7 +61,4 @@ $res = $newobjet->find($objetInfos);
             ?>
         </form>
     </div>
-    <?php
-    include "../fonctions/footer.php";
-    ?> 
-</div>
+    

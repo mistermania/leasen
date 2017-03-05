@@ -1,9 +1,12 @@
 <?php
 session_start();
+require('../class/Autoloader.php');
+Autoloader::register(1);
 ?>
 <html>
 <head>
     <meta charset="UTF-8">
+    <link href="../css/piedpage.css" rel="stylesheet" type="text/css"/>
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
@@ -12,24 +15,28 @@ session_start();
     <link href="../css/paccueil.css" rel="stylesheet" type="text/css"/>
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link href="../css/footerb.css" rel="stylesheet" type="text/css"/>
+    
 </head>
 <body>
 <!--Import jQuery before materialize.js-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="../js/materialize.min.js"></script>
+<script src="../js/principale.js" type="text/javascript"></script>
+
 
 <?php
+
 include "../fonctions/fnavbar.php";
 navbarcall(1, 0);
 
-require('../class/Autoloader.php');
-Autoloader::register(1);
-?>
- <div class="grey lighten-3">
-<article class="col s8 offset-s2 white">
-   <div class="grey lighten-3">
 
+
+?>
+ 
+
+<article class="col s8 offset-s2 ">
+   
+    
         <section>
             <br><br>
             <div class="container white ">
@@ -88,17 +95,19 @@ Autoloader::register(1);
                     <a class="waves-effect waves-light deep-orange white-text btn"
                        href="../res/Contrat de location.pdf">
                         Télécharger un exemplaire</a> <br/><br/>
-                    Vous êtes libre de rédiger votre propre contrat ci celui-ci ne vous convient pas.
+                    Vous êtes libre de rédiger votre propre contrat ci celui-ci ne vous convient pas. <br/><br/>
                 </p>
-                <br>
+                <br/>
             </div>
         </section>
-        <br>
-        </div>
+    
+         
+        
 </article>
-<?php
-include "../fonctions/footer.php";
-?>
-</div>
+ 
+
+
+<footer class="footer"><p>&copy;2017 LEASEN Tous droits réservé.<p> </footer>
+
 </body>
 </html>

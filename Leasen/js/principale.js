@@ -1,3 +1,13 @@
+ 
+
+//navbar responsive
+(function ($) {
+    $(function () {
+        $('.button-collapse').sideNav();
+    });
+})(jQuery);
+
+
 //parallax de l'image dans la page d'accueil
 (function ($) {
     $(function () {
@@ -21,6 +31,7 @@
         );
     }); // End Document Ready
 })(jQuery); // End of jQuery name space
+//
 //pour la barre de navigation qui a le mouvement de la page
 
 (function ($) {
