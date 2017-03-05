@@ -60,21 +60,21 @@ navbarcall(1, 0);
                     objets :<br>
                     Inscrivez-vous avec votre adresse mail de l'ISEN. Puis déposer vos annonces dans la page poster un
                     objet.
-                    Vous êtes contactés par mail si un étudiant est intéressé par votre annonce. Avant la location,
-                    remplisser
-                    le contrat de location qui vous est proposé plus bas et récupérer votre paiement. <br><br>
+                    Vous êtes contacté par mail si un étudiant est intéressé par votre annonce. Avant la location,
+                    remplissez
+                    le contrat de location qui vous est proposé plus bas et récupérez votre paiement. <br><br>
                 </p>
                 <p class="center-align grey-text text-darken-4"> Si vous souhaitez louer un objet : <br>
                     Inscrivez-vous avec votre adresse mail de l'ISEN. Puis rechercher parmi les annonces un bien à
                     louer. Vous
-                    avez la possibilité de faire une annonce indiquant le bien dont vous avez besoin si il n'est pas
+                    avez la possibilité de faire une annonce indiquant le bien dont vous avez besoin s'il n'est pas
                     proposé sur le site.
-                    Pour récupérer l'objet voulu, faite une demande de location, remplisser le contrat de location qui
-                    vous est proposé plus bas et payer le propriétaire. <br> <br>
+                    Pour récupérer l'objet voulu, faites une demande de location, remplissez le contrat de location qui
+                    vous est proposé plus bas et payez le propriétaire. <br> <br>
                     Après la location, vous pouvez noter l'objet pour aider les autres loueurs.
                 </p>
                 <p class="center-align grey-text text-darken-4"> Ainsi, les propriétaires gagnent de l'argent en les
-                    mettant à louer ou apportent de la convivialité par le prêt de biens. <br>
+                    proposant à la location ou apportent de la convivialité par le prêt de biens. <br>
                     Les locataires économisent de l'argent. <br> <br>
                 </p>
                 <h4 class="center-align deep-orange-text"><b> Leasen ? C'est simple, rapide et chaleureux !</b></h4>
@@ -82,7 +82,7 @@ navbarcall(1, 0);
                 <h4 class="center-align deep-orange-text"> Le contrat de location </h4>
                 <p class="center-align grey-text text-darken-4"> Le site Leasen n’est en aucun cas partie prenante du
                     présent contrat et ne pourra être tenu comme responsable,
-                    direct ou indirect, d’éventuels litiges ou dommages relatifs à l’exécution du contrat. Si, en cas de
+                    directement ou indirectement, d’éventuels litiges ou dommages relatifs à l’exécution du contrat. Si, en cas de
                     litige,
                     le locataire et le propriétaire ne trouvent pas de solution à l’amiable,
                     alors les tribunaux du lieu de signature du présent contrat seront retenus pour seuls compétents.
@@ -90,12 +90,12 @@ navbarcall(1, 0);
                 </p>
                 <p class="center-align grey-text text-darken-4"> Avant la location / prêt, nous vous conseillons de
                     remplir un contrat de location et de le garder le temps de la location ou du prêt.
-                    Vous pouvez téléchargé le contrat que nous vous proposons ci-dessous. Il est a remplir par le
+                    Vous pouvez télécharger le contrat que nous vous proposons ci-dessous. Il est à remplir par le
                     propriétaire et le locataire lors de la rencontre. <br><br/>
                     <a class="waves-effect waves-light deep-orange white-text btn"
                        href="../res/Contrat de location.pdf">
                         Télécharger un exemplaire</a> <br/><br/>
-                    Vous êtes libre de rédiger votre propre contrat ci celui-ci ne vous convient pas. <br/><br/>
+                    Vous êtes libre de rédiger votre propre contrat si celui-ci ne vous convient pas. <br/><br/>
                 </p>
                 <br/>
             </div>
@@ -107,7 +107,7 @@ navbarcall(1, 0);
  
 
 
-<footer class="footer"><p>&copy;2017 LEASEN Tous droits réservé.<p> </footer>
+<footer class="footer"><p>&copy;2017 LEASEN Tous droits réservés.<p> </footer>
 
 </body>
 </html>

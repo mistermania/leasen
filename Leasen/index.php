@@ -33,7 +33,7 @@ include "fonctions/fnavbar.php";
 include "fonctions/faffichageprincipale.php";
 isset($_SESSION['USER']) ? navbarcall(1, 1) : navbarcall(0, 1);
 
-affichageprincipale(1);   
+isset($_SESSION['USER']) ? affichageprincipale(1) : affichageprincipale(0);   
 include "fonctions/footer.php";
 
 ?>

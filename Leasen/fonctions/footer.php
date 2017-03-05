@@ -7,5 +7,5 @@
  */    ?>
     
   
-    <footer class="footer"><p>&copy;2017 LEASEN Tous droits réservé.<p> </footer>
+    <footer class="footer"><p>&copy;2017 LEASEN Tous droits réservés.<p> </footer>
 
