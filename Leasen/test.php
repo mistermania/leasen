@@ -4,10 +4,10 @@
 </head>
 <body>
 <?php
-require('class/Autoloader.php');
-Autoloader::register(0);
-$calendar = new Calendar();
-echo $calendar->afficheCalendrierObjet(7);
+//require('class/Autoloader.php');
+//Autoloader::register(0);
+//$calendar = new Calendar();
+//echo $calendar->afficheCalendrierObjet(7);
 ?>
 <html><body><br /><p align=center>
     <br />
@@ -19,15 +19,21 @@ echo $calendar->afficheCalendrierObjet(7);
 </body></html>
 <?php
 
-require('PHPMailer/class.phpmailer.php');
+require('PHPMailer/PHPMailerAutoload.php');
+$username = 'testleasen@gmail.com';
+$password ='mdpLeasen';
 
 $mail = new PHPMailer();
-$mail->Host = 'localhost';
-$mail->SMTPAuth   = false;
-$mail->Port = 25; // Par défaut
-
+$mail->SMTPDebug = 1;
+$mail->isSMTP();
+$mail->SMTPAuth   = true;
+$mail->SMTPSecure = 'ssl';
+$mail->Host = 'smtp.gmail.com';
+$mail->Port = 465; // Par défaut
+$mail->Username = $username;
+$mail->Password = $password;
 // Expéditeur
-$mail->SetFrom('thomas.artru@isen.yncrea.fr', 'ARTRU Thomas');
+$mail->SetFrom('aubois.alexandre@gmail.com', 'Aubois Alexandre');
 // Destinataire
 $mail->AddAddress('artru.thomas.monchal@gmail.com', 'Thomas ARTRU');
 // Objet
