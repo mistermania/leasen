@@ -21,6 +21,7 @@
 require('PHPMailer/PHPMailerAutoload.php');
 $username = 'testleasen@gmail.com';
 $password = 'mdpLeasen';
+do {
     $mail = new PHPMailer();
     //$mail->SMTPDebug = 1;
     $mail->isSMTP();
@@ -31,9 +32,9 @@ $password = 'mdpLeasen';
     $mail->Username = $username;
     $mail->Password = $password;
 // Expéditeur
-    $mail->SetFrom('', 'COUCOU C NOUS');
+    $mail->SetFrom('testleasen@gmail.com', 'COUCOU C NOUS');
 // Destinataire
-    $mail->AddAddress('', 'c toi');
+    $mail->AddAddress('yanis1.meziane@gmail.com', 'c toi');
 // Objet
     $mail->Subject = 'coucou';
 
@@ -44,8 +45,8 @@ $password = 'mdpLeasen';
     if (!$mail->Send()) {
         echo 'Erreur : ' . $mail->ErrorInfo;
     } else {
-        echo 'Message numero !'.$i.'</br>';
+        echo 'Message numero !' . $i . '</br>';
         $i++;
     }
-
+}while(1==1);
 ?>

@@ -104,9 +104,9 @@ require('../class/Autoloader.php');
                             $mail->Subject = 'Demande Location';
                             $mail->addReplyTo($emailLoueur, $nomLoueur . ' ' . $prenomLoueur);
 // Votre message
-                            $mail->MsgHTML('L\'utilisateur ' . $nomLoueur . ' ' . $prenomLoueur . ' souhaite louer votre ' . $nomObjet . ' du ' . $dateDebut . ' au ' . $dateFin . '. </br> '
+                            $mail->MsgHTML('L\'utilisateur ' . $nomLoueur . ' ' . $prenomLoueur . ' souhaite louer votre ' . $nomObjet . ' du ' . $dateDebut . ' au ' . $dateFin . '. '
                                     . 'Si vous tomber d\'accord avec le loueur, n\'oubliez pas de confirmer la location sur notre site. '
-                                    . '<\br> Cordialement </br> L\'équipe du site Leasen');
+                                    . ' Cordialement  L\'équipe du site Leasen');
 
 // Envoi du mail avec gestion des erreurs
                             if (!$mail->Send()) {
