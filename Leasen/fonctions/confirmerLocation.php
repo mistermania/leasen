@@ -88,7 +88,7 @@ require('../class/Autoloader.php');
                             $password = 'mdpLeasen';
 
                             $mail = new PHPMailer();
-                            $mail->SMTPDebug = 1;
+                            //$mail->SMTPDebug = 1;
                             $mail->isSMTP();
                             $mail->SMTPAuth = true;
                             $mail->SMTPSecure = 'ssl';
@@ -110,9 +110,9 @@ require('../class/Autoloader.php');
 
 // Envoi du mail avec gestion des erreurs
                             if (!$mail->Send()) {
-                                echo 'Erreur : ' . $mail->ErrorInfo;
+                              //  echo 'Erreur : ' . $mail->ErrorInfo;
                             } else {
-                                echo 'Message envoyé !';
+                              //  echo 'Message envoyé !';
                             }
                         } elseif ($res == 4 || $res == 5) {
                             echo "<h5 class=\"center - align\">Les dates que vous avez saisient sont inccorectes. La requete n'a pas pu aboutir</h5></br>";
@@ -145,7 +145,7 @@ require('../class/Autoloader.php');
         // header('Refresh:5; URL=../pages/detailobjet.php');
         ?>
         <script type="text/javascript">
-            setTimeout(alertFunc, 30000);
+            setTimeout(alertFunc, 4000);
             function alertFunc() {
                 document.redirect.submit();
             }
