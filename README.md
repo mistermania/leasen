@@ -1,6 +1,7 @@
 # leasen
-Isen project: Leasen
+Ceci est un projet ISEN dans le cadre du cours de Developpement Web. Ce projet n'est en aucun cas termine, et ne le sera probablement jamais. 
 
+## Description
 Leasen est un site de prêt et d’échanges entre 2 personnes. Le principe est simple mais très utile.
 Le site propose aux utilisateurs de mettre à disposition les objets qu’ils possèdent,
 et dont ils ne se servent pas en permanence, à des personnes qui en ont besoin.
