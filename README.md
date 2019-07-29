@@ -1,4 +1,4 @@
-# leasen
+# Leasen
 Ceci est un projet ISEN dans le cadre du cours de Developpement Web. Ce projet n'est en aucun cas termine, et ne le sera probablement jamais. 
 
 ## Description
